@@ -1,0 +1,35 @@
+<com.andexert.library.RippleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    app:rv_color= "@color/colorRipple_Faq"
+    app:rv_zoomDuration = "15"
+    android:clickable="false"
+    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Faq_MainList" >
+
+    <EditText 
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content" 
+    android:hint="Search Question Frequently asked...."
+    android:id="@+id/SearchET"
+        />
+
+    <ListView
+        android:id="@+id/Contacts_list_view"
+        android:layout_width="match_parent"
+        android:divider="@color/white"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>
+</com.andexert.library.RippleView>

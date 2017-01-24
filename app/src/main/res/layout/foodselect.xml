@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    app:rv_color= "@color/colorRipple_Food"
+    app:rv_zoomDuration = "15"
+    android:clickable="false"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Breakfast"
+        android:textStyle="bold"
+        android:id="@+id/text"
+
+        android:autoText="false"
+        android:textSize="25dp"
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/foodBreakfast"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="Lunch"
+        android:id="@+id/textView"
+
+        android:autoText="false"
+        android:textSize="25dp"
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:layout_below="@+id/foodBreakfast"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/foodLunch"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="Dinner"
+        android:id="@+id/textView9"
+        android:autoText="false"
+        android:textSize="25dp"
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:layout_below="@+id/foodLunch"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/foodDinner"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Order"
+        android:gravity="center"
+        android:id="@+id/foodSelectbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/foodDinner"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>
+</com.andexert.library.RippleView>

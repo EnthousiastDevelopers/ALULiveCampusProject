@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "187178619267",
+    "firebase_url": "https://campuslive-e3217.firebaseio.com",
+    "project_id": "campuslive-e3217",
+    "storage_bucket": "campuslive-e3217.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187178619267:android:43ab0c2bde40d034",
+        "android_client_info": {
+          "package_name": "com.example.tolotranet.livecampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187178619267-65odandd00bl7bku2c2v1m9u470ksi2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSPMsW5F5tsRqPEkAf4j5FsjOXPHPNYwQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="emptyString" />
+    <string name="app_name">CAMPUS LIVE</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_person_detail_list_view">LIVE CAMPUS</string>
+    <string name="title_activity_spread_sheet">LIVE CAMPUS</string>
+
+    <string-array name = "food_menu_lunch" >
+        <item>Chicken</item>
+        <item>Beef</item>
+        <item>Salad</item>
+        <item>Rice</item>
+        <item>Pasta</item>
+        <item>Spaghetti</item>
+        <item>Lamb</item>
+        <item>Special order</item>
+        <item>Salad</item>
+    </string-array>
+    <string-array name = "food_menu_breakfast" >
+        <item>Milk</item>
+        <item>Orange</item>
+        <item>Beans</item>
+        <item>Eggs</item>
+        <item>Apple</item>
+        <item>Coffee</item>
+        <item>Juice</item>
+        <item>Cheese</item>
+        <item>Bread</item>
+        <item>Nutella</item>
+    </string-array>
+    <string-array name = "food_menu_dinner" >
+        <item>Fries</item>
+        <item>Humberger</item>
+        <item>Fries</item>
+        <item>Chicken</item>
+        <item>Lamb</item>
+        <item>Fish</item>
+        <item>Fried Rice</item>
+        <item>Beef</item>
+        <item>Potatoes</item>
+    </string-array>
+    <string-array name = "book_slot_test" >
+        <item>2pm-3pm</item>
+        <item>3pm-4pm</item>
+        <item>4pm-5pm</item>
+    </string-array>
+    <string-array name = "maint_zendesk_category" >
+        <item>  Water/pipes</item>
+        <item>Electricity/appliances</item>
+        <item> Furniture</item>
+        <item> Doors/locks/keys</item>
+        <item> Animals/insects</item>
+        <item> Linen/towels</item>
+        <item> Cleaning services</item>
+    </string-array>
+    <string-array name = "maint_zendesk_place" >
+        <item>Kitchen</item>
+        <item> Bathroom</item>
+        <item> Bedroom</item>
+        <item> Living room</item>
+        <item> Balcony</item>
+        <item> Other</item>
+    </string-array>
+    <string-array name = "sign_domain_array" >
+        <item>15@alustudent.com</item>
+        <item>16@alustudent.com</item>
+        <item>15@alueducation.com</item>
+        <item>16@alueducation.com</item>
+    </string-array>
+
+    <string-array name = "NameArray">
+        <item>Mr.A</item>
+        <item>Mr.B</item>
+        <item>Mr.C</item>
+        <item>KD</item>
+        <item>Mr.E</item>
+    </string-array>
+
+    <string-array name = "BottomTextArray">
+        <item>A</item>
+        <item>K</item>
+        <item>C</item>
+        <item>D</item>
+        <item>YOLO</item>
+    </string-array>
+</resources>

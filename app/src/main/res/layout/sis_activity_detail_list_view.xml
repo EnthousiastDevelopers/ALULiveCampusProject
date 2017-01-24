@@ -1,0 +1,58 @@
+<com.andexert.library.RippleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    app:rv_color= "@color/colorRipple_Sis"
+    app:rv_zoomDuration = "15"
+    android:clickable="false"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sis_DetailListViewOwner">
+
+    <ImageView
+        android:id="@+id/ImageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sis_profil_neutral_large" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ImageProfile">
+
+        <TextView
+            android:id="@+id/fullName"
+            android:textStyle="bold"
+            android:textSize="23dp"
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Some Text Full Name" />
+
+        <TextView
+            android:id="@+id/country"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullName"
+            android:text="Some Country" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/person_details_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageProfile"
+        android:layout_weight="1"
+        android:descendantFocusability="afterDescendants"
+        android:focusable="false"></ListView>
+
+</RelativeLayout>
+</com.andexert.library.RippleView>

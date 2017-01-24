@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="customTheme" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+    </style>
+
+    <style name="sis_theme" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/Sis_WindowTitleBackground</item>
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+    </style>
+    <style name="event_Theme" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/Event_WindowTitleBackground</item>
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+    </style>
+    <style name="Transp_Theme" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/Transp_WindowTitleBackground</item>
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+    </style>
+</resources>

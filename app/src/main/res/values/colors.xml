@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="colorRipple">#FF4081</color>
+    <color name="colorRipple_Appselect">#40ffdf</color>
+    <color name="colorRipple_Sign">#404dff</color>
+    <color name="colorRipple_Sis">#40ff4d</color>
+    <color name="colorRipple_Transp">#ff4040</color>
+    <color name="colorRipple_Faq">#ffbf40</color>
+    <color name="colorRipple_Food">#fff940</color>
+    <color name="colorRipple_Maint">#a640ff</color>
+    <color name="colorRipple_Setting">#ff40fc</color>
+    <color name="colorRipple_Event">#ff40a6</color>
+    <!--<color name="colorRipple">#FF4081</color>-->
+    <!--<color name="colorRipple">#FF4081</color>-->
+    <!--<color name="colorRipple">#FF4081</color>-->
+    <!--<color name="colorRipple">#FF4081</color>-->
+    <color name="backgroundColor">#3F51B5</color>
+    <color name="titlebackgroundcolor">#ff8000</color>
+    <color name="sis_titlebackgroundcolor">#ff0080</color>
+    <color name="event_titlebackgroundcolor">#ff2222</color>
+    <color name="transp_titlebackgroundcolor">#0a00cc</color>
+
+
+    <color name="titletextcolor">#FFFF00</color>
+    <color name="orange">#ffbf00</color>
+    <color name="fushia">#9b004e</color>
+    <color name="red">#d7ff5347</color>
+    <color name="blue">#24ceff</color>
+</resources>

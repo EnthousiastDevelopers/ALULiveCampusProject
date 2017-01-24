@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    app:rv_color= "@color/colorRipple_Sign"
+    app:rv_zoomDuration = "15"
+    android:clickable="false"
+    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="50dp"
+    android:orientation="vertical"
+
+    tools:context="com.example.tolotranet.livecampus.Sign_in"
+    tools:showIn="@layout/sign_in_activity_main"
+    android:onClick="onButtonClick">
+
+<!--
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+-->
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Welcome, "
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="First Name"
+            android:layout_toRightOf="@id/textView10"
+            android:gravity="center"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+         />
+
+</RelativeLayout>
+
+        <TextView
+            android:id="@+id/emailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="username\u0040alustudent.com"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:text="Not you?" />
+
+        <EditText
+            android:id="@+id/TFpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:ems="11"
+
+            android:gravity="center"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textv12"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Enter your password and login."
+            android:textSize="20dp" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/Blogin"
+            android:layout_width="300dp"
+            android:layout_height="52dp"
+            android:onClick="onButtonClick"
+            android:layout_gravity="center"
+            android:text="LOGIN" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:id="@+id/Breset"
+            android:onClick="onButtonClick"
+            android:text="Forgot your password?" />
+
+
+</LinearLayout>
+</com.andexert.library.RippleView>
+<!--
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TFusername"
+        android:gravity="center"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+-->
+<!--
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Password"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/TFusername"
+        android:layout_centerHorizontal="true" />-->
+<!--
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/TFpassword"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />-->
+<!--
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+-->
+
+<!--        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:id="@+id/Blogin"
+            android:onClick="onButtonClick"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/TFpassword" />-->
+
+     <!--   <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIGN UP"
+            android:id="@+id/Bsignup"
+            android:onClick="onButtonClick"
+            android:layout_alignTop="@+id/Blogin" />-->
+            <!--android:layout_alignEnd="@+id/TFpassword"-->
+
+   <!-- </LinearLayout>-->
+<!--</LinearLayout>-->

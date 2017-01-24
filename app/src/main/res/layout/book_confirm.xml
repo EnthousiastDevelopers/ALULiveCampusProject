@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    android:clickable="false"
+    app:rv_color="@color/colorRipple_Food"
+    app:rv_zoomDuration="15">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/thanks"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+<TextView
+    android:layout_width="fill_parent"
+    android:textSize="25dp"
+    android:padding="20dp"
+    android:textStyle="bold"
+    android:text="Thanks for Booking your appointment via CampusLive!"
+    android:layout_height="wrap_content" />
+      </LinearLayout>
+            <LinearLayout
+                android:layout_below="@+id/thanks"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/convos"
+                        android:src="@drawable/book_theme"
+                        android:layout_width="55dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="55dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Theme:"
+                        android:textStyle="bold"
+                        android:id="@+id/convoslabel"
+                        android:layout_toRightOf="@+id/convos"
+                        android:autoText="false"
+                        android:textSize="25dp"
+                        android:textIsSelectable="false"
+                        android:textAlignment="center"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Growth Convos"
+                        android:layout_toRightOf="@+id/convos"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/convosValue"
+                        android:layout_below="@+id/convoslabel"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    >
+
+                    <ImageView
+                        android:id="@+id/staff"
+                        android:layout_width="55dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/book_staff"
+                        android:layout_height="55dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Staff:"
+                        android:textStyle="bold"
+                        android:id="@+id/stafflabel"
+                        android:layout_toRightOf="@+id/staff"
+                        android:autoText="false"
+                        android:textSize="25dp"
+                        android:textIsSelectable="false"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Veda Sounazie"
+                        android:layout_toRightOf="@+id/staff"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/staffValue"
+                        android:layout_below="@+id/stafflabel"
+                        />
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    >
+
+                    <ImageView
+                        android:id="@+id/venue"
+                        android:layout_width="55dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/book_venue"
+                        android:layout_height="55dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Venue"
+                        android:textStyle="bold"
+                        android:id="@+id/venuelabel"
+                        android:layout_toRightOf="@+id/venue"
+                        android:autoText="false"
+                        android:textSize="25dp"
+                        android:textIsSelectable="false"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Troux aux Biches"
+                        android:layout_toRightOf="@+id/venue"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/venueValue"
+                        android:layout_below="@+id/venuelabel"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    >
+
+                    <ImageView
+                        android:id="@+id/date"
+                        android:layout_width="55dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/app_event"
+                        android:layout_height="55dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:"
+                        android:textStyle="bold"
+                        android:id="@+id/datelabel"
+                        android:layout_toRightOf="@+id/date"
+                        android:autoText="false"
+                        android:textSize="25dp"
+                        android:textIsSelectable="false"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="18-07-19 Convos"
+                        android:layout_toRightOf="@+id/date"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dateValue"
+                        android:layout_below="@+id/datelabel"
+                        />
+                </RelativeLayout>
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    >
+
+                    <ImageView
+                        android:id="@+id/time"
+                        android:layout_width="55dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/book_time"
+                        android:layout_height="55dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:"
+                        android:textStyle="bold"
+                        android:id="@+id/timelabel"
+                        android:layout_toRightOf="@+id/time"
+                        android:autoText="false"
+                        android:textSize="25dp"
+                        android:textIsSelectable="false"
+                        android:textAlignment="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="2pm - 3pm"
+                        android:layout_toRightOf="@+id/time"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/timeValue"
+                        android:layout_below="@+id/timelabel"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ok"
+                        android:gravity="center"
+                        android:id="@+id/backBtn"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+</LinearLayout>
+        </com.andexert.library.RippleView>

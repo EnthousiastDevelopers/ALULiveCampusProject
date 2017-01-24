@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tolotranet.livecampus"
+
+android:versionCode="1"
+android:versionName="1.0" >
+    <service
+        android:name=".MyFirebaseMessagingService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </intent-filter>
+    </service>
+
+<uses-sdk
+    android:minSdkVersion="14"
+    android:targetSdkVersion="18" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+<application
+
+    android:allowBackup="true"
+    android:icon="@drawable/ic_logo_2_min"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:name="com.example.tolotranet.livecampus.MyApplication"
+    android:theme="@style/customTheme">
+
+    <activity android:name="com.example.tolotranet.livecampus.Sign_Up_confirm"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Maint_Confirm"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Booking_confirm"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Food_Confirm"></activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sign_in"
+        android:label="@string/app_name"
+        android:windowSoftInputMode="stateAlwaysHidden"
+        android:theme="@style/AppTheme.NoActionBar">
+     <!--   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>-->
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sign_startApplication"
+        android:label="@string/app_name"
+        android:windowSoftInputMode="stateAlwaysHidden"
+        android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name="com.example.tolotranet.livecampus.AppSelect"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Settings_mainActivity"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Booking_App"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Booking_Calendar"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Booking_Select"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.MaintZendesk"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Sign_check_mail"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Sign_pass_check"     ></activity>
+    <activity android:name="com.example.tolotranet.livecampus.FoodApp"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.FoodCalendar"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.FoodSelect"></activity>
+    <activity android:name="com.example.tolotranet.livecampus.Booking_Location_People_Day"></activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Transp_TransApp"
+        android:label="@string/app_name"
+        android:theme="@style/Transp_Theme"
+        android:windowSoftInputMode="stateHidden" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Transp_ElementDetailListView"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Transp_SpreadSheetActivity"
+        android:label="@string/title_activity_spread_sheet" >
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+
+
+
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sis_MainList"
+        android:theme="@style/sis_theme"
+        android:label="@string/app_name"
+        android:windowSoftInputMode="stateHidden" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sis_DetailListViewOwner"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sis_DetailListView"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Sis_SpreadSheetActivity"
+        android:label="@string/title_activity_spread_sheet" >
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
+
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+
+    <activity
+        android:name="com.example.tolotranet.livecampus.Event_MainList"
+        android:label="@string/app_name"
+        android:theme="@style/event_Theme"
+        android:windowSoftInputMode="stateHidden" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Event_DetailListViewOwner"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Event_DetailListView"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Event_SpreadSheetActivity"
+        android:label="@string/title_activity_spread_sheet" >
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+    <activity
+        android:name=".Faq_MainList"
+        android:label="@string/app_name"
+        android:windowSoftInputMode="stateHidden" >
+    </activity>
+    <activity
+        android:name=".Faq_DetailListViewOwner"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+    <activity
+        android:name=".Faq_DetailListView"
+        android:windowSoftInputMode="adjustPan"
+        android:label="@string/title_activity_person_detail_list_view" >
+    </activity>
+
+    <activity
+        android:name=".Faq_SpreadSheetActivity"
+        android:label="@string/title_activity_spread_sheet" >
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+</application>
+
+
+</manifest>

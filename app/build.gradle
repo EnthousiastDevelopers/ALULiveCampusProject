@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+
+        android {
+            compileSdkVersion 24
+            buildToolsVersion '24.0.2'
+
+            defaultConfig {
+                applicationId "com.example.tolotranet.livecampus"
+                apply plugin: 'com.android.application'
+                multiDexEnabled true
+                minSdkVersion 11
+                targetSdkVersion 22
+                versionCode 1
+                versionName "1.0"
+            }
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+            }
+//    packagingOptions {
+//        exclude 'META-INF/DEPENDENCIES'
+//        exclude 'META-INF/NOTICE'
+//        exclude 'META-INF/LICENSE'
+//        exclude 'META-INF/LICENSE.txt'
+//        exclude 'META-INF/NOTICE.txt'
+//    }
+        }
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:design:24.1.1'
+   // compile 'com.google.android.gms:play-services-auth:9.6.1'
+    compile 'com.google.android.gms:play-services-auth:9.2.0'
+
+    //compile files('libs/apache-httpcomponents-httpcore.jar')
+    // compile files('libs/apache-httpcomponents-httpclient.jar')
+    compile 'pub.devrel:easypermissions:0.1.5'
+    compile('com.google.api-client:google-api-client-android:1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    compile('com.google.apis:google-api-services-sheets:v4-rev28-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    compile files('mylib/gdata-core-1.0.jar')
+    compile files('mylib/gdata-spreadsheet-3.0.jar')
+    //compile files('mylib/guava-11.0.2.jar')
+    //compile files('mylib/javamail-1.4.5.jar')
+    // compile files('mylib/jsr305.jar')
+    compile 'com.github.traex.rippleeffect:library:1.3'
+    //ripple effect from github
+    testCompile 'junit:junit:4.12'
+    compile files('libs/activation.jar')
+    compile files('libs/additionnal.jar')
+    compile files('libs/mail.jar')
+    //compile 'com.google.android.gms:play-services-analytics:9.0.2'
+   // compile files('mylib/gdata-analytics-2.1.jar')
+   // compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.google.firebase:firebase-core:9.2.0'
+    compile 'com.google.firebase:firebase-messaging:9.2.0'
+}
+apply plugin: 'com.google.gms.google-services'
