@@ -3,6 +3,7 @@ package com.example.tolotranet.livecampus;
 public class Event_ItemObject {
 	private String Name;
 	private String BottomText;
+	private String MiniText;
 	private int Index;
 	private int UserId;
 	
@@ -13,7 +14,10 @@ public class Event_ItemObject {
 	public String getBottomText(){
 		return this.BottomText;
 	}
-	
+	public String getMiniText(){
+		return this.MiniText;
+	}
+
 	public int getIndex(){
 		return this.Index;
 	}
@@ -24,7 +28,10 @@ public class Event_ItemObject {
 	public void setName(String name){
 		this.Name = name;
 	}
-	
+	public void setMiniText(String miniTxt){
+		this.MiniText = miniTxt;
+	}
+
 	public void setBottomText(String bottomText){
 		this.BottomText = bottomText;
 	}

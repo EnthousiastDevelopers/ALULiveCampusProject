@@ -59,6 +59,7 @@ public class Event_MyCustomBaseAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.NameTV = (TextView) convertView.findViewById(R.id.Contact_name_tv);
 			holder.BottomTV = (TextView) convertView.findViewById(R.id.Contact_bottom_tv);
+			holder.MiniTV = (TextView) convertView.findViewById(R.id.Mini_bottom_tv);
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
@@ -66,16 +67,19 @@ public class Event_MyCustomBaseAdapter extends BaseAdapter {
 		
 		String Name = FilteredObjects.get(position).getName();
 		String BottomText = FilteredObjects.get(position).getBottomText();
-		
+		String MiniText = FilteredObjects.get(position).getMiniText();
+
 		holder.NameTV.setText(Name);
 		holder.BottomTV.setText(BottomText);
-		
+		holder.MiniTV.setText(MiniText);
+
 		return convertView;
 	}
 
 	static class ViewHolder{
 		TextView NameTV;
 		TextView BottomTV;
+		TextView MiniTV;
 	}
 	
 	private class ItemFilter extends Filter {

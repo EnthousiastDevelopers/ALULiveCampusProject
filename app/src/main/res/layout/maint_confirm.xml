@@ -19,7 +19,7 @@
         android:layout_alignParentStart="true">
 <TextView
     android:layout_width="fill_parent"
-    android:textSize="25dp"
+    android:textSize="15dp"
     android:padding="10dp"
     android:textStyle="bold"
     android:text="Ticket Submitted Successfully!!"
@@ -38,7 +38,7 @@
                 android:layout_alignParentStart="true"
                 android:text="Category:"
                 android:textIsSelectable="false"
-                android:textSize="25dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/CategoryLabel"
                 android:text="mychossen Place"
-                android:textSize="25dp" />
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
@@ -66,7 +66,7 @@
                 android:layout_alignParentStart="true"
                 android:text="Place:"
                 android:textIsSelectable="false"
-                android:textSize="25dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/PlaceLabel"
                 android:text="mychossen Place"
-                android:textSize="25dp" />
+                android:textSize="15dp" />
 
         </RelativeLayout>
 
@@ -94,7 +94,7 @@
                 android:layout_alignParentStart="true"
                 android:text="Description:"
                 android:textIsSelectable="false"
-                android:textSize="25dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/DescriptionLabel"
                 android:text="mychossen Place"
-                android:textSize="25dp" />
+                android:textSize="15dp" />
 
         </RelativeLayout>
 

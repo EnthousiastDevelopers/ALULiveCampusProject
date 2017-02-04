@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+//import android.support.annotation.RequiresApi;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -43,7 +43,7 @@ public class Booking_Calendar extends Activity {
 
         calendar = (CalendarView) findViewById(R.id.foodcalendar);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+           // @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 //DO STUFF with the data. here it is toasting

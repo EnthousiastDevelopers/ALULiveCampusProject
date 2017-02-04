@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class AppSelect_MyCustomBaseAdapter extends BaseAdapter {
-	private static ArrayList<Apps_ItemObject> MyArrayObjects = new ArrayList<Apps_ItemObject>();
-	private static ArrayList<Apps_ItemObject> FilteredObjects = new ArrayList<Apps_ItemObject>();
+	private  ArrayList<Apps_ItemObject> MyArrayObjects = new ArrayList<Apps_ItemObject>();
+	private  ArrayList<Apps_ItemObject> FilteredObjects = new ArrayList<Apps_ItemObject>();
 	private Context context;
 	private LayoutInflater mInflater;
 	private ItemFilter myFilter = new ItemFilter();
@@ -71,13 +71,13 @@ public class AppSelect_MyCustomBaseAdapter extends BaseAdapter {
 
 
 		holder.NameTV.setText(Name);
-		holder.BottomTV.setText(BottomText);
+	//	holder.BottomTV.setText(BottomText);
 		holder.ImgV.setImageResource(ImgId);
 
 		return convertView;
 	}
 
-	static class ViewHolder{
+	 class ViewHolder{
 		TextView NameTV;
 		TextView BottomTV;
 		ImageView ImgV;

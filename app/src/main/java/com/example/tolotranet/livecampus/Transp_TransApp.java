@@ -1,8 +1,10 @@
 package com.example.tolotranet.livecampus;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -81,17 +83,51 @@ public class Transp_TransApp extends Activity {
 		for (int i = 0; i < Transp_XMLParserClass.RouteArray.size(); i++) {
 			//remove outdated app_transp even offline
 			datadb = Transp_XMLParserClass.Res2_Array.get(i);
-			if(currentDate.compareTo(datadb)<=0) {
+			//Log.d("hello", "time is datab: "+(datadb)+"current time"+currentDate );
+
+			if(CheckDates(datadb, currentDate)) {
 				Transp_ItemObject CIO = new Transp_ItemObject();
 				CIO.setName(Transp_XMLParserClass.RouteArray.get(i));
 				CIO.setBottomText(Transp_XMLParserClass.TimeArray.get(i));
+				CIO.setDayText(Transp_XMLParserClass.Day_Array.get(i));
 				CIO.setIndex(i);
 				TempItemArray.add(CIO);
 			}
 		}
 		return TempItemArray;
 	}
+	public static boolean CheckDates(String startDate, String endDate) {
 
+		SimpleDateFormat dfDate = new SimpleDateFormat("dd/MM/yy h'h'mm");
+		SimpleDateFormat dfDate2 = new SimpleDateFormat("dd/MM/yyyy h:mm:ss");
+
+		Date strDate = null;
+		try {
+			strDate = dfDate.parse(startDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		boolean b = false;
+		if (System.currentTimeMillis() > strDate.getTime()) {
+		//Log.d("hello","future");
+		}
+
+		try {
+			if (dfDate.parse(startDate).before(dfDate2.parse(endDate))) {
+				//Log.d("hello", "time is datab: "+(startDate)+"is before current time"+endDate );
+				b = false;  // If start date is before end date.
+			} else if (dfDate.parse(startDate).equals(dfDate2.parse(endDate))) {
+				b = true;  // If two dates are equal.
+			} else {
+				b = true; // If start date is after the end date.
+			}
+		} catch (java.text.ParseException e) {
+			e.printStackTrace();
+		}
+
+		return b;
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

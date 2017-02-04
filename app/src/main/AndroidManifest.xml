@@ -27,16 +27,30 @@ android:versionName="1.0" >
 <application
 
     android:allowBackup="true"
-    android:icon="@drawable/ic_logo_2_min"
+    android:icon="@drawable/ic_logo_macro"
     android:label="@string/app_name"
     android:supportsRtl="true"
     android:name="com.example.tolotranet.livecampus.MyApplication"
-    android:theme="@style/customTheme">
+        android:theme="@style/Apps_customTheme">
 
-    <activity android:name="com.example.tolotranet.livecampus.Sign_Up_confirm"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Maint_Confirm"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Booking_confirm"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Food_Confirm"></activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Sign_Up_confirm"
+        android:label="@string/app_name"
+        >
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Mu_Confirm"
+        android:label="MAURITIUS CONTRIBUTE">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Booking_confirm"
+        android:label="BOOK A MEETING">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Food_Confirm"
+        android:label="FOOD APP"
+        >
+</activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Sign_in"
         android:label="@string/app_name"
@@ -60,18 +74,64 @@ android:versionName="1.0" >
         </intent-filter>
     </activity>
 
-    <activity android:name="com.example.tolotranet.livecampus.AppSelect"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Settings_mainActivity"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Booking_App"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Booking_Calendar"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Booking_Select"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.MaintZendesk"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Sign_check_mail"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Sign_pass_check"     ></activity>
-    <activity android:name="com.example.tolotranet.livecampus.FoodApp"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.FoodCalendar"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.FoodSelect"></activity>
-    <activity android:name="com.example.tolotranet.livecampus.Booking_Location_People_Day"></activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.AppSelect"
+        android:theme="@style/Apps_customTheme"
+        android:label="AMPUS LIVE"
+        >
+
+    </activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Settings_mainActivity"
+        android:label="SETTINGS">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Booking_App"
+        android:label="BOOK A MEETING">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Booking_Calendar"
+        android:label="BOOK A MEETING">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Booking_Select"
+        android:label="BOOK A MEETING">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Mu_Add"
+        android:label="ADD TO MAURITIUS +1">
+</activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.Maint_Confirm"
+        android:label="MAINTENANCE FORM">
+</activity>
+    <activity
+        android:name="com.example.tolotranet.livecampus.MaintZendesk"
+        android:label="MAINTENANCE FORM">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Sign_check_mail">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Sign_pass_check"     >
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.FoodApp"
+        android:label="FOOD APP">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.FoodCalendar"
+        android:label="FOOD APP">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.FoodSelect"
+        android:label="FOOD APP">
+</activity>
+    <activity 
+        android:name="com.example.tolotranet.livecampus.Booking_Location_People_Day"
+        android:label="BOOK A MEETING">
+        
+    </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Transp_TransApp"
         android:label="@string/app_name"
@@ -80,11 +140,11 @@ android:versionName="1.0" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Transp_ElementDetailListView"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="TRANSPORT SCHEDULE" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Transp_SpreadSheetActivity"
-        android:label="@string/title_activity_spread_sheet" >
+        android:label="TRANSPORT SCHEDULE" >
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -97,22 +157,22 @@ android:versionName="1.0" >
     <activity
         android:name="com.example.tolotranet.livecampus.Sis_MainList"
         android:theme="@style/sis_theme"
-        android:label="@string/app_name"
+        android:label="SIS"
         android:windowSoftInputMode="stateHidden" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Sis_DetailListViewOwner"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="SIS" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Sis_DetailListView"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="SIS" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Sis_SpreadSheetActivity"
-        android:label="@string/title_activity_spread_sheet" >
+        android:label="SIS" >
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -122,23 +182,59 @@ android:versionName="1.0" >
 
     <activity
         android:name="com.example.tolotranet.livecampus.Event_MainList"
-        android:label="@string/app_name"
+        android:label="EVENTS"
         android:theme="@style/event_Theme"
         android:windowSoftInputMode="stateHidden" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Event_DetailListViewOwner"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="EVENTS" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Event_DetailListView"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="EVENTS" >
     </activity>
     <activity
         android:name="com.example.tolotranet.livecampus.Event_SpreadSheetActivity"
-        android:label="@string/title_activity_spread_sheet" >
+        android:label="EVENTS" >
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+    <activity
+        android:name=".Mu_MainList"
+        android:label="MAURITIUS"
+        android:theme="@style/Apps_customTheme"
+        android:windowSoftInputMode="stateHidden" >
+    </activity>
+    <activity
+        android:name=".Mu_DetailListViewOwner"
+        android:windowSoftInputMode="adjustPan"
+        android:label="MAURITIUS" >
+    </activity>
+    <activity
+        android:name=".Mu_DetailListView"
+        android:windowSoftInputMode="adjustPan"
+        android:label="MAURITIUS" >
+    </activity>
+
+    <activity
+        android:name=".Mu_SpreadSheetActivity"
+        android:label="MAURITIUS" >
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
+    <activity
+        android:name=".Mu_App"
+        android:theme="@style/customTheme"
+        android:label="MAURITIUS" >
         <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -147,23 +243,23 @@ android:versionName="1.0" >
     </activity>
     <activity
         android:name=".Faq_MainList"
-        android:label="@string/app_name"
+        android:label="FAQ"
         android:windowSoftInputMode="stateHidden" >
     </activity>
     <activity
         android:name=".Faq_DetailListViewOwner"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="FAQ" >
     </activity>
     <activity
         android:name=".Faq_DetailListView"
         android:windowSoftInputMode="adjustPan"
-        android:label="@string/title_activity_person_detail_list_view" >
+        android:label="FAQ" >
     </activity>
 
     <activity
         android:name=".Faq_SpreadSheetActivity"
-        android:label="@string/title_activity_spread_sheet" >
+        android:label="FAQ" >
         <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 

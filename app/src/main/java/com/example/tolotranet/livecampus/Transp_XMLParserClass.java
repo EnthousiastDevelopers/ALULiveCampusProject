@@ -26,6 +26,7 @@ public class Transp_XMLParserClass {
 	public static ArrayList<String> Email2_Array;
 	public static ArrayList<String> Tag_Array;
 	public static ArrayList<String> Day_Array;
+	public static ArrayList<String> DateArray;
 
 
 	public Transp_XMLParserClass() throws XmlPullParserException,
@@ -44,6 +45,7 @@ public class Transp_XMLParserClass {
 		Mob1_Array = new ArrayList<String>();
 		Mob2_Array = new ArrayList<String>();
 		Day_Array = new ArrayList<String>();
+		DateArray = new ArrayList<String>();
 //		c = context;
 //		Resources res = c.getResources();
 //		XmlResourceParser xrp = res.getXml(R.xml.contacts);
@@ -99,6 +101,9 @@ public class Transp_XMLParserClass {
 				}
 				if (xrp.getName().equals(("day"))) {
 					Day_Array.add(xrp.nextText());
+				}
+				if (xrp.getName().equals(("date"))) {
+					DateArray.add(xrp.nextText());
 				}
 			}
 			eventType = xrp.next();

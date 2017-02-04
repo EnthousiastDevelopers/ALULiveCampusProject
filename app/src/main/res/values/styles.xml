@@ -10,6 +10,7 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -24,9 +25,16 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
     </style>
+
+
+
+
+    <!--WINDOWS TITLE BACKGROUNDS-->
+
     <style name="WindowTitleBackground">
-        <item name="android:background">@color/titlebackgroundcolor</item>
+        <item name="android:background">@color/red_alu</item>
     </style>
 
     <style name="Sis_WindowTitleBackground">
@@ -39,11 +47,43 @@
     <style name="Transp_WindowTitleBackground">
         <item name="android:background">@color/transp_titlebackgroundcolor</item>
     </style>
-    <style name="windowTitleStyle">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:padding">12dip</item>
+
+    <!--/WINDOWS TITLE BACKGROUNDS-->
+
+
+    <!--WINDOWS TITLE BACKGROUNDS-->
+    <!--TITLE STYLE FOR CUSTOM THEME WITHOUT INHERITANCE-->
+    <style name="windowTitleStyle"  >
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">5dip</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:background">@color/titlebackgroundcolor</item>
     </style>
+    <!--/TITLE STYLE FOR CUSTOM THEME WITHOUT INHERITANCE-->
+
+
+
+
+
+    <!--ACTION STYLE FOR CUSTOM THEME WITH INHERITANCE-->
+    <style name="Apps_ActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/apps_windowTitleStyle</item>
+        <item name="background">@color/red_alu</item>
+        <!--<item name="android:icon">@drawable/ic_logo_2_min</item>-->
+        <item name="logo">@drawable/ic_logo_minimini</item>
+        <item name="displayOptions">useLogo|showHome|showTitle</item>
+    </style>
+
+    <style name="apps_windowTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" >
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <!--<item name="android:background">@color/titlebackgroundcolor</item>-->
+    </style>
+    <!--/ACTION STYLE FOR CUSTOM THEME WITH INHERITANCE-->
+
 </resources>

@@ -114,6 +114,7 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		ArrayList<String> Email1_Array = new ArrayList<String>();
 		ArrayList<String> Email2_Array = new ArrayList<String>();
 		ArrayList<String> RouteArray = new ArrayList<String>();
+		ArrayList<String> DateArray= new ArrayList<String>();
 		ArrayList<String> TimeArray = new ArrayList<String>();
 		ArrayList<String> S_No_Array = new ArrayList<String>();
 		ArrayList<String> Off1_Array = new ArrayList<String>();
@@ -162,6 +163,10 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 					if (tag.equals("route")) {
 						RouteArray.add(ProperValue(row.getCustomElements()
+								.getValue(tag)));
+					}
+					if (tag.equals("date")) {
+						DateArray.add(ProperValue(row.getCustomElements()
 								.getValue(tag)));
 					}
 					if (tag.equals("time")) {
@@ -220,6 +225,7 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		Transp_XMLParserClass.Email1_Array = Email1_Array;
 		Transp_XMLParserClass.Email2_Array = Email2_Array;
 		Transp_XMLParserClass.RouteArray = RouteArray;
+		Transp_XMLParserClass.DateArray = DateArray;
 		Transp_XMLParserClass.Off1_Array = Off1_Array;
 		Transp_XMLParserClass.Cohort_Array = Cohort_Array;
 		Transp_XMLParserClass.TimeArray = TimeArray;
@@ -242,25 +248,6 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 	}
 
 
-	public static boolean CheckDates(String startDate, String endDate) {
 
-		SimpleDateFormat dfDate = new SimpleDateFormat("dd/m/yyyy h'h'mm");
-
-		boolean b = false;
-
-		try {
-			if (dfDate.parse(startDate).before(dfDate.parse(endDate))) {
-				b = true;  // If start date is before end date.
-			} else if (dfDate.parse(startDate).equals(dfDate.parse(endDate))) {
-				b = true;  // If two dates are equal.
-			} else {
-				b = false; // If start date is after the end date.
-			}
-		} catch (java.text.ParseException e) {
-			e.printStackTrace();
-		}
-
-		return b;
-	}
 
 }

@@ -1,6 +1,9 @@
 package com.example.tolotranet.livecampus;
 
+import android.util.Log;
+
 import java.io.StringWriter;
+import java.util.Arrays;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,6 +30,7 @@ public class Transp_XMLCreator {
 		Document doc = docBuilder.newDocument();
 		Element rootElement = doc.createElement("Contacts");
 		doc.appendChild(rootElement);
+//Log.d("hello", "this is my array"+ Arrays.toString(Transp_XMLParserClass.RouteArray.toArray()) );
 
 		for (int i = 0; i < Transp_XMLParserClass.RouteArray.size(); i++) {
 			// PersonElement elements
@@ -90,6 +94,10 @@ public class Transp_XMLCreator {
 			Element DAY = doc.createElement("day");
 			DAY.appendChild(doc.createTextNode(Transp_XMLParserClass.Day_Array.get(i)));
 			PersonElement.appendChild(DAY);
+
+			Element DATE = doc.createElement("date");
+			DATE.appendChild(doc.createTextNode(Transp_XMLParserClass.DateArray.get(i)));
+			PersonElement.appendChild(DATE);
 		}
 
 		TransformerFactory transformerFactory = TransformerFactory

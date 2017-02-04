@@ -93,6 +93,7 @@ public class Event_MainList extends Activity {
 			if(!Event_XMLParserClass.q2.get(i).equals("")){
 
 				CIO.setName(Event_XMLParserClass.q2.get(i));
+				CIO.setMiniText(Event_XMLParserClass.q6.get(i));
 				if((Event_XMLParserClass.q4.get(i).startsWith(nullTag))){
 					CIO.setBottomText("");
 				}else{

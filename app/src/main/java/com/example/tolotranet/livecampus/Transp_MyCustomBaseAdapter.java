@@ -58,6 +58,7 @@ public class Transp_MyCustomBaseAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.NameTV = (TextView) convertView.findViewById(R.id.Contact_name_tv);
 			holder.BottomTV = (TextView) convertView.findViewById(R.id.Contact_bottom_tv);
+			holder.MiddleTV = (TextView) convertView.findViewById(R.id.Middle_name_tv);
 			convertView.setTag(holder);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
@@ -65,15 +66,18 @@ public class Transp_MyCustomBaseAdapter extends BaseAdapter {
 		
 		String Name = FilteredObjects.get(position).getName();
 		String BottomText = FilteredObjects.get(position).getBottomText();
-		
+		String MiddleText = FilteredObjects.get(position).getDayText();
+
 		holder.NameTV.setText(Name);
 		holder.BottomTV.setText(BottomText);
-		
+		holder.MiddleTV.setText(MiddleText);
+
 		return convertView;
 	}
 
 	static class ViewHolder{
 		TextView NameTV;
+		TextView MiddleTV;
 		TextView BottomTV;
 	}
 	

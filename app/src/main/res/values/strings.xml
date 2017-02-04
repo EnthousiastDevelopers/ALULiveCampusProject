@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_person_detail_list_view">LIVE CAMPUS</string>
     <string name="title_activity_spread_sheet">LIVE CAMPUS</string>
-
+    <string name="section_format">Hello World from section: %1$d</string>
     <string-array name = "food_menu_lunch" >
         <item>Chicken</item>
         <item>Beef</item>
@@ -18,6 +18,16 @@
         <item>Special order</item>
         <item>Salad</item>
     </string-array>
+
+    <string-array name = "mu_category" >
+        <item>Taxi Cab</item>
+        <item>Restaurant</item>
+        <item>Activities</item>
+        <item>Pharmacies</item>
+        <item>Hospitals, Clinics and Ambulance</item>
+        <item>Other</item>
+    </string-array>
+
     <string-array name = "food_menu_breakfast" >
         <item>Milk</item>
         <item>Orange</item>
@@ -30,6 +40,7 @@
         <item>Bread</item>
         <item>Nutella</item>
     </string-array>
+
     <string-array name = "food_menu_dinner" >
         <item>Fries</item>
         <item>Humberger</item>
@@ -85,4 +96,13 @@
         <item>D</item>
         <item>YOLO</item>
     </string-array>
+
+    <integer-array name = "mu_logo_array" >
+        <item>@drawable/mu_taix_logo</item>
+        <item>@drawable/mu_restaurant_logo</item>
+        <item>@drawable/mu_activities</item>
+        <item>@drawable/mu_pharmacy</item>
+        <item>@drawable/mu_hospital_logo</item>
+        <item>@drawable/mu_more_logo</item>
+    </integer-array>
 </resources>

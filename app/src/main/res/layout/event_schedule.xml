@@ -14,7 +14,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/red"
+    android:background="@color/blue_alu"
     tools:context=".Event_MainList" >
 
     <EditText 
@@ -31,4 +31,45 @@
     </ListView>
 
 </LinearLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_red"
+        app:menu_colorPressed="@color/light_grey"
+        app:menu_backgroundColor="@color/light_grey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        >
+
+        <!--/STARTS-->
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabsd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/stat_notify_sdcard"
+            app:fab_size="mini"
+            android:visibility="gone"
+            app:fab_label="Load SD Card" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_email"
+            app:fab_size="mini"
+            app:fab_showShadow="true"
+            android:visibility="visible"
+
+            app:fab_label="Feedback on the events @ALU (Get point +1)" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/stat_notify_sync"
+            app:fab_size="mini"
+            app:fab_showShadow="false"
+            app:fab_label="Synchronize" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 </com.andexert.library.RippleView>

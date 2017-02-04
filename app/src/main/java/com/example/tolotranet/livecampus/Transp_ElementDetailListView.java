@@ -50,6 +50,12 @@ public class Transp_ElementDetailListView extends Activity {
 			DetailList.add(sr);
 		}
 
+		if (!(Transp_XMLParserClass.DateArray.get(Index).equals(""))) {
+			sr = new Transp_DetailListItem();
+			sr.setDetailName("Date");
+			sr.setDetailValue(Transp_XMLParserClass.DateArray.get(Index));
+			DetailList.add(sr);
+		}
 
 		if (!(Transp_XMLParserClass.Day_Array.get(Index).equals(""))) {
 			sr = new Transp_DetailListItem();
@@ -64,6 +70,7 @@ public class Transp_ElementDetailListView extends Activity {
 			sr.setDetailValue(Transp_XMLParserClass.TimeArray.get(Index));
 			DetailList.add(sr);
 		}
+
 
 
 		if (!(Transp_XMLParserClass.CategoryArray.get(Index).equals(""))) {
