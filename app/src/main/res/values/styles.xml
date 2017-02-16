@@ -85,5 +85,10 @@
         <!--<item name="android:background">@color/titlebackgroundcolor</item>-->
     </style>
     <!--/ACTION STYLE FOR CUSTOM THEME WITH INHERITANCE-->
+    <!--/ STYLE FOR TABLAYOUT TEXT SIZE-->
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--/ STYLE FOR TABLAYOUT TEXT SIZE-->
 
 </resources>

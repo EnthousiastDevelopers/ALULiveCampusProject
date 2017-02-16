@@ -55,4 +55,16 @@
         android:focusable="false"></ListView>
 
 </RelativeLayout>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/menu_green"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fab_colorNormal="@color/green"
+        android:src="@drawable/ic_done_tick_min"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="10dp"
+        app:menu_colorPressed="@color/light_grey"
+        android:paddingRight="10dp"/>
 </com.andexert.library.RippleView>

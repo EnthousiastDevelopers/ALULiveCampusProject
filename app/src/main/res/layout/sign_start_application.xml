@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/myTitle"
+    android:text="This is my new title"
+    android:background="@drawable/app_slash_screen_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:textColor="@color/titletextcolor"
+    >
+    <ImageView
+
+        android:src="@drawable/app_slash_large_logo"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+</RelativeLayout>

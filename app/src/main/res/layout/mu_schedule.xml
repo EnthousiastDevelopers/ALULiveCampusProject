@@ -1,43 +1,42 @@
-<com.andexert.library.RippleView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:htext="http://schemas.android.com/tools"
     android:id="@+id/more"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_toLeftOf="@+id/more2"
+    android:clickable="false"
     app:rv_color="@color/colorRipple_Faq"
-    app:rv_zoomDuration="15"
-    android:clickable="false">
+    app:rv_zoomDuration="15">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:background="@color/white"
-    tools:context=".Mu_MainList" >
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <EditText 
-    android:layout_width="match_parent" 
-    android:layout_height="wrap_content" 
-    android:hint="Search something in Mauritius..."
-    android:id="@+id/SearchET"
-        />
-
-    <ListView
-        android:id="@+id/Contacts_list_view"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:divider="@color/blue_alu"
-        android:dividerHeight="1dp"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="match_parent"
 
-</LinearLayout>
-    <!--<android.support.design.widget.FloatingActionButton-->
+        android:background="@color/blue_alu"
+        tools:context=".Mu_MainList">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/SearchET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search something in Mauritius..." />
+
+            <ListView
+                android:id="@+id/Contacts_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/blue_alu"
+                android:dividerHeight="1dp"></ListView>
+
+        </LinearLayout>
+        <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
         <!--app:backgroundTint="@color/blue_alu"-->
         <!--android:layout_width="wrap_content"-->
@@ -50,46 +49,37 @@
 
         <!--app:srcCompat="@android:drawable/ic_input_add" />-->
 
-</RelativeLayout>
+    </RelativeLayout>
+
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu_red"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        app:menu_colorPressed="@color/light_grey"
+        android:paddingRight="10dp"
         app:menu_backgroundColor="@color/light_grey"
-            >
+        app:menu_colorPressed="@color/light_grey">
 
-        <!--/STARTS-->
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabsd"
+            android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/stat_notify_sdcard"
-            app:fab_size="mini"
-            android:visibility="gone"
-            app:fab_label="Load SD Card" />
+            android:src="@drawable/fab_add"
+            android:visibility="visible"
+            app:fab_label="Contribute (Get point +1)"
+
+            app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/stat_notify_sync"
-            app:fab_size="mini"
+            app:fab_label="Synchronize"
             app:fab_showShadow="false"
-            app:fab_label="Synchronize" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/fab_add"
-            app:fab_size="mini"
-            android:visibility="visible"
-
-            app:fab_label="Contribute (Get point +1)" />
+            app:fab_size="mini" />
     </com.github.clans.fab.FloatingActionMenu>
 </com.andexert.library.RippleView>
 

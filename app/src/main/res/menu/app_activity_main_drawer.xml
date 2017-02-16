@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Residence" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Room" />
+
+    </group>
+
+    <item android:title="Gifts and Prizes">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@android:drawable/btn_star_big_on"
+                android:title="10 points = Free Soda by TheBubblemarkets" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@android:drawable/btn_star_big_on"
+                android:title="100 points = Free KFC lunch" />
+            <item
+                android:id="@+id/gift"
+                android:icon="@android:drawable/btn_star_big_on"
+                android:title="1000 points = Free Parasailing ride" />
+        </menu>
+    </item>
+    <item android:title="Settings and Preferences">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/app_icon_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_faq"
+                android:icon="@drawable/app_icon_question"
+                android:title="Help" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/app_icon_logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

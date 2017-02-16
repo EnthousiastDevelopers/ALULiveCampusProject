@@ -5,6 +5,11 @@
         <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
 
     </style>
+    <style name="Apps_customTheme.NoActionBar" parent="Theme.AppCompat">
+        <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 
     <!--WITHOUT INHERITANCE-->
     <style name="customTheme">
@@ -13,22 +18,21 @@
         <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
           <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
     </style>
-    <style name="sis_theme" parent="android:Theme">
-        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
-        <!--<item name="android:windowTitleBackgroundStyle">@style/Sis_WindowTitleBackground</item>-->
-        <item name="android:windowTitleSize">50dip</item>
-        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
-        <item name="android:icon">@drawable/ic_logo_2_min</item>
-        <item name="displayOptions">useLogo|showHome|showTitle</item>
-    </style>
-    <style name="event_Theme" parent="android:Theme">
+    <style name="sis_theme" parent="Theme.AppCompat">
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
         <!--<item name="android:windowTitleBackgroundStyle">@style/Event_WindowTitleBackground</item>-->
         <item name="android:windowTitleSize">50dip</item>
         <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
         <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
     </style>
-    <style name="Transp_Theme" parent="android:Theme">
+    <style name="event_Theme" parent="Theme.AppCompat">
+        <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+        <!--<item name="android:windowTitleBackgroundStyle">@style/Event_WindowTitleBackground</item>-->
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
+        <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
+    </style>
+    <style name="Transp_Theme" parent="Theme.AppCompat">
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
         <!--<item name="android:windowTitleBackgroundStyle">@style/Transp_WindowTitleBackground</item>-->
         <item name="android:windowTitleSize">50dip</item>

@@ -6,12 +6,13 @@ apply plugin: 'com.android.application'
             buildToolsVersion '24.0.2'
 
             defaultConfig {
-                applicationId "com.example.tolotranet.livecampus"
+                applicationId "com.tolotranet.livecampus"
                 apply plugin: 'com.android.application'
                 minSdkVersion 14
                 vectorDrawables.useSupportLibrary = true
                 targetSdkVersion 22
-                versionCode 1
+                versionCode 4
+             multiDexEnabled true
                 versionName "1.0"
             }
             buildTypes {
@@ -44,6 +45,9 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     compile('com.google.apis:google-api-services-sheets:v4-rev28-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    compile('com.google.apis:google-api-services-calendar:v3-rev234-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     compile files('mylib/gdata-core-1.0.jar')

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    android:clickable="false"
+    app:rv_color="@color/colorRipple_Maint"
+    app:rv_zoomDuration="15">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/GetDailyGiftBtn"
+            android:layout_width="300dp"
+            android:backgroundTint="@color/app_primary"
+            android:layout_height="100dp"
+            android:layout_below="@+id/maintDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="CLAIM MY GIFT POINTS" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="1000 points = JACKPOT"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:text="100 points = FREE KFC LUNCH"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:text="10 points = FREE SODA FROM THEBUBBLEMARKET"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_red"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="10dp"
+        app:menu_colorPressed="@color/light_grey"
+        app:menu_backgroundColor="@color/light_grey"
+        android:paddingRight="10dp">
+
+        <!--/STARTS-->
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_ideas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/btn_star_big_on"
+            android:visibility="visible"
+            app:fab_label="Submit your idea (Get points)"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_email"
+            app:fab_label="Feedback (Get Points)"
+            app:fab_showShadow="true"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_add"
+            android:visibility="visible"
+            app:fab_label="Contribute (Get points)"
+            app:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+</com.andexert.library.RippleView>

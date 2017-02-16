@@ -1,0 +1,134 @@
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/more"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/more2"
+    android:clickable="false"
+    app:rv_color="@color/colorRipple_Faq"
+    app:rv_zoomDuration="15">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/SearchET"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/light_grey"
+            android:layout_height="wrap_content"
+            android:hint="Search Someone...."
+            android:textColor="@color/blue_alu" />
+        <LinearLayout
+            android:id="@+id/NoinforScore"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Only users with more than "
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:id="@+id/TresholdScoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textSize="12dp"
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:text=" points can be shown on the list."
+                android:textColor="@color/blue_alu" />
+            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/MyinfoScore"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your score is: "
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:id="@+id/scoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=". You are #"
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:id="@+id/rankTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/blue_alu" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" on the dashboard."
+                android:textColor="@color/blue_alu" />
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            tools:context=".Com_MainList">
+
+
+
+            <ListView
+                android:id="@+id/Contacts_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="1px"
+                android:divider="@color/blue_alu"></ListView>
+
+        </LinearLayout>
+    </LinearLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_red"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        app:menu_backgroundColor="@color/light_grey"
+        app:menu_colorPressed="@color/light_grey">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_add"
+            android:visibility="visible"
+            app:fab_label="Contribute (Get point +1)"
+
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/stat_notify_sync"
+            app:fab_label="Synchronize"
+            app:fab_showShadow="false"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+</com.andexert.library.RippleView>

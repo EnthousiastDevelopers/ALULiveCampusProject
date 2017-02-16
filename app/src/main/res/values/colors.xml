@@ -8,6 +8,7 @@
     <color name="colorRipple_Appselect">#40ffdf</color>
     <color name="colorRipple_Sign">#404dff</color>
     <color name="colorRipple_Sis">#40ff4d</color>
+    <color name="green">#40ff4d</color>
     <color name="colorRipple_Transp">#ff4040</color>
     <color name="colorRipple_Faq">#ffbf40</color>
     <color name="colorRipple_Food">#fff940</color>

@@ -9,13 +9,29 @@
     app:rv_zoomDuration = "15"
     android:clickable="false"
     >
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mu_DetailListViewOwner" >
+    android:orientation="vertical"
+    tools:context=".Com_DetailListViewOwner" >
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/add_to_cart_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD TO CART"/>
+        <Button
+            android:id="@+id/buy_now_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUY NOW"/>
 
+    </LinearLayout>
     <ListView
         android:id="@+id/person_details_lv"
         android:layout_width="match_parent"
@@ -25,5 +41,5 @@
         android:focusable="false">
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>
 </com.andexert.library.RippleView>
