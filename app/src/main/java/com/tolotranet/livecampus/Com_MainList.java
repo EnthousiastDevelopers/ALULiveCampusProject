@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -27,7 +28,10 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -153,10 +157,49 @@ public class Com_MainList extends AppCompatActivity {
 
     }
 
-    public static ArrayList<Com_ItemObject> MakeArrayList(String ObjectID) {
+    public ArrayList<Com_ItemObject> MakeArrayList(String ObjectID) {
         ArrayList<Com_ItemObject> TempItemArray = new ArrayList<Com_ItemObject>();
         String nullTag = "Update your";
 
+
+        if(Com_XMLParserClass.q1 == null) {
+
+            File Root = Environment.getExternalStorageDirectory();
+            File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
+            File myfile = new File(Dir, "Com.txt");
+            if (myfile.exists()) {
+                Log.d("hello", "File Exists");
+                //FileExists = true;
+                try {
+                    new Sis_XMLParserClass();
+
+                } catch (XmlPullParserException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+
+            }else {
+
+                Toast.makeText( getApplicationContext(),"Check your memory card or your internet", Toast.LENGTH_LONG).show();
+                Com_ItemObject CIO = new Com_ItemObject();
+                CIO.setBottomText("");
+                CIO.setIndex(0);
+                CIO.setAuthor("");
+                CIO.setComments(0);
+                CIO.setImgID(0);
+                CIO.setName("");
+                CIO.setObject("");
+                CIO.setParent("");
+                CIO.setUserId(0);
+                CIO.setVotes(0);
+                TempItemArray.add(CIO);
+                return TempItemArray;
+            }
+        }
         for (int i = 0; i < Com_XMLParserClass.q1.size(); i++) {
             Log.d("hello", "ObjectID is: " + ObjectID + " and category in db is: " + Com_XMLParserClass.q2.get(i));
             if (Com_XMLParserClass.q2.get(i).equals(ObjectID)) { //filter category, but from the same table

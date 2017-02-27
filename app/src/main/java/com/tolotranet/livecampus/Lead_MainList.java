@@ -122,7 +122,7 @@ public class Lead_MainList extends AppCompatActivity {
 
 			if (Sign_User_Object.Id == (ThisId)){
 				Intent iw = new Intent(getApplicationContext(),
-						Lead_DetailListViewOwner.class);
+						Lead_DetailListView.class);
 				iw.putExtra("index", Index);
 
 				Log.d("hello", "Position Clicked is " + arg2);

@@ -35,7 +35,14 @@ public class Com_MyCustomBaseAdapter extends BaseAdapter {
 
         // Arrays.fill(myVoteState, 0); //because it is for debugging, cannot take empty value, since it is used in the switch to determine the color of the arrows, we now fill it with all 0
         for (int i = 0; i < MyList.size(); i++) {
+          if(MyList.get(i).getVotes() >1){
+              MyList.get(i).setVotes(1);
+          }else if (MyList.get(i).getVotes()<-1) {
+              MyList.get(i).setVotes(-1);
+          }
+
             myVoteState[i] = MyList.get(i).getVotes(); // because the getvotes tells if the user voted this comment before
+
             myVoteStateOrigin[i] = MyList.get(i).getVotes(); //because voteState is the switch we need to define wether the user has voted up, voted down or unvoted
         }
         mInflater = LayoutInflater.from(context);

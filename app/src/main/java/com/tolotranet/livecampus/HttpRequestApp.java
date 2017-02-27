@@ -10,6 +10,8 @@ import java.net.URLEncoder;
  */
 
 public class HttpRequestApp {
+
+
     public static void addVote_Score(final String author,
                                      final String recipient,
                                      final String action,
@@ -43,9 +45,37 @@ public class HttpRequestApp {
             }
         });
         scoreThread.start();
-    }
+    };
+    public static void add_App_UsageTrack(    final String author,
+                                     final String appid,
+                                     final String action,
+                                     final String value,
+                                     final String label
+    ) {
+        Thread usageThread = new Thread(new Runnable() { //because we will add score and add vote are using the same google form, it will be used so many times, votes will be in subaction
+            @Override
+            public void run() {
+                try {
 
-    ;
+                    HttpRequest mReq = new HttpRequest();
+                    //Add score +1
+                    String scoreUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfuHisntBdxs9yJj8i7h8ORJ-CPAGB_Xy2ywLOIrSs-WrnRLg/formResponse";
+                    String data_score =
+                            "entry.651969059=" + URLEncoder.encode(author) + "&" + //author
+                                    "entry.1234903408=" + URLEncoder.encode(appid) + "&" + //recipient
+                                    "entry.1733490618=" + URLEncoder.encode(action) + "&" + //action
+                                    "entry.349657667=" + URLEncoder.encode(value)+ "&" +  //currency
+                                    "entry.1681037110=" + URLEncoder.encode(label);  //currency
+                    String response_score = mReq.sendPost(scoreUrl, data_score);
+                    Log.d("response app usage", response_score);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        usageThread.start();
+    };
 
     public void sendComment(final String comment_objectrandomid,
                             final String comment_fullnameauthor,

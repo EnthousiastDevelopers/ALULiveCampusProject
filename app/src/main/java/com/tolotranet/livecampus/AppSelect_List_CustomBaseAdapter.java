@@ -12,15 +12,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AppSelect_MyCustomBaseAdapter extends BaseAdapter {
+public class AppSelect_List_CustomBaseAdapter extends BaseAdapter {
 	private  ArrayList<Apps_ItemObject> MyArrayObjects = new ArrayList<Apps_ItemObject>();
 	private  ArrayList<Apps_ItemObject> FilteredObjects = new ArrayList<Apps_ItemObject>();
 	private Context context;
 	private LayoutInflater mInflater;
 	private ItemFilter myFilter = new ItemFilter();
+	private String type= null;
 
-	public AppSelect_MyCustomBaseAdapter(Context c, ArrayList<Apps_ItemObject> MyList) {
+	public AppSelect_List_CustomBaseAdapter(Context c, ArrayList<Apps_ItemObject> MyList, String type) {
 		this.context = c;
+		this.type = type;
 		MyArrayObjects = MyList;
 		FilteredObjects = MyList;
 		mInflater = LayoutInflater.from(context);
@@ -56,7 +58,10 @@ public class AppSelect_MyCustomBaseAdapter extends BaseAdapter {
 		ViewHolder holder;
 		
 		if(convertView == null){
-			convertView = mInflater.inflate(R.layout.appselect_list_item_single, null);
+			convertView = mInflater.inflate(R.layout.appselect_list_item_single_upper, null);
+			if(type.equals("child")){
+				convertView = mInflater.inflate(R.layout.appselect_list_item_single, null);
+			}
 			holder = new ViewHolder();
 			holder.NameTV = (TextView) convertView.findViewById(R.id.Contact_name_tv);
 			holder.BottomTV = (TextView) convertView.findViewById(R.id.Contact_bottom_tv);

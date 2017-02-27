@@ -32,6 +32,13 @@
         <item>Other</item>
     </string-array>
 
+    <string-array name = "app_feedback" >
+        <item>Student life feedback</item>
+        <item>Operations feedback</item>
+        <item>Report an bug</item>
+        <item>Other feedback</item>
+    </string-array>
+
     <string-array name = "food_menu_breakfast" >
         <item>Milk</item>
         <item>Orange</item>

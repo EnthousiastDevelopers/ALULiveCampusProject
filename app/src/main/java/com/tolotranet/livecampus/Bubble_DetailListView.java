@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Faq_DetailListView extends Activity {
+public class Bubble_DetailListView extends Activity {
 
 	ListView lv;
-	Faq_DetailListViewAdapter myPersonDetailListViewAdapter;
-	ArrayList<Faq_DetailListItem> DetailList;
+	Bubble_DetailListViewAdapter myPersonDetailListViewAdapter;
+	ArrayList<Bubble_DetailListItem> DetailList;
 	Button AddToCartBtn, BuyNowBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Faq_DetailListView extends Activity {
 		AddToCartBtn.setOnClickListener(new ShopContactListViewClickListener() );
 		BuyNowBtn.setOnClickListener(new ShopContactListViewClickListener() );
 		lv = (ListView) findViewById(R.id.person_details_lv);
-		myPersonDetailListViewAdapter = new Faq_DetailListViewAdapter(this,
+		myPersonDetailListViewAdapter = new Bubble_DetailListViewAdapter(this,
 				DetailList);
 		lv.setAdapter(myPersonDetailListViewAdapter);
 		lv.setOnItemClickListener(new PersonDetailListViewClickListener());
@@ -47,104 +47,104 @@ public class Faq_DetailListView extends Activity {
 			Toast.makeText(getApplicationContext(), "You have not enough points, contribute to the App or Add money to your CampusLive-Wallet" , Toast.LENGTH_LONG).show();
 		}
 	}
-	private ArrayList<Faq_DetailListItem> getPersonalDetails(int Index) {
-		ArrayList<Faq_DetailListItem> DetailList = new ArrayList<Faq_DetailListItem>();
+	private ArrayList<Bubble_DetailListItem> getPersonalDetails(int Index) {
+		ArrayList<Bubble_DetailListItem> DetailList = new ArrayList<Bubble_DetailListItem>();
 		String nullTag = "Update your";
 
-		Faq_DetailListItem sr = new Faq_DetailListItem();
+		Bubble_DetailListItem sr = new Bubble_DetailListItem();
 		sr.setDetailName("Question");
-		sr.setDetailValue(Faq_XMLParserClass.q2.get(Index));
+		sr.setDetailValue(Bubble_XMLParserClass.q2.get(Index));
 		DetailList.add(sr);
 
-		if (!(Faq_XMLParserClass.q5.get(Index).equals("")|| Faq_XMLParserClass.q5.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q5.get(Index).equals("")|| Bubble_XMLParserClass.q5.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("Description");
-			sr.setDetailValue(Faq_XMLParserClass.q5.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q5.get(Index));
 			DetailList.add(sr);
 		}
 
-		if (!(Faq_XMLParserClass.q3.get(Index).equals("")|| Faq_XMLParserClass.q3.get(Index).startsWith(nullTag) )) {
-		sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q3.get(Index).equals("")|| Bubble_XMLParserClass.q3.get(Index).startsWith(nullTag) )) {
+		sr = new Bubble_DetailListItem();
 		sr.setDetailName("Asked by");
-		sr.setDetailValue(Faq_XMLParserClass.q3.get(Index));
+		sr.setDetailValue(Bubble_XMLParserClass.q3.get(Index));
 		DetailList.add(sr);
 		}
 
 
-		if (!(Faq_XMLParserClass.q6.get(Index).equals("")|| Faq_XMLParserClass.q6.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q6.get(Index).equals("")|| Bubble_XMLParserClass.q6.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("Answer");
-			sr.setDetailValue(Faq_XMLParserClass.q6.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q6.get(Index));
 			DetailList.add(sr);
 		}
 
 
-		if ((Faq_XMLParserClass.q6.get(Index).equals("")|| Faq_XMLParserClass.q6.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if ((Bubble_XMLParserClass.q6.get(Index).equals("")|| Bubble_XMLParserClass.q6.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("Answer");
 			sr.setDetailValue("No answer yet");
 			DetailList.add(sr);
 		}
 
 
-		if (!(Faq_XMLParserClass.q4.get(Index).equals("")|| Faq_XMLParserClass.q4.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q4.get(Index).equals("")|| Bubble_XMLParserClass.q4.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("Organiser");
-			sr.setDetailValue(Faq_XMLParserClass.q4.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q4.get(Index));
 			DetailList.add(sr);
 		}
 
 
 
-		if (!(Faq_XMLParserClass.q7.get(Index).equals("")|| Faq_XMLParserClass.q7.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q7.get(Index).equals("")|| Bubble_XMLParserClass.q7.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("Vote");
-			sr.setDetailValue(Faq_XMLParserClass.q7.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q7.get(Index));
 			DetailList.add(sr);
 		}
-		if (!(Faq_XMLParserClass.q8.get(Index).equals("")|| Faq_XMLParserClass.q8.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q8.get(Index).equals("")|| Bubble_XMLParserClass.q8.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("passportnumber");
-			sr.setDetailValue(Faq_XMLParserClass.q8.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q8.get(Index));
 			DetailList.add(sr);
 		}
 
-		if (!(Faq_XMLParserClass.q9.get(Index).equals("")|| Faq_XMLParserClass.q9.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q9.get(Index).equals("")|| Bubble_XMLParserClass.q9.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber1");
-			sr.setDetailValue(Faq_XMLParserClass.q9.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q9.get(Index));
 			DetailList.add(sr);
 		}
-		if (!(Faq_XMLParserClass.q10.get(Index).equals("")|| Faq_XMLParserClass.q10.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q10.get(Index).equals("")|| Bubble_XMLParserClass.q10.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber2");
-			sr.setDetailValue(Faq_XMLParserClass.q10.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q10.get(Index));
 			DetailList.add(sr);
 		}
 
-		if (!(Faq_XMLParserClass.q11.get(Index).equals("")|| Faq_XMLParserClass.q11.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q11.get(Index).equals("")|| Bubble_XMLParserClass.q11.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber3");
-			sr.setDetailValue(Faq_XMLParserClass.q11.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q11.get(Index));
 			DetailList.add(sr);
 		}
 
-		if (!(Faq_XMLParserClass.q12.get(Index).equals("")|| Faq_XMLParserClass.q12.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q12.get(Index).equals("")|| Bubble_XMLParserClass.q12.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("apartment");
-			sr.setDetailValue(Faq_XMLParserClass.q12.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q12.get(Index));
 			DetailList.add(sr);
 		}
-		if (!(Faq_XMLParserClass.q13.get(Index).equals("")|| Faq_XMLParserClass.q13.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q13.get(Index).equals("")|| Bubble_XMLParserClass.q13.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("residence");
-			sr.setDetailValue(Faq_XMLParserClass.q13.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q13.get(Index));
 			DetailList.add(sr);
 		}
-		if (!(Faq_XMLParserClass.q14.get(Index).equals("")|| Faq_XMLParserClass.q14.get(Index).startsWith(nullTag) )) {
-			sr = new Faq_DetailListItem();
+		if (!(Bubble_XMLParserClass.q14.get(Index).equals("")|| Bubble_XMLParserClass.q14.get(Index).startsWith(nullTag) )) {
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("room");
-			sr.setDetailValue(Faq_XMLParserClass.q14.get(Index));
+			sr.setDetailValue(Bubble_XMLParserClass.q14.get(Index));
 			DetailList.add(sr);
 		}
 		return DetailList;
@@ -157,12 +157,12 @@ public class Faq_DetailListView extends Activity {
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 								long arg3) {
 			// TODO Auto-generated method stub
-			String TempDetailName = (String) ((Faq_DetailListItem) arg0
+			String TempDetailName = (String) ((Bubble_DetailListItem) arg0
 					.getItemAtPosition(arg2)).getDetailName();
 			if (TempDetailName.equals("Mobile")
 					|| TempDetailName.equals("Residence")
 					|| TempDetailName.equals("Office")) {
-				String DetailValue = (String) ((Faq_DetailListItem) arg0
+				String DetailValue = (String) ((Bubble_DetailListItem) arg0
 						.getItemAtPosition(arg2)).getDetailValue();
 				if (!DetailValue.equals("")) {
 					Intent callintent = new Intent(Intent.ACTION_DIAL,
@@ -174,7 +174,7 @@ public class Faq_DetailListView extends Activity {
 			}
 
 			if (TempDetailName.equals("Email")) {
-				String ToEmailId = (String) ((Faq_DetailListItem) arg0
+				String ToEmailId = (String) ((Bubble_DetailListItem) arg0
 						.getItemAtPosition(arg2)).getDetailValue();
 				Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 				emailIntent.setData(Uri.parse("mailto:"));

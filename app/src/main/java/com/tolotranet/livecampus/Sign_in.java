@@ -85,7 +85,7 @@ public class Sign_in extends AppCompatActivity {
             if (pass.equals(password))
 
             {
-                Intent i = new Intent(Sign_in.this, AppSelect.class);
+                Intent i = new Intent(Sign_in.this, AppSelect_Parent.class);
                 i.putExtra("Username", str);
                 startActivity(i);
             } else {

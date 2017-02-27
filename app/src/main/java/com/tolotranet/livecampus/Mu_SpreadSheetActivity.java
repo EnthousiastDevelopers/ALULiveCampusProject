@@ -22,9 +22,10 @@ public class Mu_SpreadSheetActivity extends Activity {
 		mProgress = new ProgressDialog(this);
 		mProgress.setMessage("Loading data ...");
 		mProgress.show();
-
-		Com_GetDataAsyncTask commentTaskBackGround = new Com_GetDataAsyncTask(); // because we cannot make it static, getData() is already inside it and cannot be called it is static
-		commentTaskBackGround.synchronize(); // because we are loading the comment from the cloud into the system before showing the objects
+		if(isNetworkAvailable()) {
+			Com_GetDataAsyncTask commentTaskBackGround = new Com_GetDataAsyncTask(); // because we cannot make it static, getData() is already inside it and cannot be called it is static
+			commentTaskBackGround.synchronize(); // because we are loading the comment from the cloud into the system before showing the objects
+		}
 		Mu_startApplicationAsyncTask myTask = new Mu_startApplicationAsyncTask();
 		myTask.execute(this);
 	}

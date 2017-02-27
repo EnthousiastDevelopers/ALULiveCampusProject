@@ -1,17 +1,17 @@
 package com.tolotranet.livecampus;
 
 
-public class Faq_DetailListItem {
+public class Bubble_DetailListItem {
 	public String DetailName = "";
 	private String DetailValue = "";
 	
-	public Faq_DetailListItem(String Name, String Value) {
+	public Bubble_DetailListItem(String Name, String Value) {
 		// TODO Auto-generated constructor stub
 		this.DetailName = Name;
 		this.DetailValue = Value;
 	}
 	
-	public Faq_DetailListItem(){
+	public Bubble_DetailListItem(){
 		
 	}
 	

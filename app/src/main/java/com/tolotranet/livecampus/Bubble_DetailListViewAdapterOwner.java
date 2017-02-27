@@ -6,23 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Faq_DetailListViewAdapter extends BaseAdapter {
+public class Bubble_DetailListViewAdapterOwner extends BaseAdapter {
 
-	private static ArrayList<Faq_DetailListItem> DetailList;
+	private static ArrayList<Bubble_DetailListItem> DetailList;
 	private LayoutInflater mInflater;
 
-
-	static class ViewHolder {
-		TextView DetailName;
-		TextView DetailValue;
-	}
-
-	public Faq_DetailListViewAdapter(Context context,
-									 ArrayList<Faq_DetailListItem> results) {
+	public Bubble_DetailListViewAdapterOwner(Context context,
+											 ArrayList<Bubble_DetailListItem> results) {
 		mInflater = LayoutInflater.from(context);
 		DetailList = results;
 	}
@@ -50,11 +45,11 @@ public class Faq_DetailListViewAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		ViewHolder holder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.faq_detail_list_item, null);
+			convertView = mInflater.inflate(R.layout.faq_detail_list_item_owner, null);
 			holder = new ViewHolder();
 			holder.DetailName = (TextView) convertView
 					.findViewById(R.id.detail_name);
-			holder.DetailValue = (TextView) convertView
+			holder.DetailValue = (EditText) convertView
 					.findViewById(R.id.detail_value);
 
 			convertView.setTag(holder);
@@ -67,6 +62,12 @@ public class Faq_DetailListViewAdapter extends BaseAdapter {
 				.setText(DetailList.get(position).getDetailValue());
 
 		return convertView; 
+	}
+
+
+	static class ViewHolder {
+		TextView DetailName;
+		EditText DetailValue;
 	}
 
 }

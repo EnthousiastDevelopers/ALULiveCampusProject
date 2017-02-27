@@ -124,14 +124,15 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
                 if ((isDeviceOnline())) {
                     helper.AllUserObjectToDataBase();
                     Sis_GetDataAsyncTask getDataTask = new Sis_GetDataAsyncTask(); //because the user might have updated something, the local file needs to syncrhonise with the server
-                    getDataTask.synchronize();
+                    getDataTask.synchronizeAsyncTask();
+
                 }
 
-                if (AppSelect.origin == null) { //because origin is where the user come from, because the user can come from sis or appselect or drawer
+                if (AppSelect_Parent.origin == null) { //because origin is where the user come from, because the user can come from sis or appselect or drawer
                  finish();
                 } else {
-                    if (AppSelect.origin.equals("appselect") || AppSelect.origin.equals("signup")) {
-                        Intent i = new Intent(Sis_DetailListViewOwner.this, AppSelect.class);
+                    if (AppSelect_Parent.origin.equals("appselect") || AppSelect_Parent.origin.equals("signup")) {
+                        Intent i = new Intent(Sis_DetailListViewOwner.this, AppSelect_Parent.class);
                         startActivity(i);
                     } else {
                         Sis_DetailListViewOwner.super.onBackPressed();
@@ -150,6 +151,8 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
         Sign_User_Object.Rank = Sis_XMLParserClass.q17.get(Myindex); // because q17 is the rank number
         Sign_User_Object.Score = Sis_XMLParserClass.q16.get(Myindex); // because q16 is the score number
         Sign_User_Object.Name = Sis_XMLParserClass.q5.get(Myindex); // because q5 is the fullname
+        Sign_User_Object.Firstname = Sis_XMLParserClass.q3.get(Myindex); // because q5 is the fullname
+        Sign_User_Object.Lastname = Sis_XMLParserClass.q4.get(Myindex); // because q5 is the fullname
 
         Sign_User_Object.Apartment = Sis_XMLParserClass.q12.get(Myindex);
         Sign_User_Object.RoomNumber = Sis_XMLParserClass.q14.get(Myindex);
@@ -167,7 +170,7 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
 
         Bundle params2 = new Bundle();
         params2.putString("sis ", String.valueOf(MyRow));
-        params2.putString("origin ", AppSelect.origin);
+        params2.putString("origin ", AppSelect_Parent.origin);
         mFirebaseAnalytics.logEvent("sis", params2);
         Log.d("hello", "I am in detail sis owner and I fetched the data in getdataasynctask");
 
@@ -409,6 +412,7 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
 
             View parentView = null;
             parentView = Sis_DetailListViewOwner.getViewByPosition(arg2, Mainlistview); //getting the clicked value as how it is displayed on the UI, because the original values might have changed twice
+
             final TextView BottomTextTV = (TextView) parentView.findViewById(R.id.detail_value); //textview of the value as how it is onscreen at the click event
             final String ValueToModify = BottomTextTV.getText().toString(); //
 
@@ -486,15 +490,15 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
       if(!IWantToComplicateMyLife) { //because there is a second part in else that update the whole row based on find and replace, changed it to something simpler
           if ((isDeviceOnline())) {
               Sis_GetDataAsyncTask getDataTask = new Sis_GetDataAsyncTask(); //because the user might have updated something, the local file needs to syncrhonise with the server
-              getDataTask.synchronize();
+              getDataTask.synchronizeAsyncTask();
               helper.AllUserObjectToDataBase(); //because it cannot syncronise local database if the server is not updated.
           }
 
-          if (AppSelect.origin == null) { //because origin is where the user come from, because the user can come from sis or appselect or drawer
+          if (AppSelect_Parent.origin == null) { //because origin is where the user come from, because the user can come from sis or appselect or drawer
               Sis_DetailListViewOwner.super.onBackPressed();
           } else {
-              if (AppSelect.origin.equals("appselect")) {
-                  Intent i = new Intent(this, AppSelect.class);
+              if (AppSelect_Parent.origin.equals("appselect")) {
+                  Intent i = new Intent(this, AppSelect_Parent.class);
                   startActivity(i);
               } else {
                   Sis_DetailListViewOwner.super.onBackPressed();
@@ -565,16 +569,16 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
                               mProgress.setMessage("Finalising edit ...");
                               mProgress.show();
                               StartProcessSpreadSheetRequestAPI();
-                              if (AppSelect.origin == null) {
+                              if (AppSelect_Parent.origin == null) {
                                   Sis_GetDataAsyncTask getDataTask = new Sis_GetDataAsyncTask();
                                   getDataTask.execute(Sis_DetailListViewOwner.this);
                               } else {
-                                  Log.d("helloorigin", AppSelect.origin);
-                                  if (AppSelect.origin.equals("appselect")) {
+                                  Log.d("helloorigin", AppSelect_Parent.origin);
+                                  if (AppSelect_Parent.origin.equals("appselect")) {
                                       Sis_GetDataAsyncTask getDataTask = new Sis_GetDataAsyncTask();
-                                      AppSelect.origin = "appselect";
+                                      AppSelect_Parent.origin = "appselect";
                                       getDataTask.execute(Sis_DetailListViewOwner.this);
-//                Intent i = new Intent(this, AppSelect.class); this is set into Sis_getdataasynctask
+//                Intent i = new Intent(this, AppSelect_Parent.class); this is set into Sis_getdataasynctask
 //                startActivity(i);
                                   } else {
                                       Sis_GetDataAsyncTask getDataTask = new Sis_GetDataAsyncTask();
@@ -588,11 +592,11 @@ public class Sis_DetailListViewOwner extends AppCompatActivity
                       }).create().show();
           } else {
               //is BoolHasUpdated == false
-              if (AppSelect.origin == null) {
+              if (AppSelect_Parent.origin == null) {
                   Sis_DetailListViewOwner.super.onBackPressed();
               } else {
-                  if (AppSelect.origin.equals("appselect")) {
-                      Intent i = new Intent(this, AppSelect.class);
+                  if (AppSelect_Parent.origin.equals("appselect")) {
+                      Intent i = new Intent(this, AppSelect_Parent.class);
                       startActivity(i);
                   } else {
                       Sis_DetailListViewOwner.super.onBackPressed();

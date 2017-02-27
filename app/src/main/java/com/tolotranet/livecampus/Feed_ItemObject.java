@@ -1,24 +1,24 @@
 package com.tolotranet.livecampus;
 
 
-public class Faq_ItemObject {
+public class Feed_ItemObject {
 	private String Name;
 	private String BottomText;
 	private String RightText;
 	private int Index;
 	private int UserId;
 	private int ImgID;
-	private double votes;
+	private int votes;
 	private int comments;
 
 	public String getName(){
 		return this.Name;
 	}
-
+	
 	public String getBottomText(){
 		return this.BottomText;
 	}
-
+	
 	public int getIndex(){
 		return this.Index;
 	}
@@ -28,7 +28,7 @@ public class Faq_ItemObject {
 	public int getUserId(){
 		return this.UserId;
 	}
-
+	
 	public void setName(String name){
 		this.Name = name;
 	}
@@ -39,7 +39,7 @@ public class Faq_ItemObject {
 	public void setBottomText(String bottomText){
 		this.BottomText = bottomText;
 	}
-
+	
 	public void setIndex(int index){
 		this.Index = index;
 	}
@@ -48,10 +48,10 @@ public class Faq_ItemObject {
 		this.UserId = userId;
 	}
 
-	public void setVotes(double votes) {
+	public void setVotes(int votes) {
 		this.votes = votes;
 	}
-	public double getVotes() {
+	public int getVotes() {
 		return   this.votes;
 	}
 

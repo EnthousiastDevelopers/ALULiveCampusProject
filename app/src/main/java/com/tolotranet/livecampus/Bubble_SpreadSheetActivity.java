@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class Faq_SpreadSheetActivity extends Activity {
+public class Bubble_SpreadSheetActivity extends Activity {
 
 	ProgressDialog mProgress;
 	@Override
@@ -23,7 +23,7 @@ public class Faq_SpreadSheetActivity extends Activity {
 		mProgress.setMessage("Loading data ...");
 		mProgress.show();
 
-		Faq_startApplicationAsyncTask myTask = new Faq_startApplicationAsyncTask();
+		Bubble_startApplicationAsyncTask myTask = new Bubble_startApplicationAsyncTask();
 		myTask.execute(this);
 	}
 
@@ -42,7 +42,7 @@ public class Faq_SpreadSheetActivity extends Activity {
 			if (isNetworkAvailable()) {
 				Toast.makeText(getApplicationContext(), "Updating.....",
 						Toast.LENGTH_SHORT).show();
-				Faq_GetDataAsyncTask getDataTask = new Faq_GetDataAsyncTask();
+				Bubble_GetDataAsyncTask getDataTask = new Bubble_GetDataAsyncTask();
 				getDataTask.execute(this);
 			} else {
 				Toast.makeText(getApplicationContext(),

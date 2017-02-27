@@ -32,7 +32,7 @@ public class Sis_MainList extends AppCompatActivity {
 	Sis_MyCustomBaseAdapter myAdapter;
 	EditText SearchET;
 	ListView lv;
-	AppSelect AppHelper = new AppSelect();
+	AppSelect_Parent AppHelper = new AppSelect_Parent();
 	int MyId = AppHelper.getUserID();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +111,7 @@ public class Sis_MainList extends AppCompatActivity {
 		ArrayList<Sis_ItemObject> TempItemArray = new ArrayList<Sis_ItemObject>();
 		String nullTag = "Update your";
 
- 		for (int i = 0; i < Sis_XMLParserClass.q1.size(); i++) {
+ 		for (int i = 1; i < Sis_XMLParserClass.q1.size(); i++) {
 			Sis_ItemObject CIO = new Sis_ItemObject();
 			if(!Sis_XMLParserClass.q5.get(i).equals("")){
 

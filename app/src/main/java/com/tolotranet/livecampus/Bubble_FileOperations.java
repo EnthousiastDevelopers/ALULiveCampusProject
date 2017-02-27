@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Faq_FileOperations {
+public class Bubble_FileOperations {
 
 	//Have to keep permissions for writing and reading external storage
 	public static void StoreData(String input) throws IOException {

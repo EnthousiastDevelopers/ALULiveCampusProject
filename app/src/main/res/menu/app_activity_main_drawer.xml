@@ -1,43 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group android:checkableBehavior="all">
+<item android:title="HOMEPAGE">
+    <menu android:checkableBehavior="all">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
+            android:id="@+id/alive"
+            android:icon="@drawable/app_maint"
+            android:title="ALU ALIVE" />
+        <item
+            android:id="@+id/myday"
+            android:icon="@drawable/app_maint"
+            android:title="My Day" />
+        <item
+            android:id="@+id/favourite"
+            android:icon="@drawable/app_maint"
+            android:title="My Favourite" />
+        <item
+            android:id="@+id/allapps"
+            android:icon="@drawable/app_maint"
+            android:title="All Apps" />
+
+    </menu>
+</item>
+  <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/me_residence"
+            android:icon="@drawable/app_maint"
             android:title="Residence" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/me_room"
+            android:icon="@drawable/app_maint"
             android:title="Room" />
 
     </group>
 
-    <item android:title="Gifts and Prizes">
+    <item android:title="Gifts and Points">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@android:drawable/btn_star_big_on"
-                android:title="10 points = Free Soda by TheBubblemarkets" />
+                android:id="@+id/menuLeaderboard"
+                android:icon="@drawable/app_leaderboard"
+                android:title="Leaderboard" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@android:drawable/btn_star_big_on"
-                android:title="100 points = Free KFC lunch" />
+                android:id="@+id/menuShop"
+                android:icon="@drawable/app_bubble_white"
+                android:title="Exchange Points" />
             <item
-                android:id="@+id/gift"
+                android:id="@+id/menuContribute"
                 android:icon="@android:drawable/btn_star_big_on"
-                android:title="1000 points = Free Parasailing ride" />
+                android:title="Contribute and get points" />
         </menu>
     </item>
+
+    <item android:title="Notification and Activity">
+        <menu>
+            <item
+                android:id="@+id/Notification"
+                android:icon="@android:drawable/arrow_up_float"
+                android:title="Notification" />
+            <item
+                android:id="@+id/Activity"
+                android:icon="@drawable/app_housing_history"
+                android:title="Activity" />
+
+        </menu>
+    </item>
+
+
     <item android:title="Settings and Preferences">
         <menu>
             <item
-                android:id="@+id/settings"
+                android:id="@+id/nav_settings"
                 android:icon="@drawable/app_icon_settings"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_faq"
-                android:icon="@drawable/app_icon_question"
+                android:icon="@drawable/app_faq"
                 android:title="Help" />
             <item
                 android:id="@+id/nav_logout"
@@ -45,5 +81,6 @@
                 android:title="Logout" />
         </menu>
     </item>
+
 
 </menu>

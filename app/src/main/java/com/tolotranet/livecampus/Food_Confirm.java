@@ -48,7 +48,7 @@ public class Food_Confirm extends Activity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(Food_Confirm.this, AppSelect.class);
+                Intent i = new Intent(Food_Confirm.this, AppSelect_Parent.class);
                 startActivity(i);
             }
         });

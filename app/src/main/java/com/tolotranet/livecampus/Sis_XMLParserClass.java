@@ -31,6 +31,7 @@ public class Sis_XMLParserClass {
 	public static ArrayList<String> q15;
 	public static ArrayList<String> q16;
 	public static ArrayList<String> q17;
+	public static ArrayList<String> q18;
 
 	public Sis_XMLParserClass() throws XmlPullParserException,
 			IOException {
@@ -52,6 +53,7 @@ public class Sis_XMLParserClass {
 		q15 = new ArrayList<String>();
 		q16 = new ArrayList<String>();
 		q17 = new ArrayList<String>();
+		q18 = new ArrayList<String>();
 //		c = context;
 //		Resources res = c.getResources();
 //		XmlResourceParser xrp = res.getXml(R.xml.contacts);
@@ -117,6 +119,9 @@ public class Sis_XMLParserClass {
 				}
 				if (xrp.getName().equals(("q17"))) {
 					q17.add(xrp.nextText());
+				}
+				if (xrp.getName().equals(("q18"))) {
+					q18.add(xrp.nextText());
 				}
 			}
 			eventType = xrp.next();

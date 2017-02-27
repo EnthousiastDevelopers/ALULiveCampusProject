@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-public class Faq_XMLParserClass {
+public class Bubble_XMLParserClass {
 
 	public static ArrayList<String> q1;
 	public static ArrayList<String> q2;
@@ -29,7 +29,7 @@ public class Faq_XMLParserClass {
 	public static ArrayList<String> q14;
 	public static ArrayList<String> Tag_Array;
 
-	public Faq_XMLParserClass() throws XmlPullParserException,
+	public Bubble_XMLParserClass() throws XmlPullParserException,
 			IOException {
 		// TODO Auto-generated constructor stub
 		q1 = new ArrayList<String>();
@@ -53,7 +53,7 @@ public class Faq_XMLParserClass {
 //		xrp.next(); // May throw error so add exceptions to the file
 //		int eventType = xrp.getEventType();
 
-		String xmlString = Faq_FileOperations.ReadData();
+		String xmlString = Bubble_FileOperations.ReadData();
 		XmlPullParser xrp = Xml.newPullParser();
 		xrp.setInput(new StringReader(xmlString));
 		int eventType = xrp.getEventType();

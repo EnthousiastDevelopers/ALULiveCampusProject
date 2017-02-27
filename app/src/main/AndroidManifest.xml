@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tolotranet.livecampus"
 
-android:versionCode="4"
+android:versionCode="5"
 android:versionName="2.0" >
 
 <uses-sdk
@@ -55,9 +55,9 @@ android:versionName="2.0" >
     <receiver android:name="com.tolotranet.livecampus.Transp_Notification_Receiver"></receiver>
 <!--APPSELECT-->
     <activity
-        android:name="com.tolotranet.livecampus.AppSelect"
+        android:name="com.tolotranet.livecampus.AppSelect_Parent"
         android:theme="@style/Apps_customTheme.NoActionBar"
-        android:label="AMPUS LIVE"
+        android:label="CAMPUS LIVE"
         >
     </activity>
 
@@ -117,7 +117,7 @@ android:versionName="2.0" >
         >
     </activity>
     <activity
-        android:name="com.tolotranet.livecampus.FoodApp"
+        android:name="com.tolotranet.livecampus.App_Contribute"
         android:label="FOOD APP">
 </activity>
     <activity
@@ -133,8 +133,19 @@ android:versionName="2.0" >
         android:name="com.tolotranet.livecampus.CalendarAPI"
         android:label="Calendar API">
 </activity>
+<!--FEED-->
+    <activity
+        android:name="com.tolotranet.livecampus.Feed_Create"
+        android:theme="@style/Apps_customTheme.NoActionBar"
+        android:label="Post to ALU ALIVE">
+    </activity>
 
+    <activity
+        android:name="com.tolotranet.livecampus.Feed_MainActivity"
+        android:label="CAMPUS LIVE">
+    </activity>
     <!--BOOKING-->
+
     <activity
         android:name="com.tolotranet.livecampus.Booking_Location_People_Day"
         android:label="BOOK A MEETING">
@@ -344,23 +355,23 @@ android:versionName="2.0" >
 
     <!--FAQ-->
         <activity
-        android:name="com.tolotranet.livecampus.Faq_MainList"
+        android:name="com.tolotranet.livecampus.Bubble_MainList"
         android:label="BUBBLEMARKET"
         android:windowSoftInputMode="stateHidden" >
     </activity>
     <activity
-        android:name="com.tolotranet.livecampus.Faq_DetailListViewOwner"
+        android:name="com.tolotranet.livecampus.Bubble_DetailListViewOwner"
         android:windowSoftInputMode="adjustPan"
         android:label="BUBBLEMARKET" >
     </activity>
     <activity
-        android:name="com.tolotranet.livecampus.Faq_DetailListView"
+        android:name="com.tolotranet.livecampus.Bubble_DetailListView"
         android:windowSoftInputMode="adjustPan"
         android:label="BUBBLEMARKET" >
     </activity>
 
     <activity
-        android:name="com.tolotranet.livecampus.Faq_SpreadSheetActivity"
+        android:name="com.tolotranet.livecampus.Bubble_SpreadSheetActivity"
         android:label="BUBBLEMARKET" >
     </activity>
 

@@ -103,6 +103,10 @@ public class Sis_XMLCreator {
 			Element q17 = doc.createElement("q17");
 			q17.appendChild(doc.createTextNode(Sis_XMLParserClass.q17.get(i)));
 			ItemElement.appendChild(q17);
+
+			Element q18 = doc.createElement("q18");
+			q18.appendChild(doc.createTextNode(Sis_XMLParserClass.q18.get(i)));
+			ItemElement.appendChild(q18);
 		}
 
 		TransformerFactory transformerFactory = TransformerFactory

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@color/blue_hard"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sis_profil_neutral" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/profilePicture"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="Tolotra Samuel Randriakotonjanahary"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feb 23 at 18:22 . Beau Plan Business Park"
+                    android:textColor="@color/grey" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/image_feed_placeholder" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_heart_liked" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="257 Likes"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/dummyLineRight"
+                    android:layout_width="15dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentLeft="true">
+
+                </View>
+
+                <View
+                    android:id="@+id/dummyLineLeft"
+                    android:layout_width="15dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentRight="true">
+
+                </View>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_toLeftOf="@id/dummyLineLeft"
+                    android:layout_toRightOf="@id/dummyLineRight"
+                    android:background="@color/blue_soft"
+                    android:paddingLeft="25dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:padding="7dp">
+
+                    <ImageView
+
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_heart_like"
+                        android:tint="@color/grey" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="15dp"
+
+                        android:src="@drawable/ic_comment"
+                        android:tint="@color/grey" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/ic_share"
+                        android:tint="@color/grey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="27 Comments"
+                        android:textColor="@color/grey"
+                        android:textSize="11dp" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:text="12 Shares"
+                        android:textColor="@color/grey"
+                        android:textSize="11dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <View
+
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/blue_soft"
+                android:paddingLeft="25dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_soft"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/profilePictureComment"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="11dp"
+                        android:src="@drawable/sis_profil_neutral" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/profilePictureComment"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="Tolotra Samuel Randriakotonjanahary"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Really nice pic"
+                            android:textColor="@color/darker_gray" />
+                    </LinearLayout>
+
+
+                </RelativeLayout> <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/profilePictureNewComment"
+
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="11dp"
+                        android:src="@drawable/sis_profil_neutral" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/profilePictureNewComment"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:background="@color/white"
+                            android:textSize="12dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:padding="09dp"
+
+                            android:drawableRight="@drawable/ic_menu_camera"
+                            android:layout_marginRight="10dp"
+                            android:textColorHint="@color/grey"
+                            android:hint="Write a comment..."
+                            android:id="@+id/editText" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -32,7 +32,7 @@ public class Lead_startApplicationAsyncTask extends AsyncTask<Activity, Void, Vo
 
         File Root = Environment.getExternalStorageDirectory();
         File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
-        File myfile = new File(Dir, "Lead.txt");
+        File myfile = new File(Dir, "Leader.txt");
         if ((InternetConnection = isNetworkAvailable())) {
             Lead_GetDataAsyncTask getDataTask = new Lead_GetDataAsyncTask();
             getDataTask.execute(myActivity);

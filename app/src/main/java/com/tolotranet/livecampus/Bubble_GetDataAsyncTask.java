@@ -25,7 +25,7 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-public class Faq_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
+public class Bubble_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	Activity myActivity;
 	@Override
@@ -53,8 +53,8 @@ public class Faq_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		}
 		
 		try {
-			String xmlString = Faq_XMLCreator.CreateSpreadSheetToXML();
-			Faq_FileOperations.StoreData(xmlString);
+			String xmlString = Bubble_XMLCreator.CreateSpreadSheetToXML();
+			Bubble_FileOperations.StoreData(xmlString);
 //			Log.d("hello",xmlString);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -72,7 +72,7 @@ public class Faq_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 	@Override
 	protected void onPostExecute(Void result) {
 		// TODO Auto-generated method stub
-		Intent i = new Intent(myActivity.getApplicationContext(),Faq_MainList.class);
+		Intent i = new Intent(myActivity.getApplicationContext(),Bubble_MainList.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		myActivity.startActivity(i);
 		myActivity.overridePendingTransition(0, 0);
@@ -187,21 +187,21 @@ public class Faq_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 			
 		}	
 		
-		Faq_XMLParserClass.q1 = q1;
-		Faq_XMLParserClass.q2 = q2;
-		Faq_XMLParserClass.q3 = q3;
-		Faq_XMLParserClass.q4 = q4;
-		Faq_XMLParserClass.q5 = q5;
-		Faq_XMLParserClass.q6 = q6;
-		Faq_XMLParserClass.q7 = q7;
-		Faq_XMLParserClass.q8 = q8;
-		Faq_XMLParserClass.q9 = q9;
-		Faq_XMLParserClass.q10 = q10;
-		Faq_XMLParserClass.q11 = q11;
-		Faq_XMLParserClass.q12 = q12;
-		Faq_XMLParserClass.q13 = q13;
-		Faq_XMLParserClass.q14 = q14;
-		Faq_XMLParserClass.Tag_Array = Tag_Array;
+		Bubble_XMLParserClass.q1 = q1;
+		Bubble_XMLParserClass.q2 = q2;
+		Bubble_XMLParserClass.q3 = q3;
+		Bubble_XMLParserClass.q4 = q4;
+		Bubble_XMLParserClass.q5 = q5;
+		Bubble_XMLParserClass.q6 = q6;
+		Bubble_XMLParserClass.q7 = q7;
+		Bubble_XMLParserClass.q8 = q8;
+		Bubble_XMLParserClass.q9 = q9;
+		Bubble_XMLParserClass.q10 = q10;
+		Bubble_XMLParserClass.q11 = q11;
+		Bubble_XMLParserClass.q12 = q12;
+		Bubble_XMLParserClass.q13 = q13;
+		Bubble_XMLParserClass.q14 = q14;
+		Bubble_XMLParserClass.Tag_Array = Tag_Array;
 
 	}
 

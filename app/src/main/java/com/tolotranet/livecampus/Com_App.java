@@ -117,7 +117,7 @@ public class Com_App extends AppCompatActivity {
     public void onBackPressed() {
 
         Intent i = new Intent(getApplicationContext(),
-                AppSelect.class);
+                AppSelect_Parent.class);
         startActivity(i);
 
     }

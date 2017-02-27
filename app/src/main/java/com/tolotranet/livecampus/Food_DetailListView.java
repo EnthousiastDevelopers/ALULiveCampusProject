@@ -72,7 +72,8 @@ public class Food_DetailListView extends Activity {
         Intent i = getIntent();
         final int Index = i.getIntExtra("index", 0);
         DetailList = getPersonalDetails(Index);
-        CommentsItemArray = Com_MainList.MakeArrayList(Food_XMLParserClass.q12.get(Index)); //Because we need to use the object of the item opened from the clicked index to create an arraylist of its answer and comments form com_mainlist makearraylist
+        Com_MainList comments = new Com_MainList();
+        CommentsItemArray = comments.MakeArrayList(Food_XMLParserClass.q12.get(Index)); //Because we need to use the object of the item opened from the clicked index to create an arraylist of its answer and comments form com_mainlist makearraylist
 
         lv = (ListView) findViewById(R.id.person_details_lv);
         answer_lv = (ListView) findViewById(R.id.answer_lv);
@@ -100,7 +101,7 @@ public class Food_DetailListView extends Activity {
                     comment_col7 = "";
                     send_comment_thread.start(); //because after the user click on the button send, the vote_thread will fill the google form
                     Com_GetDataAsyncTask commentTaskBackGround = new Com_GetDataAsyncTask(); // because we cannot make it static, getData() is already inside it and cannot be called it is static
-                    commentTaskBackGround.synchronize(); // because we want to synchronize the background, even if we dont use it immediately
+                    commentTaskBackGround.synchronize(); // because we want to synchronizeAsyncTask the background, even if we dont use it immediately
                     Com_ItemObject newCom = new Com_ItemObject(); //because we want to create a newcomment object to add to the list of comm
                     newCom.setBottomText(answertxt);
                     newCom.setName(comment_emailauthor);

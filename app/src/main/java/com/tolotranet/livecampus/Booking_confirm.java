@@ -55,7 +55,7 @@ String col1, col2, col3, col4, col5;
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(Booking_confirm.this, AppSelect.class);
+                Intent i = new Intent(Booking_confirm.this, AppSelect_Parent.class);
                 startActivity(i);
             }
         });

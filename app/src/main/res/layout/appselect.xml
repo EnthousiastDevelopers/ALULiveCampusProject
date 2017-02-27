@@ -8,62 +8,44 @@
     android:background="@drawable/app_grad_background"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.tolotranet.livecampus.AppSelect"
+    tools:context="com.tolotranet.livecampus.AppSelect_Parent"
     tools:showIn="@layout/app_bar_main">
 
 
-    <com.andexert.library.RippleView
-        android:id="@+id/more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        app:rv_color="@color/colorRipple_Appselect"
-        app:rv_zoomDuration="15">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-        <LinearLayout
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            app:tabPaddingEnd="-1dp"
+
+            app:tabPaddingStart="-1dp"
+            app:tabTextAppearance="@style/MineCustomTabText" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
 
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabPaddingEnd="-1dp"
-                app:tabTextAppearance="@style/MineCustomTabText"
-                app:tabPaddingStart="-1dp" />
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/Welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minLines="1"
-            android:padding="10dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/TVusername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/Welcome"
-            android:minLines="1"
-            android:text="@string/emptyString"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </com.andexert.library.RippleView>
+    <TextView
+        android:id="@+id/TVusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/Welcome"
+        android:minLines="1"
+        android:text="@string/emptyString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu_red"
@@ -72,9 +54,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:paddingBottom="10dp"
-        app:menu_colorPressed="@color/light_grey"
+        android:paddingRight="10dp"
         app:menu_backgroundColor="@color/light_grey"
-        android:paddingRight="10dp">
+        app:menu_colorPressed="@color/light_grey">
 
         <!--/STARTS-->
         <com.github.clans.fab.FloatingActionButton
@@ -102,6 +84,16 @@
             android:src="@drawable/fab_add"
             android:visibility="visible"
             app:fab_label="Contribute (Get points)"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/stat_notify_sync_noanim"
+            android:visibility="visible"
+            app:fab_label="Update everything"
+            app:fab_showShadow="false"
             app:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

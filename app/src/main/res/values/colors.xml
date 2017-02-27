@@ -25,8 +25,12 @@
     <color name="sis_titlebackgroundcolor">#ff0080</color>
     <color name="event_titlebackgroundcolor">#ff2222</color>
     <color name="transp_titlebackgroundcolor">#0a00cc</color>
+    <color name="blue_soft">#cbeaeaea</color>
+    <color name="blue_hard">#c5c8d7</color>
+    <color name="darker_gray">#696969</color>
 
-
+    <color name="nicebg">#5adedede</color>
+    <color name="grey">#a4a4a4</color>
     <color name="blue_alu">#002a3a</color>
     <color name="red_alu">#98232a</color>
     <color name="titletextcolor">#FFFF00</color>

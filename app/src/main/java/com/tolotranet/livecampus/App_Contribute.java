@@ -17,7 +17,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
  * Created by Tolotra Samuel on 18/08/2016.
  */
 
-public class FoodApp extends Activity {
+public class App_Contribute extends Activity {
     ListView toolList;
     private FirebaseAnalytics mFirebaseAnalytics;
     @Override
@@ -31,7 +31,19 @@ public class FoodApp extends Activity {
         mFirebaseAnalytics.setMinimumSessionDuration(3000);//minimum session is 1 minute
 
 
-        String[] apps = {"Preorder food", "CalendarAPI", "Rate and feedback", "Get the menu of the week"};
+        String[] apps = {
+                "Suggest Taxi Cab",
+                "Suggest Food",
+                "Submit Idea for the app",
+                "Operation Team Feedback",
+                "Student Life Feedback",
+                "Suggest Restaurant",
+                "Suggest Activities",
+                "Suggest Pharmacy",
+                "Suggest Hospital, Clinics, Ambulance",
+                "Other Contribution",
+
+        };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, apps  );
 
@@ -52,13 +64,13 @@ public class FoodApp extends Activity {
 
                 if (parent.getItemAtPosition(position) == "Preorder food") {
 
-                    Intent i = new Intent(FoodApp.this, FoodCalendar.class);
+                    Intent i = new Intent(App_Contribute.this, FoodCalendar.class);
                     startActivity(i);
                 }
 
                 if (parent.getItemAtPosition(position) == "CalendarAPI") {
 
-                    Intent i = new Intent(FoodApp.this, CalendarAPI.class);
+                    Intent i = new Intent(App_Contribute.this, CalendarAPI.class);
                     startActivity(i);
                 }
             }

@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class Apps_SectionsPagerAdapter extends FragmentPagerAdapter {
+public class Apps_PagerAdapter_Upper extends FragmentPagerAdapter {
     private  final String ARG_SECTION_NUMBER = "section_number";
     private Context context;
-    public Apps_SectionsPagerAdapter(FragmentManager fm, Context current) {
+    public Apps_PagerAdapter_Upper(FragmentManager fm, Context current) {
         super(fm);
         this.context = current;
     }
@@ -18,7 +18,15 @@ public class Apps_SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Bundle args = new Bundle();
-        Fragment fragment = new AppSelect_MainFragment();
+        Fragment fragment = null;
+        switch (position){
+            case 0:
+                fragment = new AppSelect_MainFragment_Upper();
+                break;
+            case 1:
+                fragment = new AppSelect_Child_Fragment();
+                break;
+        }
         args.putInt(ARG_SECTION_NUMBER, position+1);
 
         fragment.setArguments(args);
@@ -28,21 +36,17 @@ public class Apps_SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 4;
+        // Show 2 total pages.
+        return 2;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "STUDENT LIFE";
+                return Sign_User_Object.Firstname+"'S FAVORITE";
             case 1:
-                return "OPERATIONS";
-            case 2:
-                return "MAURITIUS";
-            case 3:
-                return "MORE APPS";
+                return "ALL APPS";
         }
         return null;
     }

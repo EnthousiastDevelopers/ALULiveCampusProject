@@ -20,6 +20,7 @@ import java.io.IOException;
 public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	Activity myActivity;
+    Context context;
 	Boolean FileExists;
 	Boolean InternetConnection;
 
@@ -29,7 +30,7 @@ public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 		myActivity = arg0[0];
 		FileExists = false;
 		InternetConnection = false;
-
+        context = myActivity.getApplicationContext();
 		File Root = Environment.getExternalStorageDirectory();
 		File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
 		File myfile = new File(Dir, "SISList.txt");
@@ -62,6 +63,42 @@ public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 		return null;
 	}
 
+	public   void synchronizeInBackGround(Context c){
+        context = c;
+		File Root = Environment.getExternalStorageDirectory();
+		File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
+		File myfile = new File(Dir, "SISList.txt");
+		if ((InternetConnection = isNetworkAvailable())) {
+			//Sis_UpdateData getDataTask = new Sis_UpdateData();
+		//	getDataTask.synchronizeInBackGround();
+
+		} else {
+
+			if (myfile.exists()) {
+				Log.d("hello", "File Exists");
+				FileExists = true;
+				try {
+					new Sis_XMLParserClass();
+				} catch (XmlPullParserException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				//	getDataTask.anotherExecute();
+			}else {
+                FileExists = false;
+                Log.d("hello", "File doesn't exist");
+
+                Toast.makeText(c, "Internet connection not available", Toast.LENGTH_SHORT);
+			}
+
+			Log.d("hello", "Network Connection " + isNetworkAvailable());
+		}
+	}
+
 	@Override
 	protected void onPostExecute(Void result) {
 		// TODO Auto-generated method stub
@@ -87,9 +124,8 @@ public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 	}
 
 	private boolean isNetworkAvailable() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) myActivity
-				.getApplicationContext().getSystemService(
-						Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager connectivityManager = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo activeNetworkInfo = connectivityManager
 				.getActiveNetworkInfo();
 		return activeNetworkInfo != null

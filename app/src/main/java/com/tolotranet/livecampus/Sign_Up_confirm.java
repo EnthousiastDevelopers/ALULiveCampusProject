@@ -71,14 +71,14 @@ public class Sign_Up_confirm extends Activity{
                 }
 
 
-                //Intent i = new Intent(Sign_Up_confirm.this, AppSelect.class);
+                //Intent i = new Intent(Sign_Up_confirm.this, AppSelect_Parent.class);
 //                i.putExtra("email", emailstr);
 //                startActivity(i);
                 Log.d("email is:", emailstr);
                  mProgress = new ProgressDialog(this);
                 mProgress.setMessage("Loading your data ...");
                 mProgress.show();
-                AppSelect.origin = "signup"; //because the next activity cannot hold an extra, origin is used to redirect after the next activity
+                AppSelect_Parent.origin = "signup"; //because the next activity cannot hold an extra, origin is used to redirect after the next activity
                 helper.AllUserDataBaseToObject(); // because we jump through this step, now we need to initialize the user_object, or else it will be empty
                 Sis_startApplicationAsyncTaskOwner myTask = new Sis_startApplicationAsyncTaskOwner();
                 myTask.execute(this);

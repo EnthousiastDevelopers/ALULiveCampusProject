@@ -95,8 +95,7 @@ public class Food_MainList extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.Contacts_list_view);
         SearchET = (EditText) findViewById(R.id.SearchET);
 
-        myAdapter = new Food_MyCustomBaseAdapter(getApplicationContext(),
-                ContactItemArray);
+        myAdapter = new Food_MyCustomBaseAdapter(getApplicationContext(), ContactItemArray);
         lv.setAdapter(myAdapter);
 
         MyTextWatcher mytextwatcher = new MyTextWatcher();

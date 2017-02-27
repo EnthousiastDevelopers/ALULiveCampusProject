@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.File;
 import java.io.IOException;
 
-public class Faq_startApplicationAsyncTask extends AsyncTask<Activity, Void, Void> {
+public class Bubble_startApplicationAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	Activity myActivity;
 	Boolean FileExists;
@@ -38,7 +38,7 @@ public class Faq_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 			Log.d("hello", "File Exists");
 			FileExists = true;
 			try {
-				new Faq_XMLParserClass();
+				new Bubble_XMLParserClass();
 			} catch (XmlPullParserException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -51,7 +51,7 @@ public class Faq_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 			Log.d("hello", "File doesn't exist");
 
 			if ((InternetConnection = isNetworkAvailable())) {
-				Faq_GetDataAsyncTask getDataTask = new Faq_GetDataAsyncTask();
+				Bubble_GetDataAsyncTask getDataTask = new Bubble_GetDataAsyncTask();
 				getDataTask.execute(myActivity);
 			}
 
@@ -67,7 +67,7 @@ public class Faq_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 		if (FileExists == true) {
 
 			Intent i = new Intent();
-			i.setClass(myActivity.getApplicationContext(), Faq_MainList.class);
+			i.setClass(myActivity.getApplicationContext(), Bubble_MainList.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			myActivity.getApplicationContext().startActivity(i);
 			myActivity.overridePendingTransition(0, 0);

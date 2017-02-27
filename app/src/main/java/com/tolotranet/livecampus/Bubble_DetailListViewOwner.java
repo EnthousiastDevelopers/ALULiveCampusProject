@@ -60,12 +60,12 @@ import java.util.Map;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class Faq_DetailListViewOwner extends Activity
+public class Bubble_DetailListViewOwner extends Activity
 		implements EasyPermissions.PermissionCallbacks {
 
 	ListView lv;
-	Faq_DetailListViewAdapterOwner myPersonDetailListViewAdapter;
-	ArrayList<Faq_DetailListItem> DetailList;
+	Bubble_DetailListViewAdapterOwner myPersonDetailListViewAdapter;
+	ArrayList<Bubble_DetailListItem> DetailList;
 	TextView mOutputText;
 	GoogleAccountCredential mCredential;
     int Index;
@@ -100,7 +100,7 @@ public class Faq_DetailListViewOwner extends Activity
 
 		lv = (ListView) findViewById(R.id.person_details_lv);
 
-		myPersonDetailListViewAdapter = new Faq_DetailListViewAdapterOwner(this,
+		myPersonDetailListViewAdapter = new Bubble_DetailListViewAdapterOwner(this,
 				DetailList);
 		lv.setAdapter(myPersonDetailListViewAdapter);
 		lv.setOnItemClickListener(new PersonDetailListViewClickListener());
@@ -124,165 +124,165 @@ public class Faq_DetailListViewOwner extends Activity
 			}
 	}
 
-	private ArrayList<Faq_DetailListItem> getPersonalDetails(int Index) {
-		ArrayList<Faq_DetailListItem> DetailList = new ArrayList<Faq_DetailListItem>();
+	private ArrayList<Bubble_DetailListItem> getPersonalDetails(int Index) {
+		ArrayList<Bubble_DetailListItem> DetailList = new ArrayList<Bubble_DetailListItem>();
 
 
 
 
 
-		Faq_DetailListItem sr = new Faq_DetailListItem();
+		Bubble_DetailListItem sr = new Bubble_DetailListItem();
 		String tag = "emailaddress";
 		sr.setDetailName(tag);
-		if (!(Faq_XMLParserClass.q2.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q2.get(Index));
+		if (!(Bubble_XMLParserClass.q2.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q2.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 		DetailList.add(sr);
-		map.put(tag, Faq_XMLParserClass.q2.get(Index));
+		map.put(tag, Bubble_XMLParserClass.q2.get(Index));
 
 
 			tag = "firstname";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName(tag);
-		if (!(Faq_XMLParserClass.q3.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q3.get(Index));
+		if (!(Bubble_XMLParserClass.q3.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q3.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q3.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q3.get(Index));
 
 
 			tag = "lastname";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("lastname");
-		if (!(Faq_XMLParserClass.q4.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q4.get(Index));
+		if (!(Bubble_XMLParserClass.q4.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q4.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q4.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q4.get(Index));
 
 			tag = "fullname";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("fullname");
-		if (!(Faq_XMLParserClass.q5.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q5.get(Index));
+		if (!(Bubble_XMLParserClass.q5.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q5.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q5.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q5.get(Index));
 
 
 			tag = "birthday";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("birthday");
-		if (!(Faq_XMLParserClass.q6.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q6.get(Index));
+		if (!(Bubble_XMLParserClass.q6.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q6.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q6.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q6.get(Index));
 
 
 			tag ="nationality";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("nationality");
-		if (!(Faq_XMLParserClass.q7.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q7.get(Index));
+		if (!(Bubble_XMLParserClass.q7.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q7.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q7.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q7.get(Index));
 
 
 			tag ="passportnumber";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("passportnumber");
-		if (!(Faq_XMLParserClass.q8.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q8.get(Index));
+		if (!(Bubble_XMLParserClass.q8.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q8.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q8.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q8.get(Index));
 
 
 
 			tag ="phonenumber1";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber1");
-		if (!(Faq_XMLParserClass.q9.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q9.get(Index));
+		if (!(Bubble_XMLParserClass.q9.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q9.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q9.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q9.get(Index));
 
 			tag ="phonenumber2";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber2");
-		if (!(Faq_XMLParserClass.q10.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q10.get(Index));
+		if (!(Bubble_XMLParserClass.q10.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q10.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q10.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q10.get(Index));
 
 			tag ="phonenumber3";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("phonenumber3");
-		if (!(Faq_XMLParserClass.q11.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q11.get(Index));
+		if (!(Bubble_XMLParserClass.q11.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q11.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q11.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q11.get(Index));
 
 
 
 			tag ="apartment";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("apartment");
-		if (!(Faq_XMLParserClass.q12.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q12.get(Index));
+		if (!(Bubble_XMLParserClass.q12.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q12.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q12.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q12.get(Index));
 
 			tag ="residence";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("residence");
-		if (!(Faq_XMLParserClass.q13.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q13.get(Index));
+		if (!(Bubble_XMLParserClass.q13.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q13.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q13.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q13.get(Index));
 
 
 			tag ="room";
-			sr = new Faq_DetailListItem();
+			sr = new Bubble_DetailListItem();
 			sr.setDetailName("room");
-		if (!(Faq_XMLParserClass.q14.get(Index).equals(""))) {
-			sr.setDetailValue(Faq_XMLParserClass.q14.get(Index));
+		if (!(Bubble_XMLParserClass.q14.get(Index).equals(""))) {
+			sr.setDetailValue(Bubble_XMLParserClass.q14.get(Index));
 		}else{
 			sr.setDetailValue("please updatme me! :-( ");
 		}
 			DetailList.add(sr);
-			map.put(tag, Faq_XMLParserClass.q14.get(Index));
+			map.put(tag, Bubble_XMLParserClass.q14.get(Index));
 
 
 		//test
@@ -300,12 +300,12 @@ public class Faq_DetailListViewOwner extends Activity
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 								long arg3) {
 			// TODO Auto-generated method stub
-			String TempDetailName = (String) ((Faq_DetailListItem) arg0
+			String TempDetailName = (String) ((Bubble_DetailListItem) arg0
 					.getItemAtPosition(arg2)).getDetailName();
 			if (TempDetailName.equals("Mobile")
 					|| TempDetailName.equals("Residence")
 					|| TempDetailName.equals("Office")) {
-				String DetailValue = (String) ((Faq_DetailListItem) arg0
+				String DetailValue = (String) ((Bubble_DetailListItem) arg0
 						.getItemAtPosition(arg2)).getDetailValue();
 				if (!DetailValue.equals("")) {
 					Intent callintent = new Intent(Intent.ACTION_DIAL,
@@ -317,7 +317,7 @@ public class Faq_DetailListViewOwner extends Activity
 			}
 
 			if (TempDetailName.equals("Email")) {
-				String ToEmailId = (String) ((Faq_DetailListItem) arg0
+				String ToEmailId = (String) ((Bubble_DetailListItem) arg0
 						.getItemAtPosition(arg2)).getDetailValue();
 				Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 				emailIntent.setData(Uri.parse("mailto:"));
@@ -389,7 +389,7 @@ public class Faq_DetailListViewOwner extends Activity
 		if(hasUpdated == true) {
 			getResultsFromApi();
 		}else {
-			Faq_DetailListViewOwner.super.onBackPressed();
+			Bubble_DetailListViewOwner.super.onBackPressed();
 		}
 	}
 
@@ -413,7 +413,7 @@ public class Faq_DetailListViewOwner extends Activity
 		} else {
 			new MakeRequestTask(mCredential).execute();
 			//then update the XML of the phone for offline view and go back
-			Faq_GetDataAsyncTask getDataTask = new Faq_GetDataAsyncTask();
+			Bubble_GetDataAsyncTask getDataTask = new Bubble_GetDataAsyncTask();
 			//getDataTask.execute(this);
 
 		}
@@ -598,7 +598,7 @@ public class Faq_DetailListViewOwner extends Activity
 			final int connectionStatusCode) {
 		GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
 		Dialog dialog = apiAvailability.getErrorDialog(
-				Faq_DetailListViewOwner.this,
+				Bubble_DetailListViewOwner.this,
 				connectionStatusCode,
 				REQUEST_GOOGLE_PLAY_SERVICES);
 		dialog.show();
@@ -755,7 +755,7 @@ public class Faq_DetailListViewOwner extends Activity
 				} else if (mLastError instanceof UserRecoverableAuthIOException) {
 					startActivityForResult(
 							((UserRecoverableAuthIOException) mLastError).getIntent(),
-							Faq_DetailListViewOwner.REQUEST_AUTHORIZATION);
+							Bubble_DetailListViewOwner.REQUEST_AUTHORIZATION);
 				} else {
 					Log.d("hello", "The following error occurred:\n"
 							+ mLastError.getMessage());

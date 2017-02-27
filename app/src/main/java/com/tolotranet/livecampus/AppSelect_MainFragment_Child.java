@@ -17,7 +17,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 
-public class AppSelect_MainFragment extends Fragment {
+public class AppSelect_MainFragment_Child extends Fragment {
 
     private final String ARG_SECTION_NUMBER = "section_number";
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -35,10 +35,10 @@ public class AppSelect_MainFragment extends Fragment {
         ArrayList<Apps_ItemObject> ContactItemArray2;
         ArrayList<Apps_ItemObject> ContactItemArray3;
         ArrayList<Apps_ItemObject> ContactItemArray4;
-        AppSelect_MyCustomBaseAdapter myAdapter1;
-        AppSelect_MyCustomBaseAdapter myAdapter2;
-        AppSelect_MyCustomBaseAdapter myAdapter3;
-        AppSelect_MyCustomBaseAdapter myAdapter4;
+        AppSelect_List_CustomBaseAdapter myAdapter1;
+        AppSelect_List_CustomBaseAdapter myAdapter2;
+        AppSelect_List_CustomBaseAdapter myAdapter3;
+        AppSelect_List_CustomBaseAdapter myAdapter4;
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());//get firebase analytics instance
@@ -57,28 +57,28 @@ public class AppSelect_MainFragment extends Fragment {
 
         if (position == 1) {
             ContactItemArray1 = MakeArrayList("StudentLife");
-            myAdapter1 = new AppSelect_MyCustomBaseAdapter(getActivity(), ContactItemArray1);
+            myAdapter1 = new AppSelect_List_CustomBaseAdapter(getActivity(), ContactItemArray1,"child");
             toolList1 = (GridView) rootView.findViewById(R.id.toolList);
             toolList1.setAdapter(myAdapter1);
             toolList1.setOnItemClickListener(new AllContactListViewClickListener());
 
         } else if (position == 2) {
             ContactItemArray2 = MakeArrayList("Operations");
-            myAdapter2 = new AppSelect_MyCustomBaseAdapter(getActivity(), ContactItemArray2);
+            myAdapter2 = new AppSelect_List_CustomBaseAdapter(getActivity(), ContactItemArray2,"child");
             toolList2 = (GridView) rootView.findViewById(R.id.toolList);
             toolList2.setAdapter(myAdapter2);
             toolList2.setOnItemClickListener(new AllContactListViewClickListener());
 
         } else if (position == 3) {
             ContactItemArray3 = MakeArrayList("Mauritius");
-            myAdapter3 = new AppSelect_MyCustomBaseAdapter(getActivity(), ContactItemArray3);
+            myAdapter3 = new AppSelect_List_CustomBaseAdapter(getActivity(), ContactItemArray3,"child");
             toolList3 = (GridView) rootView.findViewById(R.id.toolList);
             toolList3.setAdapter(myAdapter3);
             toolList3.setOnItemClickListener(new AllContactListViewClickListener());
 
         } else if (position == 4) {
             ContactItemArray4 = MakeArrayList("MoreApps");
-            myAdapter4 = new AppSelect_MyCustomBaseAdapter(getActivity(), ContactItemArray4);
+            myAdapter4 = new AppSelect_List_CustomBaseAdapter(getActivity(), ContactItemArray4,"child");
             toolList4 = (GridView) rootView.findViewById(R.id.toolList);
             toolList4.setAdapter(myAdapter4);
             toolList4.setOnItemClickListener(new AllContactListViewClickListener());
@@ -95,7 +95,7 @@ public class AppSelect_MainFragment extends Fragment {
     public static ArrayList<Apps_ItemObject> MakeArrayList(String section) {
         ArrayList<Apps_ItemObject> TempItemArray = new ArrayList<Apps_ItemObject>();
         String nullTag = "Update your";
-        Integer[] imgid = null;
+        Integer[][] imgid = null;
         String[][] AppsItemArray = null;
         Log.d("Makearraylist", section);
 //        ArrayList<String> AppsItemArray = new ArrayList<String>(
@@ -103,7 +103,7 @@ public class AppSelect_MainFragment extends Fragment {
 //                        "Upcoming Appss", "StreamLive ((Locked))", "Business Area((Locked))", "Student Life((Locked))",
 //                        "UWallet ((Locked))", "Developer Area((Locked))", "Art&Photography((Locked))"));
         String[][] StudentLifeAppsItemArray = new String[][]{
-                {"SIS", "Know all the members of our community"},
+                {"Student Profiles", "Know all the members of our community"},
                 {"Events", "Upcoming Events"},
                 {"Student Life Stream", "Messages from Student Life and Head of College"},
                 {"Book a meeting", "Set an appointment with staff member"},
@@ -140,38 +140,38 @@ public class AppSelect_MainFragment extends Fragment {
         };
 
 
-        Integer[] SLimgid = {
-                R.drawable.app_sis,
-                R.drawable.app_event,
-                R.drawable.app_stream,
-                R.drawable.app_book,
+        Integer[][] SLimgid = {
+                {R.drawable.app_sis,1},
+                {R.drawable.app_event,2},
+               { R.drawable.app_stream,3},
+               { R.drawable.app_book,4}
         };
-        Integer[] Opsimgid = {
-                R.drawable.app_food_dinner,
-                R.drawable.food_ic_chef,
-                R.drawable.app_ic_menu_food,
-                R.drawable.app_food_feedback,
-                R.drawable.app_maint,
-                R.drawable.app_housing_history,
-                R.drawable.app_transp,
+        Integer[][] Opsimgid = {
+               { R.drawable.app_food_dinner,5},
+               { R.drawable.food_ic_chef,6},
+               { R.drawable.app_ic_menu_food,7},
+               { R.drawable.app_food_feedback,8},
+               { R.drawable.app_maint,9},
+               { R.drawable.app_housing_history,10},
+               { R.drawable.app_transp,11},
         };
 
-        Integer[] Mauritiusimgid = {
-                R.drawable.app_mu,
-                R.drawable.app_taxi_cab_ic,
-                R.drawable.app_food,
-                R.drawable.app_activity_bowling,
-                R.drawable.app_pharmacy_icon,
-                R.drawable.app_hostpital_building,
-                R.drawable.app_more,
+        Integer[][] Mauritiusimgid = {
+               { R.drawable.app_mu,12},
+               { R.drawable.app_taxi_cab_ic,13},
+               { R.drawable.app_food,14},
+               { R.drawable.app_activity_bowling,15},
+               { R.drawable.app_pharmacy_icon,16},
+               { R.drawable.app_hostpital_building,17},
+               { R.drawable.app_more,24}
 
-        };     Integer[] MoreImgid = {
-                R.drawable.app_ic_gift,
-                R.drawable.app_leaderboard_blank,
-                R.drawable.app_bubble_white,
-                R.drawable.app_faq,
-                R.drawable.app_me,
-                R.drawable.app_submit_idea,
+        };     Integer[][] MoreImgid = {
+               { R.drawable.app_ic_gift,18},
+               { R.drawable.app_leaderboard_blank,19},
+               { R.drawable.app_bubble_white,20},
+               { R.drawable.app_faq,21},
+               { R.drawable.app_me,22},
+               { R.drawable.app_submit_idea,23},
 
         };
 
@@ -204,13 +204,14 @@ public class AppSelect_MainFragment extends Fragment {
                 }
                 //Set Img id
                 if (imgid[i].equals("")) {
-                    CIO.setImgId(imgid[4]);
+                    CIO.setImgId(imgid[4][0]);
                 } else {
-                    CIO.setImgId(imgid[i]);
+                    CIO.setImgId(imgid[i][0]);
                     // CIO.setImgId(4);
                 }
                 ;
                 CIO.setIndex(i);
+                CIO.setMenuId(imgid[i][1]);
                 CIO.setUserId(0);
                 TempItemArray.add(CIO);
             }
@@ -235,6 +236,8 @@ public class AppSelect_MainFragment extends Fragment {
                     .getUserId();
             int ThisImg = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getImgId();
+            int ThisMenuId = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
+                    .getMenuId();
             String Menu = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getName();
             String Availability = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
@@ -251,6 +254,8 @@ public class AppSelect_MainFragment extends Fragment {
             params.putString("full_text", "locked menu");
             mFirebaseAnalytics.logEvent("share_image", params);
 
+            HttpRequestApp.add_App_UsageTrack(Sign_User_Object.Email, String.valueOf(ThisMenuId), "Clicked","1", Menu);
+
             Log.d("hello", "Position Clicked is " + arg2);
             Log.d("hello", "Item Clicked is " + Index);
             Log.d("hello", "User Clicked is " + ThisId);
@@ -263,7 +268,7 @@ public class AppSelect_MainFragment extends Fragment {
 
             }
             if (Menu == "Food App") {
-                Intent i = new Intent(getActivity(), FoodApp.class);
+                Intent i = new Intent(getActivity(), App_Contribute.class);
                 startActivity(i);
 
             }
@@ -282,7 +287,7 @@ public class AppSelect_MainFragment extends Fragment {
                 startActivity(i);
 
             }
-            if (Menu == "SIS") {
+            if (Menu == "Student Profiles") {
                 Intent i = new Intent(getActivity(), Sis_SpreadSheetActivity.class);
                 startActivity(i);
                 // i.putExtra("myId", userID);
@@ -312,7 +317,7 @@ public class AppSelect_MainFragment extends Fragment {
 
             }
             if (Menu == "BubbleMarket") {
-                Intent i = new Intent(getActivity(), Faq_SpreadSheetActivity.class);
+                Intent i = new Intent(getActivity(), Bubble_SpreadSheetActivity.class);
                 startActivity(i);
             }
             if (Menu == "Leaderboard") {

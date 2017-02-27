@@ -17,22 +17,32 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-        android:id="@+id/section_label"
-        android:fontFamily="sans-serif-condensed-light"
+        android:id="@+id/Welcome"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textSize="15dp"
+        android:minLines="1"
+        android:padding="10dp"
+        android:text="Start Discovering the features, the apps is using an algorithm to learn from your actions and will automatically generate the apps that are most relevant for you here!"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white"
+        android:visibility="gone" />
     <GridView
 
         android:id="@+id/toolList"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:columnWidth="100dip"
+
         android:gravity="center"
         android:fontFamily="sans-serif-condensed-light"
-        android:numColumns="3"
+        android:numColumns="2"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
+
 
         android:layout_below="@+id/TVusername"/>
 </RelativeLayout>

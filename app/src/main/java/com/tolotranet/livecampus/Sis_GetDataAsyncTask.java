@@ -14,6 +14,8 @@ import com.google.gdata.data.spreadsheet.WorksheetFeed;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -28,7 +30,7 @@ import javax.xml.transform.TransformerException;
 public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	Activity myActivity;
-
+	String Target = "all";
 
 	@Override
 	protected Void doInBackground(Activity... arg0) {
@@ -74,7 +76,14 @@ public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 	@Override
 	protected void onPostExecute(Void result) {
 		// TODO Auto-generated method stub
+
 		Intent i = new Intent(myActivity.getApplicationContext(), Sis_MainList.class);
+		if(Target.equals("me")){
+			i = new Intent(myActivity.getApplicationContext(), Sis_DetailListViewOwner.class);
+		}
+		if(Target.equals("apps")){
+			i = new Intent(myActivity.getApplicationContext(), AppSelect_Parent.class);
+		}
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 		myActivity.startActivity(i);
@@ -125,6 +134,7 @@ public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		ArrayList<String> q15 = new ArrayList<String>();
 		ArrayList<String> q16 = new ArrayList<String>();
 		ArrayList<String> q17 = new ArrayList<String>();
+		ArrayList<String> q18 = new ArrayList<String>();
 		ArrayList<String> Tag_Array = new ArrayList<String>();
 
 		ListEntry TempList = listFeed.getEntries().get(0);
@@ -206,6 +216,10 @@ public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 					q17.add(ProperValue(row.getCustomElements()
 							.getValue(tag)));
 				}
+				if (tag.equals("appusage")) {
+					q18.add(ProperValue(row.getCustomElements()
+							.getValue(tag)));
+				}
 			}
 
 		}
@@ -227,6 +241,7 @@ public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		Sis_XMLParserClass.q15 = q15;
 		Sis_XMLParserClass.q16 = q16;
 		Sis_XMLParserClass.q17 = q17;
+		Sis_XMLParserClass.q18 = q18;
 		Sis_XMLParserClass.Tag_Array = Tag_Array;
 
 	}
@@ -239,45 +254,54 @@ public class Sis_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 		}
 
 	}
+	public void synchronizeLinear() {
+		try {
+			getData();
+		} catch (AuthenticationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	public void synchronize() { //because some part of the application needs to download data from server, in background, without changing activity. Execute cannot make it
+		try {
+			String xmlString = Sis_XMLCreator.CreateSpreadSheetToXML();
+			Sis_FileOperations.StoreData(xmlString);
+//			Log.d("hello",xmlString);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			new Sis_XMLParserClass();
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void synchronizeAsyncTask() { //because some part of the application needs to download data from server, in background, without changing activity. Execute cannot make it
 		final Thread t = new Thread() {
 			@Override
 			public void run() {
-
-				try {
-					getData();
-				} catch (AuthenticationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				try {
-					String xmlString = Sis_XMLCreator.CreateSpreadSheetToXML();
-					Sis_FileOperations.StoreData(xmlString);
-//			Log.d("hello",xmlString);
-				} catch (ParserConfigurationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (TransformerException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				synchronizeLinear();
 			}
 		};
 		t.start();

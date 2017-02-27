@@ -73,7 +73,11 @@
         <item name="background">@color/red_alu</item>
         <!--<item name="android:icon">@drawable/ic_logo_2_min</item>-->
         <item name="logo">@drawable/ic_logo_minimini</item>
-        <item name="displayOptions">useLogo|showHome|showTitle</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="displayOptions">showHome|showTitle</item>
+    </style>
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="apps_windowTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" >
@@ -87,7 +91,7 @@
     <!--/ACTION STYLE FOR CUSTOM THEME WITH INHERITANCE-->
     <!--/ STYLE FOR TABLAYOUT TEXT SIZE-->
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
     <!--/ STYLE FOR TABLAYOUT TEXT SIZE-->
 

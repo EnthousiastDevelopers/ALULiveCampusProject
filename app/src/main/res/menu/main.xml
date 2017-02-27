@@ -5,6 +5,21 @@
     <item
         android:id="@+id/UpdateContactsMain"
         android:orderInCategory="100"
-        android:title="Update Contacts"
+        android:title="Update everything"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/MenuContribute"
+        android:orderInCategory="100"
+        android:title="Contribue (+30 points)"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/MenuFeedback"
+        android:orderInCategory="100"
+        android:title="Feedback (+30 points)"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/MenuIdea"
+        android:orderInCategory="100"
+        android:title="Submit your idea (+30)"
         app:showAsAction="never" />
 </menu>
