@@ -19,7 +19,7 @@
         android:background="@color/blue_alu"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".Settings_mainActivity" >
+        tools:context=".Settings.Settings_mainActivity" >
 
         <ListView
             android:layout_width="fill_parent"

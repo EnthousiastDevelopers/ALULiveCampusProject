@@ -104,7 +104,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/Contact_right_tv"
+            android:id="@+id/Votes_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

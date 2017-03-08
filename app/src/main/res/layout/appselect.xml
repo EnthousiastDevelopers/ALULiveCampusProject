@@ -5,14 +5,15 @@
     android:id="@+id/content_main"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_grad_background"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.tolotranet.livecampus.AppSelect_Parent"
+    tools:context="com.tolotranet.livecampus.App.AppSelect_Parent"
     tools:showIn="@layout/app_bar_main">
+<!--android:background="@drawable/app_grad_background"-->
 
 
     <LinearLayout
+        android:id="@+id/tablayoutLT"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -27,7 +28,7 @@
 
             app:tabPaddingStart="-1dp"
             app:tabTextAppearance="@style/MineCustomTabText" />
-
+        <!--app:tabBackground="@drawable/tab_color_selector"-->
         <android.support.v4.view.ViewPager
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -46,9 +47,25 @@
         android:minLines="1"
         android:text="@string/emptyString"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_action_speech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorNormal="@color/app_primary"
+        app:fab_colorPressed="@color/app_primary_pressed"
+        app:fab_colorRipple="@color/app_ripple"
+        android:background="@color/blue"
+        android:visibility="visible"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_speech_microphone"
+        app:fab_label="Submit your idea (Get points)"
+        app:fab_size="mini" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu_red"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"

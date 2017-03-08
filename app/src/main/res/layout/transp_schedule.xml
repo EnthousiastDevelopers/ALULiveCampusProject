@@ -15,7 +15,7 @@
     android:background="@color/blue_alu"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Transp_TransApp" >
+    tools:context=".Transp.Transp_TransApp" >
 
     <EditText 
     android:layout_width="match_parent" 
@@ -26,7 +26,8 @@
 
     <ListView
         android:id="@+id/Contacts_list_view"
-        android:divider="@color/white"
+        android:divider="@color/blue_sky"
+        android:dividerHeight="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

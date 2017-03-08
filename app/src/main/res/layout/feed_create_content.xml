@@ -8,7 +8,7 @@
     android:background="@drawable/app_grad_background"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.tolotranet.livecampus.AppSelect_Parent"
+    tools:context="com.tolotranet.livecampus.App.AppSelect_Parent"
     tools:showIn="@layout/app_bar_main">
 
 </LinearLayout>

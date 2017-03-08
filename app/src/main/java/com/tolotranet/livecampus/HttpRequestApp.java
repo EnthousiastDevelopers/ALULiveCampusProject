@@ -116,4 +116,30 @@ public class HttpRequestApp {
         send_comment_thread.start();
     }
 
+    public static void add_Attendance(final String cardID, final String myEmail, final String myFirstName, final String myLastName, final String course){
+
+        Thread send_attendance_record = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+
+                    //String url for database Mauritius
+
+                    String fullUrl = "https://docs.google.com/forms/d/e/1FAIpQLSez9DyP2JxxLLVFNfbAuLIDXOhS5T-75wlAF9JsSohiGQVy5Q/formResponse";
+                    HttpRequest mReq = new HttpRequest();
+                    String data = "entry.1979182813=" + URLEncoder.encode(cardID) + "&" +
+                            "entry.516943837=" + URLEncoder.encode(myEmail) + "&" +
+                            "entry.2118286285=" + URLEncoder.encode(myFirstName) + "&" +
+                            "entry.1614196389=" + URLEncoder.encode(myLastName) + "&" +
+                            "entry.977151147=" + URLEncoder.encode(course);
+                    String response = mReq.sendPost(fullUrl, data);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        send_attendance_record.start();
+    }
 }

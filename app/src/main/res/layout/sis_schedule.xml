@@ -15,7 +15,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/blue_alu"
-    tools:context=".Sis_MainList" >
+    tools:context=".Sis.Sis_MainList" >
 
     <EditText 
     android:layout_width="match_parent" 

@@ -16,6 +16,7 @@
     <color name="colorRipple_Setting">#ff40fc</color>
     <color name="colorRipple_Event">#ff40a6</color>
     <color name="black">#000000</color>
+    <color name="black_shadow">#64000000</color>
     <!--<color name="colorRipple">#FF4081</color>-->
     <!--<color name="colorRipple">#FF4081</color>-->
     <!--<color name="colorRipple">#FF4081</color>-->
@@ -42,6 +43,7 @@
 
 
 
+    <color name="blue_sky">#16ded0</color>
     <color name="app_primary">#1976D2</color>
     <color name="app_primary_pressed">#1565C0</color>
     <color name="app_ripple">#DDDDDD</color>

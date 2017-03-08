@@ -15,7 +15,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/blue_alu"
-    tools:context=".Event_MainList" >
+    tools:context=".Event.Event_MainList" >
 
     <EditText 
     android:layout_width="match_parent" 

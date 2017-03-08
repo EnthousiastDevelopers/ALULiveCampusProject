@@ -53,6 +53,10 @@
     <item android:title="Notification and Activity">
         <menu>
             <item
+                android:id="@+id/HeadBubble"
+                android:icon="@android:drawable/arrow_up_float"
+                android:title="Sticky Bubble" />
+            <item
                 android:id="@+id/Notification"
                 android:icon="@android:drawable/arrow_up_float"
                 android:title="Notification" />

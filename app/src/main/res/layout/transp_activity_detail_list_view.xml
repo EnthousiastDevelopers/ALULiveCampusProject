@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Transp_ElementDetailListView" >
+    tools:context=".Transp.Transp_ElementDetailListView" >
 
     <ListView
         android:id="@+id/person_details_lv"

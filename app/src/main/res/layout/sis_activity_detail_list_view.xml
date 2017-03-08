@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sis_DetailListViewOwner">
+    tools:context=".Sis.Sis_DetailListViewOwner">
 
     <ImageView
         android:id="@+id/ImageProfile"
