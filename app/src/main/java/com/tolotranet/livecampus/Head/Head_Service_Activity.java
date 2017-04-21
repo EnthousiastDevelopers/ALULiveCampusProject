@@ -1,6 +1,7 @@
 package com.tolotranet.livecampus.Head;
 //mine
 
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -77,8 +78,21 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
         super.onStartCommand(intent, flags, startId);
         Log.d("hello", "onstartcommand called service bubble");
         boolean hasNewData = false;
+        boolean toggleBubbleView = false;
+
         if (intent != null) {
+            Log.d("hello", "intent (extra) detected");
             hasNewData = intent.getBooleanExtra("hasNewData", false); //the intent extras is from the startActivity in event_spreadsheet activity
+            toggleBubbleView = intent.getBooleanExtra("toggleBubbleView", false); // if the intent was called from notification
+            String s = intent.getStringExtra("keytest");
+            if(s!= null){
+                Log.d("hello TEST", s);
+            }
+        }
+
+        if (toggleBubbleView) {
+            toggleheadBubbleStickyIconView();
+            Log.d("hello", "toggled");
         }
         if (hasNewData) {
             Log.d("hello", "onstartcommand called service bubble and hasnewData true detected");
@@ -94,10 +108,16 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
     }
 
     private void showNotification() {
+        Intent notificationIntent = new Intent(this, Head_Service_Activity.class);
+        notificationIntent.putExtra("toggleBubbleView", true);
+        notificationIntent.putExtra("keytest", "test");
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.ic_logo_new)
                 .setContentTitle("CampusLive")
-                .setContentText("Bubble is running");
+                .setContentText("Bubble is running")
+                .setContentIntent(pendingIntent);
 
         startForeground(17, notificationBuilder.build());
     }
@@ -148,6 +168,7 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
                 return true;
             }
         });
+
 
         //IMAGE HEAD STICKY ONLY ONCLICKLISTENER//
         imgViewheadBubbleStickyIcon.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +231,7 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         paramsHeadSticky.gravity = Gravity.TOP | Gravity.LEFT;
-        paramsHeadSticky.x = display.getWidth()-50; //on top right
+        paramsHeadSticky.x = display.getWidth() - 50; //on top right
         paramsHeadSticky.y = 100;
 
         //layout of the headBubble
@@ -222,6 +243,13 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
 
     }
 
+    private void toggleheadBubbleStickyIconView(){
+       if( imgViewheadBubbleStickyIcon.getVisibility() == View.VISIBLE) {
+           imgViewheadBubbleStickyIcon.setVisibility(View.GONE);
+       }else{
+           imgViewheadBubbleStickyIcon.setVisibility(View.VISIBLE);
+       }
+    }
     private void createPopupMainContent(LayoutInflater inflater) {
         //the windowmanager of the maincontent, not visible by default
         windowManagerContentMain = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -464,7 +492,7 @@ public class Head_Service_Activity extends android.app.Service implements SwipeR
 
     private boolean hasEditedCalendarList() {
         //tempEvent_CalendarList_XMLParserClass_q6 is a copy we made when we swiped to the calendarlist, if we never swipe, this array should be null
-        if(tempEvent_CalendarList_XMLParserClass_q6==null){
+        if (tempEvent_CalendarList_XMLParserClass_q6 == null) {
             return false;
         }
         //else if it's not null, check wich one has changed
