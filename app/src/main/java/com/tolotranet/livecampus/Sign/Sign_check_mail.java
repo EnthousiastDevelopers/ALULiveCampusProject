@@ -32,6 +32,8 @@ public class Sign_check_mail extends Activity {
     ArrayAdapter<CharSequence> SpinnerDomainAdapter;
     String domain;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class Sign_check_mail extends Activity {
             public void onClick(View view) {
                 EditText username = (EditText) findViewById(R.id.mailusername);
 //                TextView domainTV = (TextView) findViewById(R.id.domain);
-                String Uemail = username.getText().toString() + domain;
+                String Uemail = username.getText().toString().toLowerCase() + domain;
 
 
                 Intent i = new Intent(Sign_check_mail.this, Sign_pass_check.class);

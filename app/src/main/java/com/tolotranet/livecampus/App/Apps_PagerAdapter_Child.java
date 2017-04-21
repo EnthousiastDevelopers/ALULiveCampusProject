@@ -38,11 +38,11 @@ public class Apps_PagerAdapter_Child extends FragmentPagerAdapter {
             case 0:
                 return "STUDENT LIFE";
             case 1:
-                return "OPERATIONS";
+                return "OPS";
             case 2:
-                return "MAURITIUS";
+                return "MUR";
             case 3:
-                return "MORE APPS";
+                return "ETC";
         }
         return null;
     }
