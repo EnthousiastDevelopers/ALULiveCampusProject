@@ -19,6 +19,8 @@ public class Feed_Create extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_create);
+
+        //complete Toolbar setup
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,8 +31,11 @@ public class Feed_Create extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //What to do on back clicked
+                Feed_Create.super.onBackPressed();
             }
         });
+        //complete Toolbar setup
+
         Button bt = new Button(this);
         bt.setText("POST");
         bt.setBackgroundColor(getResources().getColor(R.color.red_alu));

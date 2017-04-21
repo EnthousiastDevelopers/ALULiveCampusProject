@@ -1,6 +1,8 @@
 package com.tolotranet.livecampus.Sis;
 
 
+import android.util.Log;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -28,8 +30,11 @@ public class Sis_XMLCreator {
 		Document doc = docBuilder.newDocument();
 		Element rootElement = doc.createElement("Element");
 		doc.appendChild(rootElement);
+		Log.d("hello lenght xml", String.valueOf(Sis_XMLParserClass.q2.size()));
 
 		for (int i = 0; i < Sis_XMLParserClass.q1.size(); i++) {
+			Log.d("hello index xml", String.valueOf(i));
+
 			// PersonElement elements
 			Element ItemElement = doc.createElement("item");
 			rootElement.appendChild(ItemElement);

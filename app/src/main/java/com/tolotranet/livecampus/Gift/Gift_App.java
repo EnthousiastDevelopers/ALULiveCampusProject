@@ -53,7 +53,6 @@ public class Gift_App extends AppCompatActivity {
     SimpleDateFormat formatter;
     int finalN = 30;
 
-    private Gift_AlarmManagerBroadcastReceiver alarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,39 +254,6 @@ public class Gift_App extends AppCompatActivity {
 
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    public void startRepeatingTimer() {
-        Context context = this.getApplicationContext();
-        if (alarm != null) {
-            alarm.SetAlarm(context);
-            Toast.makeText(context, "Alarm is not null", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Alarm is null", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void cancelRepeatingTimer(View view) {
-        Context context = this.getApplicationContext();
-        if (alarm != null) {
-            alarm.CancelAlarm(context);
-        } else {
-            Toast.makeText(context, "Alarm is null", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void onetimeTimer(View view) {
-        Context context = this.getApplicationContext();
-        if (alarm != null) {
-            alarm.setOnetimeTimer(context);
-        } else {
-            Toast.makeText(context, "Alarm is null", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
     private boolean isNetworkAvailable() {

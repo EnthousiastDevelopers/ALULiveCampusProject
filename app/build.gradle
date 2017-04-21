@@ -8,12 +8,12 @@ android {
     defaultConfig {
         applicationId "com.tolotranet.livecampus"
         apply plugin: 'com.android.application'
-        minSdkVersion 14
+        minSdkVersion 16
         vectorDrawables.useSupportLibrary = true
         targetSdkVersion 22
-        versionCode 6
+        versionCode 8
         multiDexEnabled true
-        versionName "2.0"
+        versionName "2.0.1"
     }
     buildTypes {
         release {
@@ -67,5 +67,8 @@ dependencies {
     // compile 'com.google.firebase:firebase-core:9.6.1'
     compile 'com.google.firebase:firebase-core:9.2.0'
     compile 'com.google.firebase:firebase-messaging:9.2.0'
+    compile 'com.daprlabs.aaron:swipedeck:2.0.6'
+    compile 'com.android.support:cardview-v7:23.+' //cardView
+    compile 'com.squareup.picasso:picasso:2.2.+' //images maker
 }
 apply plugin: 'com.google.gms.google-services'

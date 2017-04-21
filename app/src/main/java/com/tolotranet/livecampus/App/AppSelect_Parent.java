@@ -80,7 +80,7 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
 
 
         boolean hasSetServiceAutoLaunch = true;
-        if(hasSetServiceAutoLaunch) {
+        if (hasSetServiceAutoLaunch) {
             //start service on app launced
             startService(new Intent(getApplication(), Head_Service_Activity.class));
         }
@@ -95,7 +95,6 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
 
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -113,8 +112,13 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
         MenuItem me_room = menu.findItem(R.id.me_room);
         me_room.setTitle(me_room.getTitle().toString() + ": " + Sign_User_Object.RoomNumber);
         me_room.setOnMenuItemClickListener(new MyInfoMenuClickListener());
+        if (Sign_User_Object.Apartment == null) {
+            Log.d("hello", "missing Sign_User_Object jump accessed, without refreshing the Sis from cloud, but it's ok");
+            Sign_DatabaseHelper helper = new Sign_DatabaseHelper(this);
+            helper.AllUserDataBaseToObject();
+        }
 
-        if (!Sign_User_Object.Apartment.toString().equals("N/A")) {
+        if (!(Sign_User_Object.Apartment == null) && Sign_User_Object.Apartment.equals("N/A")) {
             me_room.setTitle(me_room.getTitle().toString() + ": " + Sign_User_Object.RoomNumber + " " + Sign_User_Object.Apartment);
         }
 
@@ -169,7 +173,7 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
         scoretv.setText(Sign_User_Object.Score);
         emailtv.setText(Sign_User_Object.Email);
         nametv.setText(Sign_User_Object.Name);
-        if (Integer.parseInt(Sign_User_Object.Score) > 1) {
+        if (!(Sign_User_Object.Score == null) && Integer.parseInt(Sign_User_Object.Score) > 1) {
             subscoretv.setText("Points");
         }
 
@@ -388,14 +392,6 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
                 && activeNetworkInfo.isConnectedOrConnecting();
     }
 
-    public static int getUserID() {
-        Context c = MyApplication.getAppContext();
-        Sign_DatabaseHelper helper = new Sign_DatabaseHelper(c);
-        int userID = helper.getUserId();
-        //int userID = 1000005;
-        return userID;
-    }
-
 
     //this activity result give response of the startactivityforresult of voice recognition
     @Override
@@ -476,7 +472,7 @@ public class AppSelect_Parent extends AppCompatActivity implements NavigationVie
                 Intent i = new Intent(AppSelect_Parent.this, Head_Controller_Activity.class);
                 startActivity(i);
 
-            }else if (item.getTitle().equals("Help")) {
+            } else if (item.getTitle().equals("Help")) {
                 Mu_App.mu_category = "FAQ";
                 Intent i = new Intent(AppSelect_Parent.this, Mu_SpreadSheetActivity.class);
                 startActivity(i);

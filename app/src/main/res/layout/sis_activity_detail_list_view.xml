@@ -1,70 +1,82 @@
-<com.andexert.library.RippleView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/more"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_toLeftOf="@+id/more2"
-    app:rv_color= "@color/colorRipple_Sis"
-    app:rv_zoomDuration = "15"
     android:clickable="false"
-    >
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Sis.Sis_DetailListViewOwner">
+    app:rv_color="@color/colorRipple_Sis"
+    app:rv_zoomDuration="15">
 
-    <ImageView
-        android:id="@+id/ImageProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/sis_profil_neutral_large" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/ImageProfile">
-
-        <TextView
-            android:id="@+id/fullName"
-            android:textStyle="bold"
-            android:textSize="23dp"
-            android:padding="7dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Some Text Full Name" />
-
-        <TextView
-            android:id="@+id/country"
-            android:textSize="20dp"
-            android:padding="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/fullName"
-            android:text="Some Country" />
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/person_details_lv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ImageProfile"
-        android:layout_weight="1"
-        android:descendantFocusability="afterDescendants"
-        android:focusable="false"></ListView>
-
-</RelativeLayout>
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/menu_green"
-        android:visibility="gone"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:fab_colorNormal="@color/green"
-        android:src="@drawable/ic_done_tick_min"
+        tools:context=".Sis.Sis_DetailListViewOwner">
+
+        <ImageView
+            android:id="@+id/ImageProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sis_profil_neutral_large" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ImageProfile">
+
+            <TextView
+                android:id="@+id/fullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:text="Some Text Full Name"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/country"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fullName"
+                android:padding="5dp"
+                android:text="Some Country"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/interactBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/country"
+                android:padding="5dp"
+                android:layout_centerHorizontal="true"
+                android:text="Interact"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <ListView
+            android:layout_marginTop="45dp"
+            android:id="@+id/person_details_lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImageProfile"
+            android:layout_weight="1"
+            android:descendantFocusability="afterDescendants"
+            android:focusable="false"></ListView>
+
+    </RelativeLayout>
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/menu_green"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:paddingBottom="10dp"
-        app:menu_colorPressed="@color/light_grey"
-        android:paddingRight="10dp"/>
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_done_tick_min"
+        android:visibility="gone"
+        app:fab_colorNormal="@color/green"
+        app:menu_colorPressed="@color/light_grey" />
 </com.andexert.library.RippleView>

@@ -49,6 +49,7 @@ public class Event_startApplicationAsyncTask extends AsyncTask<Activity, Void, V
 				e.printStackTrace();
 			}
 		} else {
+			//if is not file available, get from the cloud, using the previous spreadsheet system, don't know why
 			FileExists = false;
 			Log.d("hello", "File doesn't exist");
 

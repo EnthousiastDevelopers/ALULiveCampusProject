@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="7dp"
+    android:layout_marginTop="7dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingLeft="6dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:id="@+id/checkboxLT"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="0dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingLeft="1dp"
+        android:textColor="@color/grey"
+        android:textSize="13sp">
+
+        <CheckBox
+            android:id="@+id/stateCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/blue_sky"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/PersonImageView"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/event_calendar"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/Contact_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:gravity="center_vertical"
+                android:padding="1dp"
+                android:text="Test"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Mini_bottom_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:gravity="center_vertical"
+                android:padding="1dp"
+                android:text="Test"
+                android:textColor="@color/grey"
+                android:textSize="13sp"
+
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+</RelativeLayout>
+    </LinearLayout>

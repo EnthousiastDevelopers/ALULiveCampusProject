@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.tolotranet.livecampus.Booking.Booking_App;
 import com.tolotranet.livecampus.Bubble.Bubble_SpreadSheetActivity;
-import com.tolotranet.livecampus.CalendarAPI;
 import com.tolotranet.livecampus.Event.Event_SpreadSheetActivity;
 import com.tolotranet.livecampus.Food.Food_App;
 import com.tolotranet.livecampus.Food.Food_SpreadSheetActivity;
@@ -32,11 +31,14 @@ import com.tolotranet.livecampus.Maint.Maint_SpreadSheetActivity;
 import com.tolotranet.livecampus.Mu.Mu_Add_Food;
 import com.tolotranet.livecampus.Mu.Mu_App;
 import com.tolotranet.livecampus.Mu.Mu_SpreadSheetActivity;
-import com.tolotranet.livecampus.Nfc.Nfc_MainActivity;
+import com.tolotranet.livecampus.Nfc.Nfc_Bank_MainActivity;
+import com.tolotranet.livecampus.Nfc.Nfc_MainActivity_Attendance;
+import com.tolotranet.livecampus.Nfc.Nfc_MainActivity_Food;
 import com.tolotranet.livecampus.R;
 import com.tolotranet.livecampus.Settings.Settings_mainActivity;
 import com.tolotranet.livecampus.Sign_User_Object;
 import com.tolotranet.livecampus.Sis.Sis_SpreadSheetActivity;
+import com.tolotranet.livecampus.Sis.Sis_Switch_SpreadSheetActivity;
 import com.tolotranet.livecampus.Sis.Sis_startApplicationAsyncTaskOwner;
 import com.tolotranet.livecampus.Transp.Transp_SpreadSheetActivity;
 
@@ -137,6 +139,7 @@ public class AppSelect_MainFragment_Child extends Fragment {
 //                        "UWallet ((Locked))", "Developer Area((Locked))", "Art&Photography((Locked))"));
         String[][] StudentLifeAppsItemArray = new String[][]{
                 {"Student Profiles", "Know all the members of our community"},
+                {"Card Game", "Know all the members of our community"},
                 {"Events", "Upcoming Events"},
                 {"Student Life Stream", "Messages from Student Life and Head of College"},
                 {"Book a meeting", "Set an appointment with staff member"},
@@ -145,6 +148,7 @@ public class AppSelect_MainFragment_Child extends Fragment {
         };
 
         String[][] OpsAppsItemArray = new String[][]{
+                {"Meal Card", "Suggest a new menu and get feedback"},
                 {"Suggest Food", "Suggest a new menu and get feedback"},
                 {"Get the menu of the week and give feedback", "Info about the menu of the week"},
                 {"Get the list suggested food and vote", "Food"},
@@ -173,18 +177,21 @@ public class AppSelect_MainFragment_Child extends Fragment {
                 {"Contribute to App", "Order food easily"},
                 {"Attendance", "Order food easily"},
                 {"Academic Calendar", "Order food easily"},
+                {"NFC Wallet", "Order food easily"},
 
         };
 
 
         Integer[][] SLimgid = {
                 {R.drawable.app_sis, 1},
+                {R.drawable.app_sis, 100},
                 {R.drawable.app_event, 2},
                 {R.drawable.app_stream, 3},
                 {R.drawable.app_book, 4},
                 {R.drawable.app_book, 41}
         };
         Integer[][] Opsimgid = {
+                {R.drawable.app_food_check, 60},
                 {R.drawable.food_ic_chef, 6},
                 {R.drawable.app_ic_menu_food, 7},
                 {R.drawable.app_food_feedback, 8},
@@ -213,6 +220,7 @@ public class AppSelect_MainFragment_Child extends Fragment {
                 {R.drawable.app_ic_chat_bubble, 5},
                 {R.drawable.app_attendance, 52},
                 {R.drawable.app_academic, 51},
+                {R.drawable.app_nfc_bank_card, 510},
         };
 
         if (section == "StudentLife") {
@@ -252,7 +260,7 @@ public class AppSelect_MainFragment_Child extends Fragment {
                 ;
                 CIO.setIndex(i);
                 CIO.setMenuId(imgid[i][1]);
-                CIO.setUserId(0);
+                CIO.setId(0);
                 TempItemArray.add(CIO);
             }
         }
@@ -273,7 +281,7 @@ public class AppSelect_MainFragment_Child extends Fragment {
             int Index = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getIndex();
             int ThisId = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
-                    .getUserId();
+                    .getId();
             int ThisImg = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getImgId();
             int ThisMenuId = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
@@ -328,18 +336,31 @@ public class AppSelect_MainFragment_Child extends Fragment {
 
             }
             if (Menu == "Attendance") {
-                Intent i = new Intent(getActivity(), Nfc_MainActivity.class);
+                Intent i = new Intent(getActivity(), Nfc_MainActivity_Attendance.class);
                 startActivity(i);
 
             }
             if (Menu == "Student Profiles") {
                 Intent i = new Intent(getActivity(), Sis_SpreadSheetActivity.class);
+                i.putExtra("target", "list");
                 startActivity(i);
-                // i.putExtra("myId", userID);
-
+            }
+            if (Menu == "NFC Wallet") {
+                Intent i = new Intent(getActivity(), Nfc_Bank_MainActivity.class);
+                startActivity(i);
+            }
+            if (Menu == "Card Game") {
+                Intent i = new Intent(getActivity(), Sis_Switch_SpreadSheetActivity.class);
+                i.putExtra("target", "card");
+                startActivity(i);
             }
             if (Menu == "Events") {
                 Intent i = new Intent(getActivity(), Event_SpreadSheetActivity.class);
+                startActivity(i);
+
+            }
+            if (Menu == "Meal Card") {
+                Intent i = new Intent(getActivity(), Nfc_MainActivity_Food.class);
                 startActivity(i);
 
             }
@@ -392,8 +413,9 @@ public class AppSelect_MainFragment_Child extends Fragment {
                 Intent i = new Intent(getActivity(), Mu_Add_Food.class);
                 Mu_App.mu_category = "Food";
                 startActivity(i);
-            }  if (Menu == "Academic Calendar") {
-                Intent i = new Intent(getActivity(), CalendarAPI.class);
+            }
+            if (Menu == "Academic Calendar") {
+                Intent i = new Intent(getActivity(), Event_SpreadSheetActivity.class);
                 startActivity(i);
             }
 

@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Apps_customTheme" parent="Theme.AppCompat">
+    <style name="Apps_customTheme" parent="Theme.AppCompat.Light">
         <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
 
     </style>
     <style name="Apps_customTheme.NoActionBar" parent="Theme.AppCompat">
         <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Apps_customThemeDialog.NoActionBar" parent="Theme.AppCompat.Dialog">
+        <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <!--WITHOUT INHERITANCE-->
@@ -17,6 +29,8 @@
         <item name="android:windowTitleSize">50dip</item>
         <item name="android:windowTitleStyle">@style/windowTitleStyle</item>
           <item name="actionBarStyle">@style/Apps_ActionBarStyle</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
     <style name="sis_theme" parent="Theme.AppCompat">
         <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>

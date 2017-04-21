@@ -1,428 +1,423 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tolotranet.livecampus"
+    android:versionName="2.0.1"
+    android:versionCode="8">
 
-android:versionCode="5"
-android:versionName="2.0" >
-
-<uses-sdk
-    android:minSdkVersion="14"
-    android:targetSdkVersion="18" />
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="18" />
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.NFC" />
+
+    <application
+
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_new"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Apps_customTheme">
+
+        <!--SERVICES-->
+
+        <service android:name="com.tolotranet.livecampus.Firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
+        <!--android:exported="true"-->
+        <!--android:process=":ServiceProcess"-->
+        <!--HEAD-->
+        <service
+            android:name=".Head.Head_Service_Activity"
+            android:theme="@style/Apps_customTheme">
+
+        </service>
+        <activity
+            android:name=".Head.Head_Controller_Activity"
+            android:label="Sticky Bubble Control">
+
+        </activity>
+        <!--HEAD-->
+        <!--RECEIVER-->
+        <receiver android:name="com.tolotranet.livecampus.Gift.Gift_Notification_Receiver"></receiver>
+        <receiver android:name="com.tolotranet.livecampus.Transp.Transp_Notification_Receiver"></receiver>
+        <!--APPSELECT-->
+        <activity
+            android:name="com.tolotranet.livecampus.App.AppSelect_Parent"
+            android:label="CAMPUS LIVE - ALU"
+            android:theme="@style/Apps_customTheme.NoActionBar"></activity>
+
+        <!--SETTINGS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Settings.Settings_mainActivity"
+            android:label="SETTINGS"></activity>
+
+        <!--NFC-->
+        <!--NFC ATTENDANCE-->
+        <activity
+            android:name=".Nfc.Nfc_MainActivity_Attendance"
+            android:alwaysRetainTaskState="true"
+            android:label="ATTENDANCE - CampusLive"
+            android:launchMode="singleInstance"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--NFC FOOD-->
+        <activity
+            android:name=".Nfc.Nfc_MainActivity_Food"
+            android:alwaysRetainTaskState="true"
+            android:label="MEAL CARD - CampusLive"
+            android:launchMode="singleInstance"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize"></activity>
+
+        <!--NFC Bank-->
+
+        <activity
+            android:name=".Nfc.Nfc_Bank_MainActivity"
+            android:alwaysRetainTaskState="true"
+            android:label="Wallet NFC - CampusLive"
+            android:launchMode="singleInstance"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".Nfc.Nfc_Bank_BuddyList_Picker"
+            android:alwaysRetainTaskState="true"
+            android:label="Wallet NFC - CampusLive"
+            android:launchMode="singleInstance"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
+        <!--MAINTENANCE-->
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_Confirm"
+            android:label="MAINTENANCE FORM"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_Add"
+            android:label="MAINTENANCE FORM"></activity>
+
+        <!--VOICE RECOGNITION-->
+        <activity
+            android:name=".Voice.Voice_DialogActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <!--SIGN-->
+        <activity
+            android:name="com.tolotranet.livecampus.Sign.Sign_in"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Sign.Sign_startApplication"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.tolotranet.livecampus.Sign.Sign_check_mail"></activity>
+        <activity android:name="com.tolotranet.livecampus.Sign.Sign_pass_check"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Sign.Sign_Up_confirm"
+            android:label="@string/app_name"></activity>
+
+
+        <!--FOODAPP-->
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_Confirm"
+            android:label="FOOD APP"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.App.App_Contribute"
+            android:label="FOOD APP"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.FoodCalendar"
+            android:label="FOOD APP"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.FoodSelect"
+            android:label="FOOD APP"></activity>
+        <!--CALENDAR API-->
+
+        <!--FEEDBACK-->
+        <activity
+            android:name="com.tolotranet.livecampus.App.App_Feedback"
+            android:label="Calendar API"></activity>
+
+        <!--FEEDBACK-->
+        <!--FEED-->
+        <activity
+            android:name="com.tolotranet.livecampus.Feed.Feed_Create"
+            android:label="Post to ALU ALIVE"
+            android:theme="@style/Apps_customTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Feed.Feed_MainActivity"
+            android:label="CAMPUS LIVE"></activity>
+        <!--BOOKING-->
+
+        <activity
+            android:name="com.tolotranet.livecampus.Booking.Booking_Location_People_Day"
+            android:label="BOOK A MEETING"
+            android:theme="@style/Apps_customTheme"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Booking.Booking_App"
+            android:label="BOOK A MEETING"
+            android:theme="@style/Apps_customTheme"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Booking.Booking_Calendar"
+            android:label="BOOK A MEETING"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Booking.Booking_Select"
+            android:label="BOOK A MEETING"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_Confirm_Mu"
+            android:label="MAURITIUS CONTRIBUTE"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Booking.Booking_confirm"
+            android:label="BOOK A MEETING"></activity>
+
+        <!--TRANSPORT-->
+        <activity
+            android:name="com.tolotranet.livecampus.Transp.Transp_TransApp"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Transp.Transp_ElementDetailListView"
+            android:label="TRANSPORT SCHEDULE"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Transp.Transp_SpreadSheetActivity"
+            android:label="TRANSPORT SCHEDULE">
+
+        </activity>
+
+
+        <!--INTERACT-->
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Interact.Interact_MainActivity"
+            android:label="INTERACTION"
+            android:theme="@style/Apps_customThemeDialog.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>#
+        <!--SIS INTERACT-->
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_Interaction_MainList"
+            android:label="Card Game"
+            android:theme="@style/Apps_customTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_Switch_SpreadSheetActivity"
+            android:label="SIS"></activity>
+
+        <!--SIS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_MainList"
+            android:label="SIS"
+            android:theme="@style/sis_theme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_DetailListViewOwner"
+            android:label="SIS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_DetailListView"
+            android:label="SIS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Sis.Sis_SpreadSheetActivity"
+            android:label="SIS"></activity>
+
+        <!--EVENTS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Event.Event_MainList"
+            android:label="EVENTS"
+            android:theme="@style/event_Theme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Event.Event_DetailListViewOwner"
+            android:label="EVENTS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Event.Event_DetailListView"
+            android:label="EVENTS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Event.Event_SpreadSheetActivity"
+            android:label="EVENTS"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Event.CalendarList.Event_CalendarList_Main"
+            android:label="PICK CALENDAR"
+            android:theme="@style/Apps_customTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <!--MAURITIUS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_Add_Mu"
+            android:label="ADD TO MAURITIUS +1"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_Add_Idea"
+            android:label="ADD YOUR IDEA"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_Add_Food"
+            android:label="ADD TO MAURITIUS +1"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_MainList"
+            android:label="MAURITIUS"
+            android:theme="@style/Apps_customTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_Confirm"
+            android:label="FOOD APP"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_DetailListViewOwner"
+            android:label="MAURITIUS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_DetailListView"
+            android:label="MAURITIUS"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_SpreadSheetActivity"
+            android:label="MAURITIUS">
+
+        </activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Mu.Mu_App"
+            android:label="MAURITIUS"
+            android:theme="@style/Apps_customTheme"></activity>
+
+        <!--MAURITIUS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_Add"
+            android:label="ADD TO MAURITIUS +1"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_MainList"
+            android:label="MAURITIUS"
+            android:theme="@style/Apps_customTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_DetailListViewOwner"
+            android:label="MAURITIUS"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_DetailListView"
+            android:label="MAURITIUS"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_SpreadSheetActivity"
+            android:label="MAURITIUS">
+
+        </activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Food.Food_App"
+            android:label="MAURITIUS"
+            android:theme="@style/Apps_customTheme">
+
+        </activity>
+
+        <!--MAINTENANCe-->
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_MainList"
+            android:label="MAINTENANCE"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_DetailListViewOwner"
+            android:label="MAINTENANCE"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_DetailListView"
+            android:label="MAINTENANCE"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Maint.Maint_SpreadSheetActivity"
+            android:label="MAINTENANCE"></activity>
+        <!--LEADERBOARD-->
+        <activity
+            android:name="com.tolotranet.livecampus.Lead.Lead_MainList"
+            android:label="LEADERBOARD"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Lead.Lead_DetailListViewOwner"
+            android:label="LEADERBOARD"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Lead.Lead_DetailListView"
+            android:label="LEADERBOARD"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Lead.Lead_SpreadSheetActivity"
+            android:label="LEADERBOARD"></activity>
+
+        <!--FAQ-->
+        <activity
+            android:name="com.tolotranet.livecampus.Bubble.Bubble_MainList"
+            android:label="BUBBLEMARKET"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Bubble.Bubble_DetailListViewOwner"
+            android:label="BUBBLEMARKET"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name="com.tolotranet.livecampus.Bubble.Bubble_DetailListView"
+            android:label="BUBBLEMARKET"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name="com.tolotranet.livecampus.Bubble.Bubble_SpreadSheetActivity"
+            android:label="BUBBLEMARKET"></activity>
+
+        <!--STUDENT LIFE STREAM-->
+        <activity
+            android:name="com.tolotranet.livecampus.Live.Live_App"
+            android:label="STUDENT LIFE STREAM"></activity>
+        <!--GIFTS-->
+        <activity
+            android:name="com.tolotranet.livecampus.Gift.Gift_App"
+            android:label="GIFTS"></activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!--FIREBASE NOTIFICATION-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_logo_mini" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+    </application>
     <uses-feature android:name="android.hardware.nfc" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <!--APPLICATION ACTIVITY-->
-<application
-
-    android:allowBackup="true"
-    android:icon="@drawable/ic_logo_new"
-    android:label="@string/app_name"
-    android:supportsRtl="true"
-    android:name="com.tolotranet.livecampus.MyApplication"
-    android:theme="@style/Apps_customTheme">
-
-    <!--SERVICES-->
-
-    <service
-        android:name="com.tolotranet.livecampus.Firebase.MyFirebaseMessagingService">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-        </intent-filter>
-    </service>
-
-
-
-    <!--HEAD-->
-    <service android:name=".Head.Head_Service_Activity"></service>
-    <activity android:name=".Head.Head_Controller_Activity"
-        android:label="Sticky PriceMaster Control"></activity>
-    <!--HEAD-->
-    <!--RECEIVER-->
-    <receiver android:name="com.tolotranet.livecampus.Gift.Gift_Notification_Receiver"></receiver>
-    <receiver android:name="com.tolotranet.livecampus.Transp.Transp_Notification_Receiver"></receiver>
-<!--APPSELECT-->
-    <activity
-        android:name="com.tolotranet.livecampus.App.AppSelect_Parent"
-        android:theme="@style/Apps_customTheme.NoActionBar"
-        android:label="CAMPUS LIVE - ALU"
-        >
-    </activity>
-
-    <!--SETTINGS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Settings.Settings_mainActivity"
-        android:label="SETTINGS">
-    </activity>
-
-    <!--NFC-->
-    <activity
-        android:screenOrientation="nosensor"
-        android:alwaysRetainTaskState="true"
-        android:launchMode="singleInstance"
-        android:name=".Nfc.Nfc_MainActivity"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
-            <action android:name="android.nfc.action.TAG_DISCOVERED"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
-    </activity>
-
-    <!--MAINTENANCE-->
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_Confirm"
-        android:label="MAINTENANCE FORM">
-</activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_Add"
-        android:label="MAINTENANCE FORM">
-</activity>
-
-<!--VOICE RECOGNITION-->
-    <activity android:theme="@style/Theme.AppCompat.Dialog"
-        android:excludeFromRecents="true"
-        android:name=".Voice.Voice_DialogActivity" />
-    <!--SIGN-->
-    <activity
-        android:name="com.tolotranet.livecampus.Sign.Sign_in"
-        android:label="@string/app_name"
-        android:windowSoftInputMode="stateAlwaysHidden"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sign.Sign_startApplication"
-        android:label="@string/app_name"
-        android:windowSoftInputMode="stateAlwaysHidden"
-        android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sign.Sign_check_mail">
-</activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sign.Sign_pass_check"     >
-</activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sign.Sign_Up_confirm"
-        android:label="@string/app_name"
-        >
-    </activity>
-
-
-    <!--FOODAPP-->
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_Confirm"
-        android:label="FOOD APP"
-        >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.App.App_Contribute"
-        android:label="FOOD APP">
-</activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.FoodCalendar"
-        android:label="FOOD APP">
-</activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.FoodSelect"
-        android:label="FOOD APP">
-</activity>
-    <!--CALENDAR API-->
-    <activity
-        android:name="com.tolotranet.livecampus.CalendarAPI"
-        android:label="Calendar API">
-</activity>
-<!--FEEDBACK-->
-    <activity
-        android:name="com.tolotranet.livecampus.App.App_Feedback"
-        android:label="Calendar API">
-    </activity>
-
-<!--FEEDBACK-->
-<!--FEED-->
-    <activity
-        android:name="com.tolotranet.livecampus.Feed.Feed_Create"
-        android:theme="@style/Apps_customTheme.NoActionBar"
-        android:label="Post to ALU ALIVE">
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Feed.Feed_MainActivity"
-        android:label="CAMPUS LIVE">
-    </activity>
-    <!--BOOKING-->
-
-    <activity
-        android:name="com.tolotranet.livecampus.Booking.Booking_Location_People_Day"
-        android:label="BOOK A MEETING">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Booking.Booking_App"
-        android:label="BOOK A MEETING">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Booking.Booking_Calendar"
-        android:label="BOOK A MEETING">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Booking.Booking_Select"
-        android:label="BOOK A MEETING">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_Confirm_Mu"
-        android:label="MAURITIUS CONTRIBUTE">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Booking.Booking_confirm"
-        android:label="BOOK A MEETING">
-    </activity>
-
-    <!--TRANSPORT-->
-    <activity
-        android:name="com.tolotranet.livecampus.Transp.Transp_TransApp"
-        android:label="@string/app_name"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Transp.Transp_ElementDetailListView"
-        android:label="TRANSPORT SCHEDULE" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Transp.Transp_SpreadSheetActivity"
-        android:label="TRANSPORT SCHEDULE" >
-
-    </activity>
-
-
-<!--SIS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Sis.Sis_MainList"
-        android:theme="@style/sis_theme"
-        android:label="SIS"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sis.Sis_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="SIS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sis.Sis_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="SIS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Sis.Sis_SpreadSheetActivity"
-        android:label="SIS" >
-    </activity>
-
-    <!--EVENTS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Event.Event_MainList"
-        android:label="EVENTS"
-        android:theme="@style/event_Theme"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Event.Event_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="EVENTS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Event.Event_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="EVENTS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Event.Event_SpreadSheetActivity"
-        android:label="EVENTS" >
-    </activity>
-    <!--MAURITIUS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_Add_Mu"
-        android:label="ADD TO MAURITIUS +1">
-    </activity> <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_Add_Idea"
-        android:label="ADD YOUR IDEA">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_Add_Food"
-        android:label="ADD TO MAURITIUS +1">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_MainList"
-        android:label="MAURITIUS"
-        android:theme="@style/Apps_customTheme"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_Confirm"
-        android:label="FOOD APP"
-        >
-        </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="MAURITIUS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="MAURITIUS" >
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_SpreadSheetActivity"
-        android:label="MAURITIUS" >
-
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Mu.Mu_App"
-        android:theme="@style/Apps_customTheme"
-        android:label="MAURITIUS" >
-    </activity>
-
-    <!--MAURITIUS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_Add"
-        android:label="ADD TO MAURITIUS +1">
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_MainList"
-        android:label="MAURITIUS"
-        android:theme="@style/Apps_customTheme"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="MAURITIUS" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="MAURITIUS" >
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_SpreadSheetActivity"
-        android:label="MAURITIUS" >
-
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Food.Food_App"
-        android:theme="@style/Apps_customTheme"
-        android:label="MAURITIUS" >
-
-    </activity>
-
-    <!--MAINTENANCe-->
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_MainList"
-        android:label="LEADERBOARD"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="LEADERBOARD" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="LEADERBOARD" >
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Maint.Maint_SpreadSheetActivity"
-        android:label="LEADERBOARD" >
-    </activity>
-   <!--LEADERBOARD-->
-    <activity
-        android:name="com.tolotranet.livecampus.Lead.Lead_MainList"
-        android:label="LEADERBOARD"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Lead.Lead_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="LEADERBOARD" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Lead.Lead_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="LEADERBOARD" >
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Lead.Lead_SpreadSheetActivity"
-        android:label="LEADERBOARD" >
-    </activity>
-
-    <!--FAQ-->
-        <activity
-        android:name="com.tolotranet.livecampus.Bubble.Bubble_MainList"
-        android:label="BUBBLEMARKET"
-        android:windowSoftInputMode="stateHidden" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Bubble.Bubble_DetailListViewOwner"
-        android:windowSoftInputMode="adjustPan"
-        android:label="BUBBLEMARKET" >
-    </activity>
-    <activity
-        android:name="com.tolotranet.livecampus.Bubble.Bubble_DetailListView"
-        android:windowSoftInputMode="adjustPan"
-        android:label="BUBBLEMARKET" >
-    </activity>
-
-    <activity
-        android:name="com.tolotranet.livecampus.Bubble.Bubble_SpreadSheetActivity"
-        android:label="BUBBLEMARKET" >
-    </activity>
-
-    <!--STUDENT LIFE STREAM-->
-    <activity
-        android:name="com.tolotranet.livecampus.Live.Live_App"
-        android:label="STUDENT LIFE STREAM" >
-    </activity>
-<!--GIFTS-->
-    <activity
-        android:name="com.tolotranet.livecampus.Gift.Gift_App"
-        android:label="GIFTS">
-        </activity>
-
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
-    <!--FIREBASE NOTIFICATION-->
-    <meta-data
-        android:name="com.google.firebase.messaging.default_notification_icon"
-        android:resource="@drawable/ic_logo_mini" />
-    <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-         notification message. See README(https://goo.gl/6BKBk7) for more. -->
-    <meta-data
-        android:name="com.google.firebase.messaging.default_notification_color"
-        android:resource="@color/colorAccent" />
-</application>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 
 </manifest>

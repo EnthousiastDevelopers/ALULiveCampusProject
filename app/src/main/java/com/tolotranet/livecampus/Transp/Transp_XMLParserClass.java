@@ -20,7 +20,7 @@ public class Transp_XMLParserClass {
 	public static ArrayList<String> Cohort_Array;
 	public static ArrayList<String> TimeArray;
 	public static ArrayList<String> NumberStud_Array;
-	public static ArrayList<String> Res2_Array;
+	public static ArrayList<String> TimeStamp;
 	public static ArrayList<String> Mob1_Array;
 	public static ArrayList<String> Mob2_Array;
 	public static ArrayList<String> Email1_Array;
@@ -42,7 +42,7 @@ public class Transp_XMLParserClass {
 		Cohort_Array = new ArrayList<String>();
 		TimeArray = new ArrayList<String>();
 		NumberStud_Array = new ArrayList<String>();
-		Res2_Array = new ArrayList<String>();
+		TimeStamp = new ArrayList<String>();
 		Mob1_Array = new ArrayList<String>();
 		Mob2_Array = new ArrayList<String>();
 		Day_Array = new ArrayList<String>();
@@ -86,7 +86,7 @@ public class Transp_XMLParserClass {
 					NumberStud_Array.add(xrp.nextText());
 				}
 				if (xrp.getName().equals(("r2"))) {
-					Res2_Array.add(xrp.nextText());
+					TimeStamp.add(xrp.nextText());
 				}
 				if (xrp.getName().equals(("m1"))) {
 					Mob1_Array.add(xrp.nextText());

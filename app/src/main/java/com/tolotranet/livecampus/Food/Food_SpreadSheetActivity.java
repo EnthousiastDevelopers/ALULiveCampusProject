@@ -77,7 +77,7 @@ public class Food_SpreadSheetActivity extends Activity {
                 if (isNetworkAvailable()) {
                     Toast.makeText(getApplicationContext(), "Updating.....",
                             Toast.LENGTH_SHORT).show();
-                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(Food_SpreadSheetActivity.this, "normal");
                     getDataTask.execute(this);
                 } else {
                     Toast.makeText(getApplicationContext(),

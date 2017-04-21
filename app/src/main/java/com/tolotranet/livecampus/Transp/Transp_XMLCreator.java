@@ -30,7 +30,7 @@ public class Transp_XMLCreator {
 		doc.appendChild(rootElement);
 //Log.d("hello", "this is my array"+ Arrays.toString(Transp_XMLParserClass.RouteArray.toArray()) );
 
-		for (int i = 0; i < Transp_XMLParserClass.Res2_Array.size(); i++) {
+		for (int i = 0; i < Transp_XMLParserClass.TimeStamp.size(); i++) {
 			// PersonElement elements
 			Element PersonElement = doc.createElement("Person");
 			rootElement.appendChild(PersonElement);
@@ -69,7 +69,7 @@ public class Transp_XMLCreator {
 			PersonElement.appendChild(NUMBERSTUDENT);
 
 			Element R2 = doc.createElement("r2");
-			R2.appendChild(doc.createTextNode(Transp_XMLParserClass.Res2_Array.get(i)));
+			R2.appendChild(doc.createTextNode(Transp_XMLParserClass.TimeStamp.get(i)));
 			PersonElement.appendChild(R2);
 
 			Element M1 = doc.createElement("m1");

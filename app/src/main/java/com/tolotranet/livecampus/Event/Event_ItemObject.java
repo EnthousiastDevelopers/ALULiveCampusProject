@@ -5,10 +5,12 @@ public class Event_ItemObject {
 	private String Name;
 	private String BottomText;
 	private String MiniText;
-	private String timeStamp, ObjectID;
+	private String timeStamp, ObjectID, BgColor;
 	private int Index;
 	private int UserId;
-	
+	private int type;
+	private int  childCount;
+
 	public String getName(){
 		return this.Name;
 	}
@@ -60,5 +62,30 @@ public class Event_ItemObject {
 
 	public void setObjectID(String objectID) {
 		ObjectID = objectID;
+	}
+
+	public String getBgColor() {
+		return BgColor;
+	}
+
+	public void setBgColor(String bgColor) {
+		BgColor = bgColor;
+	}
+
+    public int getType() {
+        return type;
+    }
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+
+	public void setChildCount(int childCount) {
+		this.childCount = childCount;
+	}
+
+	public int getChildCount() {
+		return childCount;
 	}
 }

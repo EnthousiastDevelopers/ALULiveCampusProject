@@ -4,6 +4,7 @@ package com.tolotranet.livecampus.Booking;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * Created by Tolotra Samuel on 18/08/2016.
  */
 
-public class Booking_Location_People_Day extends Activity {
+public class Booking_Location_People_Day extends AppCompatActivity {
     ListView toolList;
     private FirebaseAnalytics mFirebaseAnalytics;
     ArrayList<Booking_ItemObject> ContactItemArray;
@@ -47,7 +48,7 @@ public class Booking_Location_People_Day extends Activity {
         //Mainlistview = (ListView) findViewById(R.id.Contacts_list_view);
 
 
-        myAdapter = new Booking_MyCustomBaseAdapter_3(getApplicationContext(),
+        myAdapter = new Booking_MyCustomBaseAdapter_3(Booking_Location_People_Day.this,
                 ContactItemArray);
         toolList.setAdapter(myAdapter);
 

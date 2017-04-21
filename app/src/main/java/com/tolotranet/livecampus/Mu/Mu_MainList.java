@@ -194,7 +194,7 @@ public class Mu_MainList extends AppCompatActivity {
                     }
                     CIO.setIndex(i);
                     CIO.setImgID(category_img_id);
-//				CIO.setUserId(Integer.parseInt(Mu_XMLParserClass.q1.get(i)));
+//				CIO.setState(Integer.parseInt(Mu_XMLParserClass.q1.get(i)));
                     TempItemArray.add(CIO);
                 }
             }

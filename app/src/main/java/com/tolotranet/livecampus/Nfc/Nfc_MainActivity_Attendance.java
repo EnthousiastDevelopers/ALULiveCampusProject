@@ -1,6 +1,7 @@
 package com.tolotranet.livecampus.Nfc;
 
 import android.accounts.AccountManager;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -9,6 +10,7 @@ import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -16,13 +18,19 @@ import android.nfc.Tag;
 import android.nfc.tech.MifareClassic;
 import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.NfcA;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Vibrator;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -30,9 +38,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,8 +96,8 @@ import pub.devrel.easypermissions.EasyPermissions;
 import com.tolotranet.livecampus.App.App_Tools;
 import com.tolotranet.livecampus.HttpRequestApp;
 import com.tolotranet.livecampus.R;
+import com.tolotranet.livecampus.RoundedImageView;
 import com.tolotranet.livecampus.Sis.Sis_DetailListItem;
-import com.tolotranet.livecampus.Sis.Sis_DetailListViewOwner;
 import com.tolotranet.livecampus.Sis.Sis_XMLParserClass;
 import com.tolotranet.livecampus.Nfc.nfc_record.ParsedNdefRecord;
 
@@ -97,7 +108,7 @@ import org.xmlpull.v1.XmlPullParserException;
 /**
  * An {@link Activity} which handles a broadcast of a new tag that the device just discovered.
  */
-public class Nfc_MainActivity extends AppCompatActivity
+public class Nfc_MainActivity_Attendance extends AppCompatActivity
         implements EasyPermissions.PermissionCallbacks {
 
     private ArrayList<Sis_DetailListItem> DetailList;
@@ -126,36 +137,37 @@ public class Nfc_MainActivity extends AppCompatActivity
     private ArrayList<String> TempTrackList;
     App_Tools tools;
     private AlertDialog mDialog;
-
+    private MediaPlayer mp_On = new MediaPlayer();
+    private MediaPlayer mp_Off = new MediaPlayer();
     private List<Tag> mTags = new ArrayList<>();
     private String lastCourse;
     private TextView courseTV;
     private boolean hasShownCoursePopupThroughResolveIntent;
+    private Vibrator vibe;
+    private ArrayList<String> NameItemArrayString;
+    private View childLayout;
+    private DrawerLayout drawer;
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // setContentView(R.layout.tag_viewer);
         Log.d("hello", "on create");
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nfc_activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setVisibility(View.GONE);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setUpSharedDrawerLayout();
+        includeThisLayoutContent();
+       
+        
+        vibe = (Vibrator) this.getSystemService(this.VIBRATOR_SERVICE);
+        mp_On = MediaPlayer.create(Nfc_MainActivity_Attendance.this, R.raw.wav_success);
+        mp_Off = MediaPlayer.create(Nfc_MainActivity_Attendance.this, R.raw.wav_alert);
+
 
 
         TempTrackList = new ArrayList<String>();
 
-        linearLayoutContent = (LinearLayout) findViewById(R.id.list);
+        linearLayoutContent = (LinearLayout)  childLayout.findViewById(R.id.list);
         resolveIntent(getIntent());
 
         mDialog = new AlertDialog.Builder(this).setNeutralButton("Ok", null).create();
@@ -166,6 +178,27 @@ public class Nfc_MainActivity extends AppCompatActivity
             //finish();
             return;
         }
+        mNfcAdapter.enableReaderMode(this,
+                new NfcAdapter.ReaderCallback() {
+                    @Override
+                    public void onTagDiscovered(final Tag tag) {
+                        // do something
+
+                        //Attendance
+                        final String cardID = dumpTagDataIdDec(tag);
+                        Log.d("hello", "card ontagdiscovered ID in Dec is: " + cardID);
+                        attendance(cardID);
+                    }
+                },
+                NfcAdapter.FLAG_READER_NFC_A |
+                        NfcAdapter.FLAG_READER_NFC_B |
+                        NfcAdapter.FLAG_READER_NFC_F |
+                        NfcAdapter.FLAG_READER_NFC_V |
+                        NfcAdapter.FLAG_READER_NFC_BARCODE |
+                        NfcAdapter.FLAG_READER_NO_PLATFORM_SOUNDS,
+                null);
+
+
 
         mPendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
@@ -181,8 +214,8 @@ public class Nfc_MainActivity extends AppCompatActivity
 
         tools = new App_Tools();
 
-        Button courseBtn = (Button) findViewById(R.id.courseBtn);
-        courseTV = (TextView) findViewById(R.id.courseTV);
+        ImageView courseBtn = (ImageView) childLayout.findViewById(R.id.courseBtn);
+        courseTV = (TextView) childLayout.findViewById(R.id.courseTV);
         lastCourse = courseTV.getText().toString();
 
         courseBtn.setOnClickListener(new View.OnClickListener() {
@@ -193,56 +226,109 @@ public class Nfc_MainActivity extends AppCompatActivity
         });
 
         if (!hasShownCoursePopupThroughResolveIntent) {
+            mp_Off.start();
+            vibe.vibrate(100);
             showPopupCourserInput("");
         }
     }//end Oncreate
 
+    private void setUpSharedDrawerLayout() {
+        setContentView(R.layout.nfc_activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //Setting theme
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.red_alu));
+        // getSupportActionBar().setIcon(R.drawable.ic_logo_minimini);
+
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.GONE);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+    }
+
+    private void includeThisLayoutContent() {
+        LayoutInflater inflater = (LayoutInflater)  this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        childLayout = inflater.inflate(R.layout.nfc_content_main_attendance, (ViewGroup) findViewById(R.id.content_nfc_main_content));
+        RelativeLayout  parentLayout = (RelativeLayout) findViewById(R.id.nfc_include_relativeLT_container);
+        parentLayout.addView(childLayout,0);
+
+    }
+
 
     private void showPopupCourserInput(final String Cardid) {
 
-        final EditText modifyET = new EditText(Nfc_MainActivity.this); //create new edittext programatically
+
+        final AutoCompleteTextView modifyAT = new AutoCompleteTextView(Nfc_MainActivity_Attendance.this);
+        //create new edittext programatically
+        final ArrayAdapter<String> NamemyAutoCAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.nfc_simple_textview,
+                getResources().getStringArray(R.array.course_suggestion_list));
         final String Titlelabel = "Course";//because we need to put the label to put on the dialog
+        runOnUiThread(new Runnable() {
+            public void run() {
+                modifyAT.setAdapter(NamemyAutoCAdapter);
+                modifyAT.setThreshold(1);
+                modifyAT.setHint("Enter the course name");
+                modifyAT.setSelection(modifyAT.getText().length()); // set the cursor at the end of the edittext immediately
+                modifyAT.setTextColor(getResources().getColor(R.color.black));
+                new AlertDialog.Builder(Nfc_MainActivity_Attendance.this)
+                        .setTitle(Titlelabel)
+                        .setView(modifyAT).setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-        modifyET.setHint("Enter the course name");
-        modifyET.setSelection(modifyET.getText().length()); // set the cursor at the end of the edittext immediately
-        modifyET.setTextColor(getResources().getColor(R.color.black));
-        new AlertDialog.Builder(Nfc_MainActivity.this)
-                .setTitle(Titlelabel)
-                .setView(modifyET).setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                // mProgress.show(); //start upload
-                                String newCourse = modifyET.getText().toString();
-                                if (!newCourse.equals(lastCourse)) {
-                                    courseTV.setText(newCourse);
-                                    lastCourse = newCourse;
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        // mProgress.show(); //start upload
+                                        String newCourse = modifyAT.getText().toString();
+                                        if (!newCourse.equals(lastCourse)) {
+                                            courseTV.setText(newCourse);
+                                            lastCourse = newCourse;
 
 
-                                    //back up attendance before changing course
-                                    String listString = "";
+                                            //back up attendance before changing course
+                                            String listString = "";
 
-                                    for (String s : TempTrackList) {
-                                        listString += s + "\n";
-                                    }
+                                            for (String s : TempTrackList) {
+                                                listString += s + "\n";
+                                            }
 
-                                    try {
-                                        tools.StoreData("attendance-" + String.valueOf(tools.getTimeStamp()) + ".txt", listString);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    TempTrackList.clear(); //remove all previous attendance
+                                            try {
+                                                tools.StoreData("attendance-" + String.valueOf(tools.getTimeStamp()) + ".txt", listString);
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                            TempTrackList.clear(); //remove all previous attendance
 
-                                    if (!(Cardid == "")) {
-                                        attendance(Cardid);
-                                    }
-                                }
-                                //recursion, we just made sure the card is regitered to one email address
-                            }//end onClisk yes
+                                            if (!(Cardid == "")) {
+                                                attendance(Cardid);
+                                            }
+                                        }
+                                        //recursion, we just made sure the card is regitered to one email address
+                                    }//end onClisk yes
 
-                        }//end on yes clicked           //end of if yes clicked on alert dialog
-                ).create().show();   //show the alert dialog
-
+                                }//end on yes clicked           //end of if yes clicked on alert dialog
+                        ).create().show();   //show the alert dialog
+            }
+        }); //end run on UI thread
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                modifyAT.showDropDown(); //show threshold 0
+            }
+        });
     }
 
 
@@ -427,7 +513,7 @@ public class Nfc_MainActivity extends AppCompatActivity
                 } else if (mLastError instanceof UserRecoverableAuthIOException) {
                     startActivityForResult(
                             ((UserRecoverableAuthIOException) mLastError).getIntent(),
-                            Sis_DetailListViewOwner.REQUEST_AUTHORIZATION);
+                            Nfc_MainActivity_Attendance.REQUEST_AUTHORIZATION);
                 } else {
                     Log.d("hello", "The following error occurred:\n"
                             + mLastError.getMessage());
@@ -499,7 +585,7 @@ public class Nfc_MainActivity extends AppCompatActivity
             final int connectionStatusCode) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         Dialog dialog = apiAvailability.getErrorDialog(
-                Nfc_MainActivity.this,
+                Nfc_MainActivity_Attendance.this,
                 connectionStatusCode,
                 REQUEST_GOOGLE_PLAY_SERVICES);
         dialog.show();
@@ -595,9 +681,12 @@ public class Nfc_MainActivity extends AppCompatActivity
     }
 
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onResume() {
         super.onResume();
+
+
         Log.d("hello", "on resume");
         if (mNfcAdapter != null) {
             if (!mNfcAdapter.isEnabled()) {
@@ -682,75 +771,36 @@ public class Nfc_MainActivity extends AppCompatActivity
         }// end if NFC Adapter
     } //End resolve intent
 
-    private void attendance(final String cardID) {
+    private void attendance(final String cardID) { //this method checks first if the card is linked to an email and then will send the http post
 
+        //checking if course is valid
         if (lastCourse == null
                 || lastCourse.isEmpty()
                 || lastCourse.equals("Specify a course first")) {
             hasShownCoursePopupThroughResolveIntent = true;
-            showPopupCourserInput(cardID);
-            return;
-        }
-        if (!tools.isNetworkAvailable(Nfc_MainActivity.this)) {
-            Toast.makeText(Nfc_MainActivity.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
+            mp_Off.start();
+            vibe.vibrate(100);
+            showPopupCourserInput(cardID); //show alert dialog with course input
+            Log.d("hello", "invalid course");
             return;
         }
 
-
-        if (Sis_XMLParserClass.q8 == null) { //if Sis_XMLParserClass is null, the intent was lunched and jumped the appselect ac
-            try {
-                new Sis_XMLParserClass();
-            } catch (XmlPullParserException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        //checking internet connection
+        if (!tools.isNetworkAvailable(Nfc_MainActivity_Attendance.this)) {
+            Toast.makeText(Nfc_MainActivity_Attendance.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        makeSureXMLDataSisIsLoaded();
+
 
         int Myindex = Sis_XMLParserClass.q8.indexOf(cardID); //because the index of object where it contains the myemail from db is equal to data from server or local file
         if (Myindex == -1) {
-
-            final EditText modifyET = new EditText(Nfc_MainActivity.this); //create new edittext programatically
-            final String Titlelabel = "Enter your email address";//because we need to put the label to put on the dialog
-
-            modifyET.setHint("studentXX@alustudent.com");
-            modifyET.setSelection(modifyET.getText().length()); // set the cursor at the end of the edittext immediately
-            modifyET.setTextColor(getResources().getColor(R.color.black));
-            new AlertDialog.Builder(Nfc_MainActivity.this)
-                    .setTitle(Titlelabel)
-                    .setView(modifyET).setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    // mProgress.show(); //start upload
-                                    String Email = modifyET.getText().toString();
-
-                                    int EmailMyindex = Sis_XMLParserClass.q2.indexOf(Email);
-                                    if (EmailMyindex == -1) {
-                                        Toast.makeText(Nfc_MainActivity.this, "Email not found", Toast.LENGTH_SHORT).show();
-                                        return;
-                                    }
-                                    //if email found
-                                    else {
-                                        hasFinishedNewIdRegistration = false;
-                                        int ColumnID = 10; //because the spread require the column number to update
-                                        int RowID = Integer.parseInt(Sis_XMLParserClass.q1.get(EmailMyindex)); //because q1 is the row number
-                                        UpdateCell(RowID, ColumnID, cardID);
-
-                                        //setting new Card ID
-                                        Sis_XMLParserClass.q8.set(EmailMyindex, cardID);
-
-                                    }
-                                    attendance(cardID); //recursion, we just made sure the card is regitered to one email address
-                                }//end onClisk yes
-
-                            }//end on yes clicked           //end of if yes clicked on alert dialog
-                    ).create().show();   //show the alert dialog
-
-
+            showEmailPopup(cardID);
         } //else if myindex != -1
         else {
-            //if card already registered, check if not already signed the attendance, then send http post to google form,
+            //if card already registered,
+
             String MyEmail = Sis_XMLParserClass.q2.get(Myindex);
             String MyFirstName = Sis_XMLParserClass.q3.get(Myindex);
             String MyLastName = Sis_XMLParserClass.q4.get(Myindex);
@@ -760,19 +810,124 @@ public class Nfc_MainActivity extends AppCompatActivity
             String Point = Sis_XMLParserClass.q16.get(Myindex);
             String Course = lastCourse;
 
+            // check if not already signed the attendance, then send http post to google form,
             if (TempTrackList.indexOf(MyEmail) == -1) {
                 //send http post
-                HttpRequestApp.add_Attendance(cardID, MyEmail, MyFirstName, MyLastName, Course);
+                HttpRequestApp.add_Course_Attendance(cardID, MyEmail, MyFirstName, MyLastName, Course);
                 TempTrackList.add(MyEmail);
-                Toast.makeText(Nfc_MainActivity.this, "Your attendance has been successfully recorded", Toast.LENGTH_SHORT).show();
+
+                Nfc_MainActivity_Attendance.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(Nfc_MainActivity_Attendance.this, "Your attendance has been successfully recorded", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                vibe.vibrate(100);
+                mp_On.start();
+
             } else {
                 //show message already signed
-                Toast.makeText(Nfc_MainActivity.this, "You already confirmed your attendance for this course", Toast.LENGTH_SHORT).show();
+                Nfc_MainActivity_Attendance.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(Nfc_MainActivity_Attendance.this, "You already confirmed your attendance for this course", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                vibe.vibrate(100);
+                mp_Off.start();
             }
             String userInfo = dumpUserCardOwner(MyEmail, MyFirstName, MyLastName, Course, Residence, Room, Apartment, Point);
             buildUserViews(userInfo);
         }
 
+    }
+
+    private void makeSureXMLDataSisIsLoaded() {
+        if (Sis_XMLParserClass.q8 == null) { //if Sis_XMLParserClass is null, the intent was lunched and jumped the appselect ac
+            try {
+                new Sis_XMLParserClass();
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showEmailPopup(final String cardID) {
+
+        mp_Off.start();
+        vibe.vibrate(100);
+        Log.d("hello", "card not registered");
+
+        final String Titlelabel = "Enter your email address";//because we need to put the label to put on the dialog
+
+        NameItemArrayString = MakeArrayList();
+
+        Nfc_MainActivity_Attendance.this.runOnUiThread(new Runnable() {
+            public void run() {
+
+                ArrayAdapter<String> NamemyAutoCAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                        R.layout.nfc_simple_textview,
+                        NameItemArrayString);
+
+                LayoutInflater inflater = Nfc_MainActivity_Attendance.this.getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.nfc_autocompletetextview, null);
+                final AutoCompleteTextView modifyET = (AutoCompleteTextView) dialogView.findViewById(R.id.myAutoCompleteTV);
+
+                modifyET.setAdapter(NamemyAutoCAdapter);
+                modifyET.setHint("studentXX@alustudent.com");
+                modifyET.setSelection(modifyET.getText().length()); // set the cursor at the end of the edittext immediately
+                modifyET.setTextColor(getResources().getColor(R.color.black));
+
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Nfc_MainActivity_Attendance.this)
+                        .setTitle(Titlelabel)
+                        .setView(dialogView).setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        // mProgress.show(); //start upload
+                                        String Email = modifyET.getText().toString();
+
+                                        int EmailMyindex = Sis_XMLParserClass.q2.indexOf(Email);
+                                        if (EmailMyindex == -1) {
+                                            Toast.makeText(Nfc_MainActivity_Attendance.this, "Email not found", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                        //if email found
+                                        else {
+                                            hasFinishedNewIdRegistration = false;
+                                            int ColumnID = 10; //because the spread require the column number to update
+                                            int RowID = Integer.parseInt(Sis_XMLParserClass.q1.get(EmailMyindex)); //because q1 is the row number
+                                            UpdateCell(RowID, ColumnID, cardID);
+
+                                            //setting new Card ID
+                                            Sis_XMLParserClass.q8.set(EmailMyindex, cardID);
+
+                                        }
+                                        attendance(cardID); //recursion, we just made sure the card is regitered to one email address
+                                    }//end onClisk yes
+
+                                }//end on yes clicked           //end of if yes clicked on alert dialog
+                        );
+
+                dialogBuilder.create().show();   //show the alert dialog
+
+            }//end run on UI thread
+        });
+
+        Log.d("hello", "card not registered have shown alert dialog");
+
+    }
+
+    //create arraylist for textview autocomplete adapter
+    private ArrayList<String> MakeArrayList() {
+        ArrayList<String> tempArrayList = new ArrayList<String>();
+        for (int i = 0; i < Sis_XMLParserClass.q1.size(); i++) {
+            //if card id is  null or card id is empty (removing people already having a card
+            // if (Sis_XMLParserClass.q8.get(i) == null || Sis_XMLParserClass.q8.get(i).equals("")) {
+            tempArrayList.add(Sis_XMLParserClass.q2.get(i));// add email
+            // }
+        }
+        return tempArrayList;
     }
 
     private String dumpUserCardOwner(String myEmail,
@@ -792,27 +947,39 @@ public class Nfc_MainActivity extends AppCompatActivity
         sb.append("ID Points: ").append(point).append('\n');
         return sb.toString();
 
-
     }
 
     void buildUserViews(String aboutUserOwner) {
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-        LinearLayout content = linearLayoutContent;
+        final LayoutInflater inflater = LayoutInflater.from(this);
+        final LinearLayout content = linearLayoutContent;
 
         // Parse the first message in the list
         // Build views for all of the sub records
         Date now = new Date();
         Log.d("hello", "record UI building display...");
-        TextView timeView = new TextView(this);
+        final TextView timeView = new TextView(this);
         timeView.setText(TIME_FORMAT.format(now));
-        content.addView(timeView, 0);
+        timeView.setTextSize(20);
+        timeView.setTextColor(getResources().getColor(R.color.blue));
 
-        TextView text = (TextView) inflater.inflate(R.layout.nfc_tag_text, content, false);
+
+        final RoundedImageView profile = new RoundedImageView(this);
+        profile.setImageResource(R.drawable.sis_profil_neutral);
+
+
+        final TextView text = (TextView) inflater.inflate(R.layout.nfc_tag_text, content, false);
         text.setText(aboutUserOwner);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                content.addView(timeView, 0);
+                content.addView(profile, 1);
+                content.addView(text, 2);
+                content.addView(inflater.inflate(R.layout.nfc_tag_divider, content, false), 3);
 
-        content.addView(text, 1);
-        content.addView(inflater.inflate(R.layout.nfc_tag_divider, content, false), 2);
+            }
+        });
     }
 
 

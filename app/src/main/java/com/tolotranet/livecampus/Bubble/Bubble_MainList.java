@@ -137,7 +137,7 @@ public class Bubble_MainList extends AppCompatActivity {
 				CIO.setRightText(Bubble_XMLParserClass.q5.get(i)); //because q9 is the category of the Faq, breakfast, lunch or dinner
 				CIO.setIndex(i);
 				CIO.setImgID(this.getResources().getIdentifier("app_bubblemarket", "drawable", this.getPackageName()));
-//				CIO.setUserId(Integer.parseInt(Bubble_XMLParserClass.q1.get(i)));
+//				CIO.setState(Integer.parseInt(Bubble_XMLParserClass.q1.get(i)));
 				TempItemArray.add(CIO);
 			}
 		}

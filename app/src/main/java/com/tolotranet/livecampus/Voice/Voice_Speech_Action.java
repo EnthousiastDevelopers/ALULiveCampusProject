@@ -18,7 +18,7 @@ import com.tolotranet.livecampus.Maint.Maint_Add;
 import com.tolotranet.livecampus.Maint.Maint_SpreadSheetActivity;
 import com.tolotranet.livecampus.Mu.Mu_Add_Food;
 import com.tolotranet.livecampus.Mu.Mu_App;
-import com.tolotranet.livecampus.Nfc.Nfc_MainActivity;
+import com.tolotranet.livecampus.Nfc.Nfc_MainActivity_Attendance;
 import com.tolotranet.livecampus.Settings.Settings_mainActivity;
 import com.tolotranet.livecampus.Sis.Sis_SpreadSheetActivity;
 import com.tolotranet.livecampus.Sis.Sis_startApplicationAsyncTaskOwner;
@@ -88,7 +88,13 @@ public class Voice_Speech_Action extends Activity {
                 startActivityPrompt("Book a meeting");
                 break;
             case "show me the academic calendar":
-                startActivityPrompt("Booking");
+                startActivityPrompt("CalendarAPI");
+                break;
+            case "calendar":
+                startActivityPrompt("CalendarAPI");
+                break;
+            case "events":
+                startActivityPrompt("CalendarAPI");
                 break;
 
             case "when is my next deadline":
@@ -168,7 +174,7 @@ public class Voice_Speech_Action extends Activity {
             context.startActivity(i);
         }
         if (Menu == "Attendance") {
-            Intent i = new Intent(context, Nfc_MainActivity.class);
+            Intent i = new Intent(context, Nfc_MainActivity_Attendance.class);
             context.startActivity(i);
 
         }
@@ -193,6 +199,11 @@ public class Voice_Speech_Action extends Activity {
             Food_MainList.SpeechAction = speechAction;
             Food_MainList.Origin = "speech";
             Food_MainList.When = "";
+            context.startActivity(i);
+            //Food_App.mu_category_imgID = ThisImg;
+        }
+        if (Menu == "CalendarAPI") {
+            Intent i = new Intent(context, Event_SpreadSheetActivity.class);
             context.startActivity(i);
             //Food_App.mu_category_imgID = ThisImg;
         }

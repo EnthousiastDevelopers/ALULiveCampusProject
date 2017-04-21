@@ -84,7 +84,7 @@ public class Transp_TransApp extends AppCompatActivity implements TextToSpeech.O
                 } else {
                     fab_refresh.startAnimation(AnimationUtils.loadAnimation(Transp_TransApp.this, R.anim.rotation));
                     Snackbar.make(view, "Updating.....", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask();
+                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask(Transp_TransApp.this, "normal");
                     getDataTask.execute(Transp_TransApp.this);
                 }
             }
@@ -97,88 +97,10 @@ public class Transp_TransApp extends AppCompatActivity implements TextToSpeech.O
 
 
         String speech = SpeechAction;
-
+            //this part is called only when the activity was called by the speech action
         if(speech != null && speech.equals("New Bus")) {
-            String route = "";
-            String day = "";
-            String time = "";
-            String timestamp = "";
-            String cohort = "";
-            Date newTimestamp = null;
-
-            timestamp = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getTimeStamp();
-
-            try {
-                route = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getName();
-                cohort = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getCohort();
-
-                Log.d("hello tts", route);
-            } catch (Exception e) {
-
-            }
-
-
-
-            try {
-                newTimestamp = formatter1.parse(timestamp);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            Calendar c = Calendar.getInstance();
-
-            Log.d("Hello", String.valueOf(newTimestamp.getDay()) + " day departure | day now" + c.getTime().getDay());
-            int diff = newTimestamp.getDay() - c.getTime().getDay();
-            switch (diff) {
-                case 0:
-                    day = "Today";
-                    break;
-                case 1:
-                    day = "Tomorrow";
-                    break;
-                case -1:
-                    day = "yesterday";
-                    break;
-                default:
-                    day = "in " + String.valueOf(diff) + " days";
-            }
-
-            SimpleDateFormat formatter2 = new SimpleDateFormat("hh:mm aa");
-            time = formatter2.format(newTimestamp);
-
-
-            route = route.replace("-", "to");
-            cohort = cohort.replace("(", " ")
-                    .replace(")", " ")
-                    .replace("ENG", " Electrical Engineering ")
-                    .replace("BM", " Business Management ")
-                    .replace("CS", " Computer Science ")
-                    .replace("-", " and ")
-                    .replace("/", " and ");
-
-
-            final String finalRoute = "The next bus is leaving " + day +
-                    " at " + time +
-                    " from " + route +
-                    ". It is for the " + cohort+" trip";
-            tts = new TextToSpeech(Transp_TransApp.this, new TextToSpeech.OnInitListener() {
-
-                @Override
-                public void onInit(int status) {
-                    // TODO Auto-generated method stub
-                    if (status == TextToSpeech.SUCCESS) {
-                        int result = tts.setLanguage(Locale.US);
-                        if (result == TextToSpeech.LANG_MISSING_DATA ||
-                                result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.e("error", "This Language is not supported");
-                        } else {
-                            tts.speak(finalRoute, TextToSpeech.QUEUE_FLUSH, null);
-                        }
-                    } else
-                        Log.e("error", "Initilization Failed!");
-                }
-            });
-            SpeechAction = "";
-        } //end speech
+            AnswerVocalNextBus();
+          } //end of speech
 
 
 
@@ -246,6 +168,90 @@ public class Transp_TransApp extends AppCompatActivity implements TextToSpeech.O
 
     }
 
+    private void AnswerVocalNextBus() {
+        String route = "";
+        String day = "";
+        String time = "";
+        String timestamp = "";
+        String cohort = "";
+        Date newTimestamp = null;
+        //getting the first but only the list having the index 0, because we asked when is the next bus
+        timestamp = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getTimeStamp();
+
+        try {
+            route = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getName();
+            cohort = ((Transp_ItemObject) lv.getAdapter().getItem(0)).getCohort();
+
+            Log.d("hello tts", route);
+        } catch (Exception e) {
+
+        }
+
+        try {
+            newTimestamp = formatter1.parse(timestamp);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar c = Calendar.getInstance();
+        Log.d("Hello", String.valueOf(newTimestamp.getDay()) + " day departure | day now" + c.getTime().getDay());
+
+        //choosing which vocabulary the speech will say depending on the date when the next bus is leaving
+        int diff = newTimestamp.getDay() - c.getTime().getDay();
+        switch (diff) {
+            case 0:
+                day = "Today";
+                break;
+            case 1:
+                day = "Tomorrow";
+                break;
+            case -1:
+                day = "yesterday";
+                break;
+            default:
+                day = "in " + String.valueOf(diff) + " days";
+        }
+        //formatting the time to speak
+        SimpleDateFormat formatter2 = new SimpleDateFormat("hh:mm aa");
+        time = formatter2.format(newTimestamp);
+
+        //replacing all the acronym to hearable words
+        route = route.replace("-", "to");
+        cohort = cohort.replace("(", " ")
+                .replace(")", " ")
+                .replace("ENG", " Electrical Engineering ")
+                .replace("BM", " Business Management ")
+                .replace("CS", " Computer Science ")
+                .replace("-", " and ")
+                .replace("/", " and ");
+
+        //prompt to speak
+        final String finalRoute = "The next bus is leaving " + day +
+                " at " + time +
+                " from " + route +
+                ". It is for the " + cohort+" trip";
+
+        //final speech in action
+        tts = new TextToSpeech(Transp_TransApp.this, new TextToSpeech.OnInitListener() {
+
+            @Override
+            public void onInit(int status) {
+                // TODO Auto-generated method stub
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = tts.setLanguage(Locale.US);
+                    if (result == TextToSpeech.LANG_MISSING_DATA ||
+                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("error", "This Language is not supported");
+                    } else {
+                        tts.speak(finalRoute, TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                } else
+                    Log.e("error", "Initilization Failed!");
+            }
+        });
+        SpeechAction = "";
+
+    }
+
 
     void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
@@ -287,10 +293,10 @@ public class Transp_TransApp extends AppCompatActivity implements TextToSpeech.O
         long now = calendar1.getTimeInMillis();
 
         ArrayList<Transp_ItemObject> TempItemArray = new ArrayList<Transp_ItemObject>();
-        for (int i = 0; i < Transp_XMLParserClass.Res2_Array.size(); i++) {
+        for (int i = 0; i < Transp_XMLParserClass.TimeStamp.size(); i++) {
             //remove outdated app_transp even offline
-            datadb = Transp_XMLParserClass.Res2_Array.get(i);
-            //\Log.d("hello", "time is datab: "+(datadb)+"current time"+currentDate +"size is "+String.valueOf(Transp_XMLParserClass.Res2_Array.size())+" i is: "+String.valueOf(i));
+            datadb = Transp_XMLParserClass.TimeStamp.get(i);
+            //\Log.d("hello", "time is datab: "+(datadb)+"current time"+currentDate +"size is "+String.valueOf(Transp_XMLParserClass.TimeStamp.size())+" i is: "+String.valueOf(i));
 
             if (CheckIfFirstBeforeLastDates(datadb, currentDate)) {
                 //	Log.d("hello", "add this");
@@ -336,7 +342,7 @@ public class Transp_TransApp extends AppCompatActivity implements TextToSpeech.O
 
                 if (isNetworkAvailable()) {
                     Toast.makeText(getApplicationContext(), "Updating.....", Toast.LENGTH_SHORT).show();
-                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask();
+                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask(Transp_TransApp.this, "normal");
                     getDataTask.execute(this);
                 } else {
                     Toast.makeText(getApplicationContext(), "check Internet Connection", Toast.LENGTH_SHORT).show();

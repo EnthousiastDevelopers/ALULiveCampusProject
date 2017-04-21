@@ -16,7 +16,7 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
     <ImageView
-        android:id="@+id/imgViewheadBubbleStickyIcon"
+        android:id="@+id/imgProfile"
         android:layout_width="90dp"
         android:layout_height="90dp"
 

@@ -5,8 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="HELLO, WELCOME TO the STICKY PRICEMASTER THIS IS GOING TO BE THE BEST PART OF THIS APP BUT IT IS STILL IN MAINTENANCE.
-        With sticky PriceMaster, you can masterize at any time on top of any other app. Click on START STICKYMASTERPRICE"
+        android:text="Settings of sticky Bubble"
         android:textSize="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:text="START STICKY PRICEMASTER!" />
+        android:text="START STICKY BUBBLE!" />
 
     <Button
         android:id="@+id/stopService"
@@ -34,5 +33,5 @@
         android:layout_alignLeft="@+id/startService"
         android:layout_below="@+id/startService"
         android:layout_marginTop="39dp"
-        android:text="STOP STICKY PRICEMASTER" />
+        android:text="STOP STICKY BUBBLE" />
 </LinearLayout>

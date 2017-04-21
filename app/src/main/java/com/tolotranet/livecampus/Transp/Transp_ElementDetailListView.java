@@ -101,10 +101,10 @@ public class Transp_ElementDetailListView extends Activity {
 			sr.setDetailValue(Transp_XMLParserClass.NumberStud_Array.get(Index));
 			DetailList.add(sr);
 		}
-		if (!(Transp_XMLParserClass.Res2_Array.get(Index).equals(""))) {
+		if (!(Transp_XMLParserClass.TimeStamp.get(Index).equals(""))) {
 			sr = new Transp_DetailListItem();
 			sr.setDetailName("Residence");
-			sr.setDetailValue(Transp_XMLParserClass.Res2_Array.get(Index));
+			sr.setDetailValue(Transp_XMLParserClass.TimeStamp.get(Index));
 			DetailList.add(sr);
 		}
 

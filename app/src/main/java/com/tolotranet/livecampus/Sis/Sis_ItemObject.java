@@ -3,6 +3,7 @@ package com.tolotranet.livecampus.Sis;
 
 public class Sis_ItemObject {
 	private String Name;
+	private String Email;
 	private String BottomText;
 	private int Index;
 	private int UserId;
@@ -36,5 +37,13 @@ public class Sis_ItemObject {
 
 	public void setUserId(int userId){
 		this.UserId = userId;
+	}
+
+    public String getEmail() {
+		return Email;
+    }
+
+	public void setEmail(String email) {
+		Email = email;
 	}
 }

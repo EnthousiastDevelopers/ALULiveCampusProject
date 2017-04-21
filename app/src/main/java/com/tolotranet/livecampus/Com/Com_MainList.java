@@ -254,7 +254,7 @@ public class Com_MainList extends AppCompatActivity {
                     CIO.setAuthor(Com_XMLParserClass.q13.get(i)); //because it is needed to send the score to
                     CIO.setObject(Com_XMLParserClass.q12.get(i)); // because it is needed to send the vote to
                     CIO.setImgID(1);
-//				CIO.setUserId(Integer.parseInt(Com_XMLParserClass.q1.get(i)));
+//				CIO.setState(Integer.parseInt(Com_XMLParserClass.q1.get(i)));
                     TempItemArray.add(CIO);
                 }
             }

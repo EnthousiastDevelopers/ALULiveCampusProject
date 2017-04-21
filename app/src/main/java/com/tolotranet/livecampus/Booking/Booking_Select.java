@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +30,7 @@ import java.net.URLEncoder;
  */
 
 
-public class Booking_Select extends Activity {
+public class Booking_Select extends AppCompatActivity {
 
     Spinner foodBreakfastSpinner;
     ArrayAdapter<CharSequence> foodBreakfastadapter;

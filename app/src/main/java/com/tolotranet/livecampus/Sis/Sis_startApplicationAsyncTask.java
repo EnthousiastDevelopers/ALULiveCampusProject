@@ -36,6 +36,7 @@ public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 		File Root = Environment.getExternalStorageDirectory();
 		File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
 		File myfile = new File(Dir, "SISList.txt");
+		File myfile_interactionlist = new File(Dir, "Interaction.txt");
 
 		if (myfile.exists()) {
 			Log.d("hello", "File Exists");
@@ -63,42 +64,6 @@ public class Sis_startApplicationAsyncTask extends AsyncTask<Activity, Void, Voi
 		}
 
 		return null;
-	}
-
-	public   void synchronizeInBackGround(Context c){
-        context = c;
-		File Root = Environment.getExternalStorageDirectory();
-		File Dir = new File(Root.getAbsoluteFile() + "/Android-CampusLive");
-		File myfile = new File(Dir, "SISList.txt");
-		if ((InternetConnection = isNetworkAvailable())) {
-			//Sis_UpdateData getDataTask = new Sis_UpdateData();
-		//	getDataTask.synchronizeInBackGround();
-
-		} else {
-
-			if (myfile.exists()) {
-				Log.d("hello", "File Exists");
-				FileExists = true;
-				try {
-					new Sis_XMLParserClass();
-				} catch (XmlPullParserException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				//	getDataTask.anotherExecute();
-			}else {
-                FileExists = false;
-                Log.d("hello", "File doesn't exist");
-
-                Toast.makeText(c, "Internet connection not available", Toast.LENGTH_SHORT);
-			}
-
-			Log.d("hello", "Network Connection " + isNetworkAvailable());
-		}
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -30,12 +31,27 @@ import com.google.gdata.util.ServiceException;
 public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
     Activity myActivity;
+    private String origin;
+    private Context context;
+
+    public Transp_GetDataAsyncTask(Context context, String originString) {
+        this.origin = originString;
+        this.context = context;
+        if(origin.equals("refreshonly")) {
+            //at many occasions, we don't need the asynctask, we just need the in line task
+            startGetDataAction();
+        }
+    }
 
     @Override
     protected Void doInBackground(Activity... arg0) {
         // TODO Auto-generated method stub
         myActivity = arg0[0];
+        startGetDataAction();
+        return null;
+    }
 
+    private void startGetDataAction() {
         try {
             getData();
         } catch (AuthenticationException e) {
@@ -69,17 +85,23 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return null;
     }
 
     @Override
     protected void onPostExecute(Void result) {
+
         // TODO Auto-generated method stub
-        Intent i = new Intent(myActivity.getApplicationContext(), Transp_TransApp.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        myActivity.startActivity(i);
-        myActivity.overridePendingTransition(0, 0);
-        myActivity.finish();
+        if (origin.equals("refreshonly")) {
+            Log.d("hello transp", "refreshed only transport done");
+        } else {
+
+            Intent i = new Intent(myActivity.getApplicationContext(), Transp_TransApp.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            myActivity.startActivity(i);
+            myActivity.overridePendingTransition(0, 0);
+            myActivity.finish();
+
+        }
 
 
     }
@@ -121,7 +143,7 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
         ArrayList<String> Off1_Array = new ArrayList<String>();
         ArrayList<String> Cohort_Array = new ArrayList<String>();
         ArrayList<String> NumberStud_Array = new ArrayList<String>();
-        ArrayList<String> Res2_Array = new ArrayList<String>();
+        ArrayList<String> TimeStamp = new ArrayList<String>();
         ArrayList<String> Mob1_Array = new ArrayList<String>();
         ArrayList<String> Mob2_Array = new ArrayList<String>();
         ArrayList<String> Tag_Array = new ArrayList<String>();
@@ -152,7 +174,7 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
                             .getValue(tag)));
                 }
                 if (tag.equals("timestamp")) {
-                    Res2_Array.add(ProperValue(row.getCustomElements()
+                    TimeStamp.add(ProperValue(row.getCustomElements()
                             .getValue(tag)));
 
                     //Log.d("datecomapare","this timestamp was on" + datadb+" and the current app_event is:" + currentDate);
@@ -229,7 +251,7 @@ public class Transp_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
         Transp_XMLParserClass.Cohort_Array = Cohort_Array;
         Transp_XMLParserClass.TimeArray = TimeArray;
         Transp_XMLParserClass.NumberStud_Array = NumberStud_Array;
-        Transp_XMLParserClass.Res2_Array = Res2_Array;
+        Transp_XMLParserClass.TimeStamp = TimeStamp;
         Transp_XMLParserClass.Mob1_Array = Mob1_Array;
         Transp_XMLParserClass.Mob2_Array = Mob2_Array;
         Transp_XMLParserClass.Tag_Array = Tag_Array;

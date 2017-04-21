@@ -414,7 +414,7 @@ public class Food_DetailListViewOwner extends Activity
 		} else {
 			new MakeRequestTask(mCredential).execute();
 			//then update the XML of the phone for offline view and go back
-			Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+			Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(Food_DetailListViewOwner.this, "normal");
 			//getDataTask.execute(this);
 
 		}

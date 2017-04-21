@@ -95,6 +95,8 @@ public final class App_Tools extends Service {
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }
+
+
     public String randomString(){
         StringBuilder sb = new StringBuilder( 10 );
         for( int i = 0; i < 10; i++ )
@@ -149,7 +151,7 @@ public final class App_Tools extends Service {
 
         Date strDate = null;
         try {
-            strDate = dfDate.parse(startDate);
+            strDate = dfDate.parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

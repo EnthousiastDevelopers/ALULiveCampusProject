@@ -44,7 +44,7 @@ public class Booking_App extends AppCompatActivity {
         //Mainlistview = (ListView) findViewById(R.id.Contacts_list_view);
 
 
-        myAdapter = new Booking_MyCustomBaseAdapter(getApplicationContext(),
+        myAdapter = new Booking_MyCustomBaseAdapter(Booking_App.this,
                 ContactItemArray);
         toolList.setAdapter(myAdapter);
 

@@ -56,7 +56,7 @@ public class Food_Confirm_Mu extends Activity {
                 }else {
                     Toast.makeText(getApplicationContext(), "Updating, please wait.....", Toast.LENGTH_LONG).show();
                     Food_App.mu_category = cat;
-                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(Food_Confirm_Mu.this, "normal");
                     getDataTask.execute(Food_Confirm_Mu.this);
                 }
             }

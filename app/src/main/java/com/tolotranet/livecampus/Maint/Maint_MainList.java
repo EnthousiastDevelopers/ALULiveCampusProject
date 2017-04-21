@@ -106,8 +106,8 @@ public class Maint_MainList extends AppCompatActivity {
 					.getBottomText();
 			//open editor profile if the person clicked is the current user
 			Bundle params2 = new Bundle();
-			params2.putString("faq selected", name);
-			params2.putString("bottom text ", btmtext);
+			params2.putString("faqselected", name);
+			params2.putString("bottomtext", btmtext);
 			mFirebaseAnalytics.logEvent("faq", params2);
 
 
@@ -143,15 +143,16 @@ public class Maint_MainList extends AppCompatActivity {
 			if(!Maint_XMLParserClass.q2.get(i).equals("")){
 
 				CIO.setName(Maint_XMLParserClass.q9.get(i));
+				CIO.setState(Maint_XMLParserClass.q12.get(i));
 				if((Maint_XMLParserClass.q11.get(i).equals(""))){  //because q11 is the number of comments, and score is a righttxtview on the list
-					CIO.setScore(0);
+					CIO.setCommentsCount(0);
 				}else{
-					CIO.setScore((Integer.parseInt(Maint_XMLParserClass.q11.get(i)))); //because this file is inherited from leaderboard, thus, setScore is used to display the number of commentsin maintenance
+					CIO.setCommentsCount((Integer.parseInt(Maint_XMLParserClass.q11.get(i)))); //because this file is inherited from leaderboard, thus, setCommentsCount is used to display the number of commentsin maintenance
 				};
 				CIO.setBottomText(Maint_XMLParserClass.q1.get(i));
 				CIO.setIndex((i)); //because this index will be refered when the user click on one item, and redirected to the detailed listview
 
-				//CIO.setUserId(Integer.parseInt(Maint_XMLParserClass.q1.get(i)));
+				//CIO.setState(Integer.parseInt(Maint_XMLParserClass.q1.get(i)));
 				TempItemArray.add(CIO);
 			}
 			}
@@ -161,7 +162,7 @@ public class Maint_MainList extends AppCompatActivity {
 		Collections.sort(TempItemArray, new Comparator<Maint_ItemObject>() {
 			@Override
 			public int compare(Maint_ItemObject lhs, Maint_ItemObject rhs) {
-				return ((Integer) rhs.getScore()).compareTo( lhs.getScore()); // compare scores
+				return ((Integer) rhs.getCommentsCount()).compareTo( lhs.getCommentsCount()); // compare scores
 			}
 		});
 

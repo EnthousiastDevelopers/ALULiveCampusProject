@@ -20,67 +20,8 @@
             android:layout_height="wrap_content"
             android:hint="Search Someone...."
             android:textColor="@color/blue_alu" />
-        <LinearLayout
-            android:id="@+id/NoinforScore"
-            android:visibility="gone"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Only users with more than "
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:id="@+id/TresholdScoreTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="25"
-                android:textSize="12dp"
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:text=" points can be shown on the list."
-                android:textColor="@color/blue_alu" />
-            </LinearLayout>
-        <LinearLayout
-            android:id="@+id/MyinfoScore"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your score is: "
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:id="@+id/scoreTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="25"
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=". You are #"
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:id="@+id/rankTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textColor="@color/blue_alu" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" on the dashboard."
-                android:textColor="@color/blue_alu" />
-        </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"

@@ -168,7 +168,7 @@ public class Sis_GetDataAsyncTaskDirectJumpOwner extends AsyncTask<Activity, Voi
                     q7.add(ProperValue(row.getCustomElements()
                             .getValue(tag)));
                 }
-                if (tag.equals("passportnumber")) {
+                if (tag.equals("nfcid")) {
                     q8.add(ProperValue(row.getCustomElements()
                             .getValue(tag)));
                 }

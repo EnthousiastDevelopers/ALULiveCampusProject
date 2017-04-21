@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_nfc_main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_nfc_smarphone"
+    android:backgroundTint="@color/light_grey"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+
+    tools:context=".Nfc.Nfc_MainActivity_Attendance">
+
+    <LinearLayout
+        android:id="@+id/scroolViewNFC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+
+        <Spinner
+            android:entries="@array/food_category"
+            android:id="@+id/categorySP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/courseBtn"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Specify a course first"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:background="@color/light_grey"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/choiceTV"
+            android:textColor="@color/black"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:text="Choice"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            app:tabPaddingEnd="-1dp"
+            app:tabPaddingStart="-1dp"
+            app:tabTextAppearance="@style/MineCustomTabText" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+        </android.support.v4.view.ViewPager>
+
+        <TextView
+            android:id="@+id/hinttv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Swipe right or left to select options"
+            android:textSize="10dp"
+            android:textColor="@color/red"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/recordTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Record"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/recordLV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+
+</RelativeLayout>

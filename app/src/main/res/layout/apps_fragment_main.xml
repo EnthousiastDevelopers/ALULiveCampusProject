@@ -22,7 +22,6 @@
             android:id="@+id/toolList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@+id/TVusername"
             android:columnWidth="100dip"
             android:fontFamily="sans-serif-condensed-light"
             android:gravity="center"

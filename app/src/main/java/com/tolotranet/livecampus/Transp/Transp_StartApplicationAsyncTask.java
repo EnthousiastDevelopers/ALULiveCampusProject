@@ -53,7 +53,7 @@ public class Transp_StartApplicationAsyncTask extends AsyncTask<Activity, Void, 
 			Log.d("hello", "File doesn't exist");
 
 			if ((InternetConnection = isNetworkAvailable())) {
-				Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask();
+				Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask(myActivity.getApplicationContext(), "normal");
 				getDataTask.execute(myActivity);
 			}
 

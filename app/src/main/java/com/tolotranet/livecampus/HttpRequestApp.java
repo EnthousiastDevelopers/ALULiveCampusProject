@@ -1,7 +1,12 @@
 package com.tolotranet.livecampus;
 
 
+import android.app.Activity;
+import android.os.AsyncTask;
 import android.util.Log;
+
+import com.tolotranet.livecampus.Sis.Interact.Interaction_ItemObject;
+import com.tolotranet.livecampus.Sis.Interact.Interaction_SendObject;
 
 import java.net.URLEncoder;
 
@@ -9,8 +14,49 @@ import java.net.URLEncoder;
  * Created by Tolotra Samuel on 11/02/2017.
  */
 
-public class HttpRequestApp {
+public class HttpRequestApp extends AsyncTask<Activity, Void, Void> {
+    String actionId;
+    Activity Activity;
+    private Interaction_SendObject interactionObject;
 
+    public HttpRequestApp(String actionid) {
+        this.actionId = actionid;
+    }
+
+    public void setInteractionObject(Interaction_SendObject interactionObj) {
+        this.interactionObject = interactionObj;
+    }
+
+    @Override
+    protected Void doInBackground(Activity... params) {
+        this.Activity = params[0];
+        switch (actionId) {
+            case "addinteraction":
+                add_Interaction(interactionObject);
+        }
+        return null;
+    }
+
+    private void add_Interaction(Interaction_SendObject interactionObject) {
+        try {
+
+            HttpRequest mReq = new HttpRequest();
+            //Add score +1
+            String scoreUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfmqfDvsxGM6PePVbdINlIHYe2OPd9GCwnSJa2UOuN2ksxQmw/formResponse";
+            String data_score =
+                    "entry.683575632=" + URLEncoder.encode(interactionObject.getSender()) + "&" + //action
+                            "entry.2052192297=" + URLEncoder.encode(interactionObject.getRecipient()) + "&" + //object
+                            "entry.136521820=" + URLEncoder.encode(String.valueOf(interactionObject.getId())) + "&" + //author
+                            "entry.270042749=" + URLEncoder.encode(interactionObject.getName()) + "&" + //recipient
+                            "entry.1655111766=" + URLEncoder.encode(interactionObject.getCategory()) + "&" + //score
+                            "entry.568849419=" + URLEncoder.encode(interactionObject.getPrivacy());  //currency
+            String response_score = mReq.sendPost(scoreUrl, data_score);
+            Log.d("response", response_score);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void addVote_Score(final String author,
                                      final String recipient,
@@ -45,12 +91,15 @@ public class HttpRequestApp {
             }
         });
         scoreThread.start();
-    };
-    public static void add_App_UsageTrack(    final String author,
-                                     final String appid,
-                                     final String action,
-                                     final String value,
-                                     final String label
+    }
+
+    ;
+
+    public static void add_App_UsageTrack(final String author,
+                                          final String appid,
+                                          final String action,
+                                          final String value,
+                                          final String label
     ) {
         Thread usageThread = new Thread(new Runnable() { //because we will add score and add vote are using the same google form, it will be used so many times, votes will be in subaction
             @Override
@@ -64,7 +113,7 @@ public class HttpRequestApp {
                             "entry.651969059=" + URLEncoder.encode(author) + "&" + //author
                                     "entry.1234903408=" + URLEncoder.encode(appid) + "&" + //recipient
                                     "entry.1733490618=" + URLEncoder.encode(action) + "&" + //action
-                                    "entry.349657667=" + URLEncoder.encode(value)+ "&" +  //currency
+                                    "entry.349657667=" + URLEncoder.encode(value) + "&" +  //currency
                                     "entry.1681037110=" + URLEncoder.encode(label);  //currency
                     String response_score = mReq.sendPost(scoreUrl, data_score);
                     Log.d("response app usage", response_score);
@@ -75,7 +124,9 @@ public class HttpRequestApp {
             }
         });
         usageThread.start();
-    };
+    }
+
+    ;
 
     public void sendComment(final String comment_objectrandomid,
                             final String comment_fullnameauthor,
@@ -116,7 +167,7 @@ public class HttpRequestApp {
         send_comment_thread.start();
     }
 
-    public static void add_Attendance(final String cardID, final String myEmail, final String myFirstName, final String myLastName, final String course){
+    public static void add_Course_Attendance(final String cardID, final String myEmail, final String myFirstName, final String myLastName, final String course) {
 
         Thread send_attendance_record = new Thread(new Runnable() {
 
@@ -133,6 +184,44 @@ public class HttpRequestApp {
                             "entry.2118286285=" + URLEncoder.encode(myFirstName) + "&" +
                             "entry.1614196389=" + URLEncoder.encode(myLastName) + "&" +
                             "entry.977151147=" + URLEncoder.encode(course);
+                    String response = mReq.sendPost(fullUrl, data);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        send_attendance_record.start();
+    }
+
+
+    public static void add_Food_Attendance(final String cardID
+                                           , final String myEmail,
+                                           final String myFirstName,
+                                           final String myLastName,
+                                           final String residence,
+                                           final String optionLabel,
+                                           final String option,
+                                           final String category
+                                           ) {
+        Thread send_attendance_record = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    //String url for database Mauritius
+
+                    String fullUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdMok55r8FBk5NCm3pdx40zkpqty1H7L8Tzr5LsQBD6-LYFTA/formResponse";
+                    HttpRequest mReq = new HttpRequest();
+                    String data =
+                            "entry.1979182813=" + URLEncoder.encode(cardID) + "&" +
+                            "entry.516943837=" + URLEncoder.encode(myEmail) + "&" +
+                            "entry.2118286285=" + URLEncoder.encode(myFirstName) + "&" +
+                            "entry.1614196389=" + URLEncoder.encode(myLastName) + "&" +
+                            "entry.1579080695=" + URLEncoder.encode(residence) + "&" +
+                            "entry.687001300=" + URLEncoder.encode(option) + "&" +
+                            "entry.977151147=" + URLEncoder.encode(optionLabel) + "&" +
+                            "entry.466597607=" + URLEncoder.encode(category);
                     String response = mReq.sendPost(fullUrl, data);
                 } catch (Exception e) {
                     e.printStackTrace();

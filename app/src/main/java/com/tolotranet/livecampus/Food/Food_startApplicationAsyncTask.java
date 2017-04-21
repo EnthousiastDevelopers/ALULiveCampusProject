@@ -53,7 +53,7 @@ public class Food_startApplicationAsyncTask extends AsyncTask<Activity, Void, Vo
 			Log.d("hello", "File doesn't exist");
 
 			if ((InternetConnection = isNetworkAvailable())) {
-				Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+				Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(myActivity.getApplicationContext(), "normal");
 				getDataTask.execute(myActivity);
 			}
 

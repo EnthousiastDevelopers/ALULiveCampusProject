@@ -34,12 +34,16 @@
     <color name="grey">#a4a4a4</color>
     <color name="blue_alu">#002a3a</color>
     <color name="red_alu">#98232a</color>
-    <color name="titletextcolor">#FFFF00</color>
+    <color name="yellow">#FFFF00</color>
     <color name="orange">#ffbf00</color>
     <color name="fushia">#9b004e</color>
-    <color name="red">#d7ff5347</color>
-    <color name="blue">#24ceff</color>
+    <color name="red">#ff5347</color>
+    <color name="blue">#1976D2</color>
 
+    <color name="refresh_progress_1">@color/green</color>
+    <color name="refresh_progress_2">@color/red</color>
+    <color name="refresh_progress_3">@color/blue_sky</color>
+    <color name="refresh_progress_4">@color/orange</color>
 
 
 

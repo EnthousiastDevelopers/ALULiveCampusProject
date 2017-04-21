@@ -44,7 +44,7 @@ public class Transp_SpreadSheetActivity extends Activity {
 			if (isNetworkAvailable()) {
 				Toast.makeText(getApplicationContext(), "Updating.....",
 						Toast.LENGTH_SHORT).show();
-				Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask();
+				Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask(Transp_SpreadSheetActivity.this, "normal");
 				getDataTask.execute(this);
 			} else {
 				Toast.makeText(getApplicationContext(),

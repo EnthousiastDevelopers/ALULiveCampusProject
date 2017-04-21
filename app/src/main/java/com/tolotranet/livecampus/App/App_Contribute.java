@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.tolotranet.livecampus.CalendarAPI;
+import com.tolotranet.livecampus.Event.Event_SpreadSheetActivity;
 import com.tolotranet.livecampus.Food.FoodCalendar;
 import com.tolotranet.livecampus.R;
 
@@ -73,7 +73,7 @@ public class App_Contribute extends Activity {
 
                 if (parent.getItemAtPosition(position) == "CalendarAPI") {
 
-                    Intent i = new Intent(App_Contribute.this, CalendarAPI.class);
+                    Intent i = new Intent(App_Contribute.this, Event_SpreadSheetActivity.class);
                     startActivity(i);
                 }
             }

@@ -35,6 +35,17 @@
         <item>Special order</item>
         <item>Salad</item>
     </string-array>
+    <string-array name = "course_suggestion_list" >
+        <item>Business</item>
+        <item>Social Science</item>
+        <item>Computer Science</item>
+        <item>Engineer</item>
+        <item>DnD</item>
+        <item>Mathematics</item>
+        <item>C4I</item>
+        <item>Entrepreneurial Leadership</item>
+        <item>Salad</item>
+    </string-array>
 
     <string-array name = "mu_category" >
         <item>Taxi Cab</item>
@@ -43,6 +54,11 @@
         <item>Pharmacies</item>
         <item>Hospitals, Clinics and Ambulance</item>
         <item>Other</item>
+    </string-array>
+    <string-array name = "food_category" >
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
     </string-array>
 
     <string-array name = "app_feedback" >

@@ -40,7 +40,9 @@ import com.tolotranet.livecampus.Transp.Transp_SpreadSheetActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -154,7 +156,16 @@ public class AppSelect_MainFragment_Upper extends Fragment {
         };
 
 
-
+        if(Sis_XMLParserClass.q2 == null) {
+            Log.d("hello", "Sis missing, jump accessed, without refreshing the Sis from cloud, but from file but it's ok");
+            try {
+                new Sis_XMLParserClass();
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         int Myindex = Sis_XMLParserClass.q2.indexOf(Sign_User_Object.Email); //because the index of object where it contains the myemail from db is equal to data from server or local file
         int MyRow = Integer.parseInt(Sis_XMLParserClass.q1.get(Myindex)); //because q1 is the row number
 
@@ -205,7 +216,7 @@ public class AppSelect_MainFragment_Upper extends Fragment {
                 }
                 ;
                 CIO.setIndex(i);
-                CIO.setUserId(0);
+                CIO.setId(0);
                 CIO.setMenuId(imgid[i][1]);
 
                 CIO.setScore(score);
@@ -239,7 +250,7 @@ public class AppSelect_MainFragment_Upper extends Fragment {
             int Index = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getIndex();
             int ThisId = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
-                    .getUserId();
+                    .getId();
             int ThisImg = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))
                     .getImgId();
             int ThisMenuId = ((Apps_ItemObject) arg0.getItemAtPosition(arg2))

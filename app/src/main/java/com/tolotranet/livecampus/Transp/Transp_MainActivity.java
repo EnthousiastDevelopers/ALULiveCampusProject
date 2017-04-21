@@ -94,7 +94,7 @@ public class Transp_MainActivity extends Activity {
 
                 if (isNetworkAvailable()) {
                     Toast.makeText(getApplicationContext(), "Updating.....", Toast.LENGTH_SHORT).show();
-                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask();
+                    Transp_GetDataAsyncTask getDataTask = new Transp_GetDataAsyncTask(Transp_MainActivity.this, "normal");
                     getDataTask.execute(this);
                 } else {
                     Toast.makeText(getApplicationContext(), "check Internet Connection", Toast.LENGTH_SHORT).show();

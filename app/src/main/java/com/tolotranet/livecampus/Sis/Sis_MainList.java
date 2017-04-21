@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.tolotranet.livecampus.App.AppSelect_Parent;
 import com.tolotranet.livecampus.R;
+import com.tolotranet.livecampus.Sign.Sign_DatabaseHelper;
+import com.tolotranet.livecampus.Sign_User_Object;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +37,7 @@ public class Sis_MainList extends AppCompatActivity {
 	EditText SearchET;
 	ListView lv;
 	AppSelect_Parent AppHelper = new AppSelect_Parent();
-	int MyId = AppHelper.getUserID();
+	int MyId = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,7 +49,12 @@ public class Sis_MainList extends AppCompatActivity {
 		mFirebaseAnalytics.setMinimumSessionDuration(3000);//minimum session is 1 minute
 
 //		Intent i = getIntent();
-//		MyId = i.getIntExtra("myId", 0);
+		if(Sign_User_Object.Email == null) {
+			Log.d("hello", "missing Sign_User_Object jump accessed, without refreshing the Sis from cloud, but it's ok");
+			Sign_DatabaseHelper helper = new Sign_DatabaseHelper(this);
+			helper.AllUserDataBaseToObject();
+		}
+		MyId = Sign_User_Object.Id;
 
 		Log.d("hello", "Starting tolotra");
 		ContactItemArray = MakeArrayList();
@@ -81,8 +88,8 @@ public class Sis_MainList extends AppCompatActivity {
 					.getBottomText();
 			//open editor profile if the person clicked is the current user
 			Bundle params2 = new Bundle();
-			params2.putString("sis selected", name);
-			params2.putString("bottom text ", btmtext);
+			params2.putString("sisselected", name);
+			params2.putString("text", btmtext);
 			mFirebaseAnalytics.logEvent("sis", params2);
 
 			if (MyId == (ThisId)){

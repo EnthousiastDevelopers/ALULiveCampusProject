@@ -58,7 +58,7 @@ public class Booking_MyCustomBaseAdapter_3 extends BaseAdapter {
 		ViewHolder holder;
 		
 		if(convertView == null){
-			convertView = mInflater.inflate(R.layout.booking_people_item_single, null);
+			convertView = mInflater.inflate(R.layout.booking_people_item_single, parent, false);
 			holder = new ViewHolder();
 			holder.NameTV = (TextView) convertView.findViewById(R.id.Contact_name_tv);
 			holder.BottomTV = (TextView) convertView.findViewById(R.id.Contact_bottom_tv);

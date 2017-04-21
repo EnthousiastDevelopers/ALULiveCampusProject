@@ -114,14 +114,6 @@ public class AppSelect_Child_Fragment extends Fragment {
     }
 
 
-    public static int getUserID() {
-        Context c = MyApplication.getAppContext();
-        Sign_DatabaseHelper helper = new Sign_DatabaseHelper(c);
-        int userID = helper.getUserId();
-        //int userID = 1000005;
-        return userID;
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -64,7 +64,7 @@ public class Food_MainList extends AppCompatActivity {
                 } else {
                     fab_refresh.startAnimation(AnimationUtils.loadAnimation(Food_MainList.this, R.anim.rotation));
                     Snackbar.make(view, "Updating.....", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(Food_MainList.this, "normal");
                     getDataTask.execute(Food_MainList.this);
                 }
             }
@@ -284,7 +284,7 @@ public class Food_MainList extends AppCompatActivity {
 
                     CIO.setIndex(i);
                     CIO.setImgID(this.getResources().getIdentifier("app_icon_food", "drawable", this.getPackageName()));
-//				CIO.setUserId(Integer.parseInt(Food_XMLParserClass.q1.get(i)));
+//				CIO.setState(Integer.parseInt(Food_XMLParserClass.q1.get(i)));
                     TempItemArray.add(CIO);
                 }
             }
@@ -341,7 +341,7 @@ public class Food_MainList extends AppCompatActivity {
 
                 if (isNetworkAvailable()) {
                     Toast.makeText(getApplicationContext(), "Updating.....", Toast.LENGTH_LONG).show();
-                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask();
+                    Food_GetDataAsyncTask getDataTask = new Food_GetDataAsyncTask(Food_MainList.this, "normal");
                     getDataTask.execute(this);
                 } else {
                     Toast.makeText(getApplicationContext(), "check Internet Connection", Toast.LENGTH_SHORT).show();

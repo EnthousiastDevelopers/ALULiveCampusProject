@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:orientation="vertical">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_sendInteraction"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/blue"
+        app:rippleColor="@color/blue_sky"
+        android:layout_margin="18dp"
+        android:src="@drawable/ic_menu_send"
+        app:fabSize="normal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/privacyTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="PRIVACY"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/privacyRG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:checkedButton="@+id/anonymousRadio">
+
+            <RadioButton
+                android:id="@+id/anonymousRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:text="Anonymous"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/showRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:text="Display my name"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/hybridRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:text="Anonymous until this person guarantee mutuality"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/interactionTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="INTERACTION"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/SearchET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search Interaction...."
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:visibility="gone" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            app:tabBackground="@color/blue"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/MineCustomTabText"
+            app:tabTextColor="@color/black" />
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/ViewPagerSelectInteraction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"></android.support.v4.view.ViewPager>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/professionalBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.33"
+                android:background="@color/grey"
+                android:text="PROFESSIONAL"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/friendshipBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.33"
+                android:background="@color/blue"
+                android:text="FRIENDSHIP"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/relationshipBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.33"
+                android:background="@color/colorAccent"
+                android:text="RELATIONSHIP"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="RECENT"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

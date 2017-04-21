@@ -5,7 +5,7 @@ public class Apps_ItemObject {
 	private String Name;
 	private String BottomText;
 	private int Index;
-	private int UserId;
+	private int id;
 	private int ImgId;
 	private int menuId;
 	private int score;
@@ -21,8 +21,8 @@ public class Apps_ItemObject {
 	public int getIndex(){
 		return this.Index;
 	}
-	public int getUserId(){
-		return this.UserId;
+	public int getId(){
+		return this.id;
 	}
 	public int getImgId(){
 		return this.ImgId;
@@ -41,8 +41,8 @@ public class Apps_ItemObject {
 		this.Index = index;
 	}
 
-	public void setUserId(int userId){
-		this.UserId = userId;
+	public void setId(int id){
+		this.id = id;
 	}
 
 	public void setImgId(int imgId){

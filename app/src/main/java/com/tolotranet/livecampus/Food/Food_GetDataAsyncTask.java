@@ -2,6 +2,7 @@ package com.tolotranet.livecampus.Food;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -28,6 +29,57 @@ import javax.xml.transform.TransformerException;
 public class Food_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	Activity myActivity;
+	private String origin;
+	Context context;
+
+
+    public Food_GetDataAsyncTask(Context context, String originString) {
+		this.origin = originString;
+		this.context = context;
+		if(origin.equals("refreshonly")) {
+			//at many occasions, we don't need the asynctask, we just need the in line task
+			startGetDataAction();
+		}
+    }
+
+	private void startGetDataAction() { //get data inline not asynctask
+		try {
+			getData();
+		} catch (AuthenticationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			String xmlString = Food_XMLCreator.CreateSpreadSheetToXML();
+			Food_FileOperations.StoreData(xmlString);
+//			Log.d("hello",xmlString);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
 	@Override
 	protected Void doInBackground(Activity... arg0) {
 		// TODO Auto-generated method stub
@@ -71,12 +123,15 @@ public class Food_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void result) {
-		// TODO Auto-generated method stub
-		Intent i = new Intent(myActivity.getApplicationContext(),Food_MainList.class);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		myActivity.startActivity(i);
-		myActivity.overridePendingTransition(0, 0);
-		myActivity.finish();
+		if (origin.equals("refreshonly")) {
+			Log.d("hello food", "refreshed only food menu done");
+		} else {
+			Intent i = new Intent(myActivity.getApplicationContext(), Food_MainList.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			myActivity.startActivity(i);
+			myActivity.overridePendingTransition(0, 0);
+			myActivity.finish();
+		}
 	}
 	
 	private void getData() throws AuthenticationException,
@@ -159,7 +214,6 @@ public class Food_GetDataAsyncTask extends AsyncTask<Activity, Void, Void> {
 					q8.add(ProperValue(row.getCustomElements()
 							.getValue(tag)));
 				}
-
 
 				if (tag.equals("breakfast")) {
 					q9.add(ProperValue(row.getCustomElements()
